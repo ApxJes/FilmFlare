@@ -12,6 +12,7 @@ import com.example.flimflare.R
 import com.example.flimflare.adapter.NowPlayingAdapter
 import com.example.flimflare.adapter.PopularAdapter
 import com.example.flimflare.adapter.TopRateAdapter
+import com.example.flimflare.adapter.UpcomingAdapter
 import com.example.flimflare.databinding.FragmentMainMovieBinding
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.movieViewModel.MovieViewModel
@@ -28,6 +29,7 @@ class MainMovieFragment : Fragment() {
     @Inject lateinit var nowPlayingAdapter: NowPlayingAdapter
     @Inject lateinit var popularAdapter: PopularAdapter
     @Inject lateinit var topRateAdapter: TopRateAdapter
+    @Inject lateinit var upcomingAdapter: UpcomingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,10 +45,12 @@ class MainMovieFragment : Fragment() {
         getNowPlayingMovie()
         getPopularMovie()
         getTppRateMovie()
+        getUpcomingMovie()
 
         viewModel.getNowPlayingMovie()
         viewModel.getPopularMovie()
         viewModel.getTopRateMovie()
+        viewModel.getUpcomingMovie()
     }
 
     private fun getNowPlayingMovie() {
@@ -111,16 +115,16 @@ class MainMovieFragment : Fragment() {
     }
 
     private fun getUpcomingMovie() {
+        upcomingRecyclerView()
 
         viewModel.upcomingResponse.observe(viewLifecycleOwner){ result ->
             when(result) {
                 is Resource.Success -> {
                     hidePrg()
                     result.data?.let { upcomigResponse ->
-
+                        upcomingAdapter.differ.submitList(upcomigResponse.results)
                     }
                 }
-
                 is Resource.Error -> {
                     hidePrg()
                     Toast.makeText(requireContext(), "An error occur ${result.message}", Toast.LENGTH_SHORT).show()
@@ -147,6 +151,13 @@ class MainMovieFragment : Fragment() {
     private fun topRateRecyclerView() {
         binding.rvTopRateMovie.apply {
             adapter = topRateAdapter
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    private fun upcomingRecyclerView() {
+        binding.rvUpcoming.apply {
+            adapter = upcomingAdapter
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
     }

@@ -102,6 +102,25 @@
                 android:layout_margin="5dp"
                 />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upcoming"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/space_grotesk_bold"
+                android:layout_marginTop="18dp"
+                android:layout_marginStart="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUpcoming"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/popular_movie_layout"
+                tools:itemCount="1"
+                android:layout_margin="5dp"
+                />
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
