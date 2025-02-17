@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flimflare.R
 import com.example.flimflare.adapter.NowPlayingAdapter
 import com.example.flimflare.adapter.PopularAdapter
+import com.example.flimflare.adapter.TopRateAdapter
 import com.example.flimflare.databinding.FragmentMainMovieBinding
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.movieViewModel.MovieViewModel
@@ -26,6 +27,7 @@ class MainMovieFragment : Fragment() {
 
     @Inject lateinit var nowPlayingAdapter: NowPlayingAdapter
     @Inject lateinit var popularAdapter: PopularAdapter
+    @Inject lateinit var topRateAdapter: TopRateAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,9 +42,11 @@ class MainMovieFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getNowPlayingMovie()
         getPopularMovie()
+        getTppRateMovie()
 
         viewModel.getNowPlayingMovie()
         viewModel.getPopularMovie()
+        viewModel.getTopRateMovie()
     }
 
     private fun getNowPlayingMovie() {
@@ -86,6 +90,46 @@ class MainMovieFragment : Fragment() {
         }
     }
 
+    private fun getTppRateMovie() {
+        topRateRecyclerView()
+
+        viewModel.topRateResponse.observe(viewLifecycleOwner) {result ->
+            when(result) {
+                is Resource.Success -> {
+                    hidePrg()
+                    result.data?.let { resultResponse ->
+                        topRateAdapter.differ.submitList(resultResponse.results)
+                    }
+                }
+                is Resource.Error -> {
+                    hidePrg()
+                    Toast.makeText(requireContext(), "An error occur ${result.message}", Toast.LENGTH_SHORT).show()
+                }
+                is Resource.Loading -> {showPrg()}
+            }
+        }
+    }
+
+    private fun getUpcomingMovie() {
+
+        viewModel.upcomingResponse.observe(viewLifecycleOwner){ result ->
+            when(result) {
+                is Resource.Success -> {
+                    hidePrg()
+                    result.data?.let { upcomigResponse ->
+
+                    }
+                }
+
+                is Resource.Error -> {
+                    hidePrg()
+                    Toast.makeText(requireContext(), "An error occur ${result.message}", Toast.LENGTH_SHORT).show()
+                }
+                is Resource.Loading -> {showPrg()}
+            }
+        }
+    }
+
     private fun nowPlayingRecyclerView() {
         binding.rvNowPlayingMovie.apply {
             adapter = nowPlayingAdapter
@@ -96,6 +140,13 @@ class MainMovieFragment : Fragment() {
     private fun popularRecyclerView() {
         binding.rvPopularMovie.apply {
             adapter = popularAdapter
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    private fun topRateRecyclerView() {
+        binding.rvTopRateMovie.apply {
+            adapter = topRateAdapter
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
     }

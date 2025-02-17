@@ -26,11 +26,9 @@
 
             <TextView
                 android:id="@+id/txvMovieTitle"
-                android:layout_width="match_parent"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:fontFamily="@font/switzer_bold"
-                android:maxLines="2"
+                android:fontFamily="@font/supreme_regular"
                 android:padding="3dp"
                 android:textColor="@color/white"
                 android:text="Movie Title" />
@@ -43,6 +41,7 @@
                 android:text="Release date:"
                 android:textColor="@color/white"
                 android:padding="5dp"
+                android:fontFamily="@font/supreme_regular"
                 app:drawableStartCompat="@drawable/ic_release_date" />
         </LinearLayout>
 </androidx.cardview.widget.CardView>

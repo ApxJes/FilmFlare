@@ -2,6 +2,7 @@ package com.example.flimflare.di
 
 import com.example.flimflare.adapter.NowPlayingAdapter
 import com.example.flimflare.adapter.PopularAdapter
+import com.example.flimflare.adapter.TopRateAdapter
 import com.example.flimflare.api.API
 import com.example.flimflare.util.ConstantsURL.BASE_URL
 import dagger.Module
@@ -48,5 +49,9 @@ object Module {
     @Singleton
     @Provides
     fun providesPopularAdapter(): PopularAdapter = PopularAdapter()
+
+    @Singleton
+    @Provides
+    fun providesTopRateAdapter(): TopRateAdapter = TopRateAdapter()
 
 }

@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="260dp"
+    android:layout_width="270dp"
     android:layout_height="190dp"
     android:layout_margin="6dp"
     android:elevation="30dp"
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imvPopularPoster"
+                android:id="@+id/imvTopRatePoster"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -42,14 +42,16 @@
             app:layout_constraintTop_toTopOf="@id/cardView">
 
             <TextView
-                android:id="@+id/txvPopularTitle"
+                android:id="@+id/txvTopRateTitle"
                 android:layout_width="120dp"
+                android:maxLines="2"
+                android:breakStrategy="simple"
                 android:layout_height="wrap_content"
                 android:text="Spider Man"
                 android:textColor="@color/white"
-                android:textSize="15sp"
                 android:fontFamily="@font/supreme_regular"
-                android:textStyle="bold"/>
+                android:textSize="15sp"
+                />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -63,7 +65,7 @@
                     android:src="@drawable/ic_language"/>
 
                 <TextView
-                    android:id="@+id/txvPopularLanguage"
+                    android:id="@+id/txvTopRateLanguage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -85,7 +87,7 @@
                     android:src="@drawable/ic_release_date"/>
 
                 <TextView
-                    android:id="@+id/txvPopularReleaseDate"
+                    android:id="@+id/txvTopRateReleaseDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -100,4 +102,3 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
-

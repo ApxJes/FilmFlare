@@ -4,6 +4,7 @@ import com.example.flimflare.api.API
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.topRate.TopRateResponse
+import com.example.flimflare.model.upcoming.UpcomingResponse
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -22,5 +23,9 @@ class MovieRepository
 
     suspend fun getTopRate(apiKey: String, pageNumber: Int): Response<TopRateResponse> {
         return api.getTopRate(apiKey, pageNumber)
+    }
+
+    suspend fun getUpcoming(apiKey: String, pageNumber: Int): Response<UpcomingResponse> {
+        return api.getUpcoming(apiKey, pageNumber)
     }
 }

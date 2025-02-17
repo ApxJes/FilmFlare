@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.topRate.TopRateResponse
+import com.example.flimflare.model.upcoming.UpcomingResponse
 import com.example.flimflare.repository.movieRepository.MovieRepository
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import com.example.flimflare.util.Resource
@@ -33,6 +34,10 @@ class MovieViewModel
     val topRateResponse: LiveData<Resource<TopRateResponse>> get() = _topRateResponse
     var topRatePage = 1
 
+    private val _upcomingResponse: MutableLiveData<Resource<UpcomingResponse>> = MutableLiveData()
+    val upcomingResponse: LiveData<Resource<UpcomingResponse>> get() = _upcomingResponse
+    var upcomingPage = 1
+
     fun getNowPlayingMovie() = viewModelScope.launch {
         _nowPlayingResponse.postValue(Resource.Loading())
         val response = repository.getNowPlaying(apiKey = API_KEY, pageNumber = nowPlayingPage)
@@ -49,6 +54,12 @@ class MovieViewModel
         _topRateResponse.postValue(Resource.Loading())
         val response = repository.getTopRate(apiKey = API_KEY, pageNumber = topRatePage)
         _topRateResponse.postValue(handleTopRate(response))
+    }
+
+    fun getUpcomingMovie() = viewModelScope.launch {
+        _upcomingResponse.postValue(Resource.Loading())
+        val response = repository.getUpcoming(apiKey = API_KEY, pageNumber = topRatePage)
+        _upcomingResponse.postValue(handleUpcoming(response))
     }
 
     private fun handleNowPlaying(response: Response<NowPlayingResponse>): Resource<NowPlayingResponse> {
@@ -72,6 +83,16 @@ class MovieViewModel
     }
 
     private fun handleTopRate(response: Response<TopRateResponse>): Resource<TopRateResponse> {
+        if(response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+
+        return Resource.Error(response.errorBody().toString())
+    }
+
+    private fun handleUpcoming(response: Response<UpcomingResponse>): Resource<UpcomingResponse> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
