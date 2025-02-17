@@ -1,6 +1,7 @@
 package com.example.flimflare.di
 
 import com.example.flimflare.adapter.NowPlayingAdapter
+import com.example.flimflare.adapter.PopularAdapter
 import com.example.flimflare.api.API
 import com.example.flimflare.util.ConstantsURL.BASE_URL
 import dagger.Module
@@ -43,4 +44,9 @@ object Module {
     @Singleton
     @Provides
     fun providesNowPlayingAdapter(): NowPlayingAdapter = NowPlayingAdapter()
+
+    @Singleton
+    @Provides
+    fun providesPopularAdapter(): PopularAdapter = PopularAdapter()
+
 }

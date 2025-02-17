@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainMovieFragment"
-    android:background="@color/primary_color">
+    android:background="@color/black">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -49,8 +49,36 @@
                 android:id="@+id/rvNowPlayingMovie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/outline_movie_recycler_style"
-                tools:listitem="@layout/movie_item_layout"
+                tools:listitem="@layout/now_playing_movie_item_layout"
+                tools:itemCount="1"
+                android:layout_margin="5dp"
+                android:layout_gravity="fill"
+                />
+
+            <View
+                android:id="@+id/upComingDivider"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_height="1dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:background="@drawable/divider_now_playing_style" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Popular"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/space_grotesk_bold"
+                android:layout_marginTop="18dp"
+                android:layout_marginStart="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPopularMovie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/popular_movie_layout"
                 tools:itemCount="1"
                 android:layout_margin="5dp"
                 android:layout_gravity="fill"

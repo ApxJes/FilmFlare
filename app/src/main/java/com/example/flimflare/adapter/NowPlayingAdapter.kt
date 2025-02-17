@@ -34,7 +34,7 @@ class NowPlayingAdapter: RecyclerView.Adapter<NowPlayingAdapter.NowPlayingItemVi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NowPlayingItemViewHolder {
         return NowPlayingItemViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.movie_item_layout, parent, false)
+                .inflate(R.layout.now_playing_movie_item_layout, parent, false)
         )
     }
 
