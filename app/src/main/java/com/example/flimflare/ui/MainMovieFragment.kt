@@ -48,25 +48,14 @@ class MainMovieFragment : Fragment() {
         getTppRateMovie()
         getUpcomingMovie()
 
+        navigationToDetailFragment()
+
         viewModel.getNowPlayingMovie()
         viewModel.getPopularMovie()
         viewModel.getTopRateMovie()
         viewModel.getUpcomingMovie()
 
-        nowPlayingAdapter.onItemClick{
-            val action = MainMovieFragmentDirections.actionMainMovieFragmentToMovieDetailsFragment(it)
-            findNavController().navigate(action)
-        }
 
-        popularAdapter.onItemClick {
-            val action = MainMovieFragmentDirections.actionMainMovieFragmentToMovieDetailsFragment(it)
-            findNavController().navigate(action)
-        }
-
-        topRateAdapter.onItemClick {
-            val action = MainMovieFragmentDirections.actionMainMovieFragmentToMovieDetailsFragment(it)
-            findNavController().navigate(action)
-        }
     }
 
     private fun getNowPlayingMovie() {
@@ -147,6 +136,28 @@ class MainMovieFragment : Fragment() {
                 }
                 is Resource.Loading -> {showPrg()}
             }
+        }
+    }
+
+    private fun navigationToDetailFragment() {
+        nowPlayingAdapter.onItemClick{
+            val action = MainMovieFragmentDirections.actionMainMovieFragmentToMovieDetailsFragment(it)
+            findNavController().navigate(action)
+        }
+
+        popularAdapter.onItemClick {
+            val action = MainMovieFragmentDirections.actionMainMovieFragmentToMovieDetailsFragment(it)
+            findNavController().navigate(action)
+        }
+
+        topRateAdapter.onItemClick {
+            val action = MainMovieFragmentDirections.actionMainMovieFragmentToMovieDetailsFragment(it)
+            findNavController().navigate(action)
+        }
+
+        upcomingAdapter.onItemClick {
+            val action = MainMovieFragmentDirections.actionMainMovieFragmentToMovieDetailsFragment(it)
+            findNavController().navigate(action)
         }
     }
 

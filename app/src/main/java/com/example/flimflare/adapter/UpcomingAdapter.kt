@@ -57,6 +57,15 @@ class UpcomingAdapter: RecyclerView.Adapter<UpcomingAdapter.UpcomingItemViewHold
             movieTitle.text = upcomingMovie.title
             language.text = upcomingMovie.original_language
             movieReleaseDate.text = upcomingMovie.release_date
+
+            setOnClickListener {
+                onClick?.let { it(upcomingMovie.id) }
+            }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onItemClick(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }
