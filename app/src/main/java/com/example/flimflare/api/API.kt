@@ -2,6 +2,7 @@ package com.example.flimflare.api
 
 import com.example.flimflare.model.details.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
+import com.example.flimflare.model.details.person.PersonDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.topRate.TopRateResponse
@@ -48,4 +49,10 @@ interface API {
         @Path ("movie_id") movieId: Int,
         @Query("api_key") apiKey: String
     ): Response<CreditsResponse>
+
+    @GET("person/{person_id}")
+    suspend fun getPersonDetails(
+        @Path ("person_id") personId: Int,
+        @Query("api_key") apiKey: String
+    ): Response<PersonDetailsResponse>
 }

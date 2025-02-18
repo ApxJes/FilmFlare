@@ -55,6 +55,16 @@ class CastAdapter: RecyclerView.Adapter<CastAdapter.CastItemViewHolder>() {
             Glide.with(this).load(IMAGE_URL + cast.profile_path).into(castProfile)
             castName.text = cast.name
             castCharacterName.text = "( ${cast.character} )"
+            setOnClickListener {
+                onClick?.let {
+                    it(cast.id)
+                }
+            }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onClickListener(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }

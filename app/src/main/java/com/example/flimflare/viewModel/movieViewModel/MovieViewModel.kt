@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flimflare.model.details.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
+import com.example.flimflare.model.details.person.PersonDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.topRate.TopRateResponse
@@ -45,6 +46,9 @@ class MovieViewModel
     private val _creditsResponse: MutableLiveData<Resource<CreditsResponse>> = MutableLiveData()
     val creditsResponse: LiveData<Resource<CreditsResponse>> get() = _creditsResponse
 
+    private val _personDetailResponse: MutableLiveData<Resource<PersonDetailsResponse>> = MutableLiveData()
+    val personDetailResponse: LiveData<Resource<PersonDetailsResponse>> get() = _personDetailResponse
+
     fun getNowPlayingMovie() = viewModelScope.launch {
         _nowPlayingResponse.postValue(Resource.Loading())
         val response = repository.getNowPlaying(apiKey = API_KEY, pageNumber = nowPlayingPage)
@@ -80,6 +84,13 @@ class MovieViewModel
         val response = repository.getCredits(movieId = movieId, apiKey = API_KEY)
         _creditsResponse.postValue(handleCredits(response))
     }
+
+    fun getPersonDetails(personId: Int) = viewModelScope.launch {
+        _personDetailResponse.postValue(Resource.Loading())
+        val response = repository.getPersonDetails(personId = personId, apiKey = API_KEY)
+        _personDetailResponse.postValue(handlePersonDetails(response))
+    }
+
 
     private fun handleNowPlaying(response: Response<NowPlayingResponse>): Resource<NowPlayingResponse> {
         if(response.isSuccessful) {
@@ -140,4 +151,15 @@ class MovieViewModel
 
         return Resource.Error(response.errorBody().toString())
     }
+
+    private fun handlePersonDetails(response: Response<PersonDetailsResponse>): Resource<PersonDetailsResponse>? {
+        if(response.isSuccessful) {
+            response.body()?.let {resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+
+        return Resource.Error(response.errorBody().toString())
+    }
+
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -46,6 +47,8 @@ class MovieDetailsFragment : Fragment() {
         val id = args.nowPlayingId
         setupDetails(id)
         getDirector(id)
+
+        toPersonDetails()
     }
 
     @SuppressLint("SetTextI18n")
@@ -125,6 +128,13 @@ class MovieDetailsFragment : Fragment() {
             }
         } else {
             binding.txvDirectorName.text = ""
+        }
+    }
+
+    private fun toPersonDetails() {
+        castAdapter.onClickListener {
+            val action = MovieDetailsFragmentDirections.actionMovieDetailsFragmentToPersonDetailsFragment(it)
+            findNavController().navigate(action)
         }
     }
 

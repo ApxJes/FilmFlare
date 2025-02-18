@@ -28,5 +28,17 @@
             android:name="nowPlayingId"
             app:argType="integer"
             android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_personDetailsFragment"
+            app:destination="@id/personDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personDetailsFragment"
+        android:name="com.example.flimflare.ui.PersonDetailsFragment"
+        android:label="fragment_person_details"
+        tools:layout="@layout/fragment_person_details" >
+        <argument
+            android:name="personId"
+            android:defaultValue="-1" />
     </fragment>
 </navigation>
