@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.topRate.TopRateResponse
@@ -38,6 +39,9 @@ class MovieViewModel
     val upcomingResponse: LiveData<Resource<UpcomingResponse>> get() = _upcomingResponse
     var upcomingPage = 1
 
+    private val _movieDetailsResponse: MutableLiveData<Resource<MovieDetailsResponse>> = MutableLiveData()
+    val movieDetailsResponse: LiveData<Resource<MovieDetailsResponse>> get() = _movieDetailsResponse
+
     fun getNowPlayingMovie() = viewModelScope.launch {
         _nowPlayingResponse.postValue(Resource.Loading())
         val response = repository.getNowPlaying(apiKey = API_KEY, pageNumber = nowPlayingPage)
@@ -60,6 +64,12 @@ class MovieViewModel
         _upcomingResponse.postValue(Resource.Loading())
         val response = repository.getUpcoming(apiKey = API_KEY, pageNumber = topRatePage)
         _upcomingResponse.postValue(handleUpcoming(response))
+    }
+
+    fun getMovieDetails(movieId: Int) = viewModelScope.launch {
+        _movieDetailsResponse.postValue(Resource.Loading())
+        val response = repository.getDetails(movieId = movieId, apiKey = API_KEY)
+        _movieDetailsResponse.postValue(handleMovieDetails(response))
     }
 
     private fun handleNowPlaying(response: Response<NowPlayingResponse>): Resource<NowPlayingResponse> {
@@ -95,6 +105,16 @@ class MovieViewModel
     private fun handleUpcoming(response: Response<UpcomingResponse>): Resource<UpcomingResponse> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+
+        return Resource.Error(response.errorBody().toString())
+    }
+
+    private fun handleMovieDetails(response: Response<MovieDetailsResponse>): Resource<MovieDetailsResponse> {
+        if(response.isSuccessful) {
+            response.body()?.let {resultResponse ->
                 return Resource.Success(resultResponse)
             }
         }

@@ -53,6 +53,17 @@ class NowPlayingAdapter: RecyclerView.Adapter<NowPlayingAdapter.NowPlayingItemVi
             Glide.with(this).load(IMAGE_URL + nowPlayingMovie.poster_path).into(moviePoster)
             movieTitle.text = nowPlayingMovie.title
             movieReleaseDate.text = nowPlayingMovie.release_date
+
+            setOnClickListener {
+                onClick?.let {
+                    it(nowPlayingMovie.id)
+                }
+            }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onItemClick(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }
