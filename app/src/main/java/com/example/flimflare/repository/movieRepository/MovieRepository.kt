@@ -6,6 +6,7 @@ import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.details.person.PersonDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
+import com.example.flimflare.model.search.SearchMovieResponse
 import com.example.flimflare.model.topRate.TopRateResponse
 import com.example.flimflare.model.upcoming.UpcomingResponse
 import retrofit2.Response
@@ -42,5 +43,9 @@ class MovieRepository
 
     suspend fun getPersonDetails(personId: Int, apiKey: String): Response<PersonDetailsResponse> {
         return api.getPersonDetails(personId, apiKey)
+    }
+
+    suspend fun getSearch(query: String, pageInt: Int, apiKey: String): Response<SearchMovieResponse> {
+        return api.searchingMovie(query, pageInt, apiKey)
     }
 }

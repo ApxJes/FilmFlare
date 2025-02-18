@@ -5,8 +5,10 @@ import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.details.person.PersonDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
+import com.example.flimflare.model.search.SearchMovieResponse
 import com.example.flimflare.model.topRate.TopRateResponse
 import com.example.flimflare.model.upcoming.UpcomingResponse
+import com.example.flimflare.util.ConstantsURL.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -55,4 +57,14 @@ interface API {
         @Path ("person_id") personId: Int,
         @Query("api_key") apiKey: String
     ): Response<PersonDetailsResponse>
+
+    @GET("search/movie")
+    suspend fun searchingMovie(
+        @Query("query")
+        searchMovie: String,
+        @Query("language")
+        pageSize: Int = 1,
+        @Query("api_key")
+        apiKey: String = API_KEY
+    ): Response<SearchMovieResponse>
 }

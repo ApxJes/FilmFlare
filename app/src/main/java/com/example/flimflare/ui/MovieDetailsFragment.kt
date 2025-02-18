@@ -63,8 +63,8 @@ class MovieDetailsFragment : Fragment() {
                         binding.txvDetailsReleaseDate.text = "Release date: ${result.release_date}"
                         binding.txvDetailsRunTime.text = "Run time: ${result.runtime} min"
                         binding.txvOverView.text = result.overview
-                        val genresText = result.genres.joinToString(",") {it.name }
-                        binding.txvType1.text = genresText
+                        binding.txvDetailsRating.text = "IMBD: ${result.vote_average}"
+
                         view?.let {
                             Glide.with(it)
                                 .load(IMAGE_URL + result.poster_path)
@@ -126,6 +126,12 @@ class MovieDetailsFragment : Fragment() {
                     .load(IMAGE_URL + director.profile_path)
                     .into(binding.imvDirectorPoster)
             }
+
+            binding.imvDirectorPoster.setOnClickListener {
+                val action = MovieDetailsFragmentDirections.actionMovieDetailsFragmentToPersonDetailsFragment(director.id)
+                findNavController().navigate(action)
+            }
+
         } else {
             binding.txvDirectorName.text = ""
         }
@@ -134,6 +140,12 @@ class MovieDetailsFragment : Fragment() {
     private fun toPersonDetails() {
         castAdapter.onClickListener {
             val action = MovieDetailsFragmentDirections.actionMovieDetailsFragmentToPersonDetailsFragment(it)
+            findNavController().navigate(action)
+        }
+
+        crewAdapter.onClickListener {
+            val action =
+                MovieDetailsFragmentDirections.actionMovieDetailsFragmentToPersonDetailsFragment(it)
             findNavController().navigate(action)
         }
     }

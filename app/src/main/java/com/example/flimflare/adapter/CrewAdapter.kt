@@ -54,7 +54,16 @@ class CrewAdapter: RecyclerView.Adapter<CrewAdapter.CrewItemViewHolder>() {
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL + crew.profile_path).into(castProfile)
             castName.text = crew.name
-            castCharacterName.text = "( ${crew.department} )"
+            castCharacterName.text = "( ${crew.job} )"
+
+            setOnClickListener {
+                onClick?.let { it(crew.id) }
+            }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onClickListener(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }

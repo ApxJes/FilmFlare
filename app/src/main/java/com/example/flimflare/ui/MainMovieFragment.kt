@@ -1,6 +1,8 @@
 package com.example.flimflare.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +49,7 @@ class MainMovieFragment : Fragment() {
         getPopularMovie()
         getTppRateMovie()
         getUpcomingMovie()
+        searchMovie()
 
         navigationToDetailFragment()
 
@@ -137,6 +140,22 @@ class MainMovieFragment : Fragment() {
                 is Resource.Loading -> {showPrg()}
             }
         }
+    }
+
+    private fun searchMovie() {
+        binding.edtSearchMovie.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(query: Editable?) {
+                if (query!!.isNotEmpty()) {
+                    val action = MainMovieFragmentDirections
+                        .actionMainMovieFragmentToSearchMovieFragment(query.toString())
+                    findNavController().navigate(action)
+                }
+            }
+        })
     }
 
     private fun navigationToDetailFragment() {

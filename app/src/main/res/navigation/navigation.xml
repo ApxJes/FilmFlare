@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainMovieFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/action_mainMovieFragment_to_searchMovieFragment"
+            app:destination="@id/searchMovieFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainTvShowFragment"
@@ -40,5 +43,15 @@
         <argument
             android:name="personId"
             android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchMovieFragment"
+        android:name="com.example.flimflare.ui.SearchMovieFragment"
+        android:label="fragment_search_movie"
+        tools:layout="@layout/fragment_search_movie" >
+        <argument
+            android:name="query"
+            app:argType="string"
+            android:defaultValue='"q"' />
     </fragment>
 </navigation>

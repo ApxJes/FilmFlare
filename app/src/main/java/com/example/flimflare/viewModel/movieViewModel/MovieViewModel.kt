@@ -9,6 +9,7 @@ import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.details.person.PersonDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
+import com.example.flimflare.model.search.SearchMovieResponse
 import com.example.flimflare.model.topRate.TopRateResponse
 import com.example.flimflare.model.upcoming.UpcomingResponse
 import com.example.flimflare.repository.movieRepository.MovieRepository
@@ -48,6 +49,10 @@ class MovieViewModel
 
     private val _personDetailResponse: MutableLiveData<Resource<PersonDetailsResponse>> = MutableLiveData()
     val personDetailResponse: LiveData<Resource<PersonDetailsResponse>> get() = _personDetailResponse
+
+    private val _searchResponse: MutableLiveData<Resource<SearchMovieResponse>> = MutableLiveData()
+    val searchResponse: LiveData<Resource<SearchMovieResponse>> get() = _searchResponse
+    var searchPage = 1
 
     fun getNowPlayingMovie() = viewModelScope.launch {
         _nowPlayingResponse.postValue(Resource.Loading())
@@ -91,6 +96,11 @@ class MovieViewModel
         _personDetailResponse.postValue(handlePersonDetails(response))
     }
 
+    fun getSearchMovie(query: String) = viewModelScope.launch {
+        _searchResponse.postValue(Resource.Loading())
+        val response = repository.getSearch(query = query, pageInt = searchPage, apiKey = API_KEY)
+        _searchResponse.postValue(handleSearchResponse(response))
+    }
 
     private fun handleNowPlaying(response: Response<NowPlayingResponse>): Resource<NowPlayingResponse> {
         if(response.isSuccessful) {
@@ -153,6 +163,16 @@ class MovieViewModel
     }
 
     private fun handlePersonDetails(response: Response<PersonDetailsResponse>): Resource<PersonDetailsResponse>? {
+        if(response.isSuccessful) {
+            response.body()?.let {resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+
+        return Resource.Error(response.errorBody().toString())
+    }
+
+    private fun handleSearchResponse(response: Response<SearchMovieResponse>): Resource<SearchMovieResponse>? {
         if(response.isSuccessful) {
             response.body()?.let {resultResponse ->
                 return Resource.Success(resultResponse)

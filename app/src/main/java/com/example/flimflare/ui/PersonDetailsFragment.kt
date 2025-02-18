@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.example.flimflare.R
 import com.example.flimflare.databinding.FragmentPersonDetailsBinding
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
@@ -38,11 +37,11 @@ class PersonDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val personId = args.personId
-        castDetails(personId)
+        personDetails(personId)
     }
 
     @SuppressLint("SetTextI18n")
-    private fun castDetails(personId: Int) {
+    private fun personDetails(personId: Int) {
 
         viewModel.getPersonDetails(personId)
 
@@ -55,7 +54,7 @@ class PersonDetailsFragment : Fragment() {
                         binding.txvGender.text = if(resultResponse.gender == 0)"Gender: Female" else "Gender: Male"
                         binding.txvPlace.text = resultResponse.place_of_birth
                         binding.txvBio.text = resultResponse.biography
-                        binding.txvDetailsJob.text = resultResponse.known_for_department
+                        binding.txvDetailsJob.text = "Role: ${resultResponse.known_for_department}"
 
                         view?.let {
                             Glide.with(it).load(IMAGE_URL + resultResponse.profile_path).into(binding.imvPersonProfile)

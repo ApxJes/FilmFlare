@@ -4,6 +4,7 @@ import com.example.flimflare.adapter.CastAdapter
 import com.example.flimflare.adapter.CrewAdapter
 import com.example.flimflare.adapter.NowPlayingAdapter
 import com.example.flimflare.adapter.PopularAdapter
+import com.example.flimflare.adapter.SearchAdapter
 import com.example.flimflare.adapter.TopRateAdapter
 import com.example.flimflare.adapter.UpcomingAdapter
 import com.example.flimflare.api.API
@@ -68,5 +69,9 @@ object Module {
     @Singleton
     @Provides
     fun providesCrewAdapter(): CrewAdapter = CrewAdapter()
+
+    @Singleton
+    @Provides
+    fun providesSearchAdapter(): SearchAdapter = SearchAdapter()
 
 }
