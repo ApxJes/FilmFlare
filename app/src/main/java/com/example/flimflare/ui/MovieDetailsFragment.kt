@@ -51,6 +51,7 @@ class MovieDetailsFragment : Fragment() {
                         binding.txvDetailsTitle.text = result.title
                         binding.txvDetailsReleaseDate.text = "Release date: ${result.release_date}"
                         binding.txvDetailsRunTime.text = "Run time: ${result.runtime} min"
+                        binding.txvOverView.text = result.overview
                         val genresText = result.genres.joinToString(",") {it.name }
                         binding.txvType1.text = genresText
                         view?.let {

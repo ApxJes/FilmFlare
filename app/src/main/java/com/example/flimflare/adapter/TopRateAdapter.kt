@@ -58,6 +58,13 @@ class TopRateAdapter: RecyclerView.Adapter<TopRateAdapter.TopRateItemViewHolder>
             movieTitle.text = topRateMovie.title
             language.text = topRateMovie.original_language
             movieReleaseDate.text = topRateMovie.release_date
+
+            setOnClickListener { onClick?.let { it(topRateMovie.id) } }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onItemClick(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }
