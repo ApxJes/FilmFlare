@@ -7,12 +7,34 @@
     tools:context=".ui.SearchMovieFragment"
     android:background="@color/black">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <EditText
+        android:id="@+id/edtSearchMovie"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/outline_tv_search_style"
+        android:drawableStart="@drawable/ic_search_two"
+        android:drawablePadding="12dp"
+        android:padding="10dp"
+        android:textColorHint="@color/white"
+        android:hint="Search Movie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvSearch"
-        tools:listitem="@layout/now_playing_movie_item_layout"/>
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtSearchMovie"
+        app:layout_constraintVertical_bias="0.687"
+        tools:listitem="@layout/now_playing_movie_item_layout" />
 
     <ProgressBar
         android:layout_width="wrap_content"

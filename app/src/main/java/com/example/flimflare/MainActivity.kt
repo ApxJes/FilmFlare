@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding.btmNav.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener{_, destination, _ ->
-            if(destination.id == R.id.movieDetailsFragment) {
+            if(destination.id == R.id.movieDetailsFragment || destination.id == R.id.searchMovieFragment) {
                 binding.txvTitle.visibility = View.GONE
             } else {
                 binding.txvTitle.visibility = View.VISIBLE

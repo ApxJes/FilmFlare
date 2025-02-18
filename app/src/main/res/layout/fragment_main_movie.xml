@@ -21,19 +21,19 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edtSearchMovie"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/imvSearch"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/outline_tv_search_style"
-                android:drawableStart="@drawable/ic_search_two"
+                android:src="@drawable/ic_search_two"
                 android:drawablePadding="12dp"
                 android:padding="10dp"
-                android:textColorHint="@color/white"
-                android:hint="Search Movie" />
+                android:layout_gravity="end"
+                 />
 
             <TextView
                 android:layout_width="wrap_content"

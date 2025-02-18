@@ -1,21 +1,26 @@
 package com.example.flimflare.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flimflare.R
 import com.example.flimflare.adapter.SearchAdapter
-import com.example.flimflare.databinding.FragmentPersonDetailsBinding
 import com.example.flimflare.databinding.FragmentSearchMovieBinding
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.movieViewModel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -26,7 +31,6 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search_movie) {
 
     private val viewModel: MovieViewModel by viewModels()
     @Inject lateinit var searchAdapter: SearchAdapter
-    private val args: SearchMovieFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,9 +45,22 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search_movie) {
         super.onViewCreated(view, savedInstanceState)
         setUpSearchRcv()
 
-        val query = args.query
-        query.let {
-            viewModel.getSearchMovie(query)
+        searchAdapter.onItemClick {
+            val action = SearchMovieFragmentDirections.actionSearchMovieFragmentToMovieDetailsFragment(it)
+            findNavController().navigate(action)
+        }
+
+        var job: Job? = null
+        binding.edtSearchMovie.addTextChangedListener {
+            job?.cancel()
+            job = MainScope().launch {
+                delay(300L)
+                it?.let {
+                    if(it.toString().isNotEmpty()) {
+                        viewModel.getSearchMovie(it.toString())
+                    }
+                }
+            }
         }
 
         viewModel.searchResponse.observe(viewLifecycleOwner) {result ->

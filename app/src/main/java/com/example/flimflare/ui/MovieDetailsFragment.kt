@@ -44,7 +44,7 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = args.nowPlayingId
+        val id = args.id
         setupDetails(id)
         getDirector(id)
 
@@ -52,8 +52,8 @@ class MovieDetailsFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setupDetails(nowPlayingId: Int) {
-        viewModel.getMovieDetails(nowPlayingId)
+    private fun setupDetails(id: Int) {
+        viewModel.getMovieDetails(id)
 
         viewModel.movieDetailsResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -93,6 +93,7 @@ class MovieDetailsFragment : Fragment() {
             }
         }
     }
+
 
     private fun getDirector(movieId: Int) {
 

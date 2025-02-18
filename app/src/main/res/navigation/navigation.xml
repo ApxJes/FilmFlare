@@ -28,9 +28,10 @@
         android:label="fragment_movie_details"
         tools:layout="@layout/fragment_movie_details" >
         <argument
-            android:name="nowPlayingId"
+            android:name="id"
             app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            />
         <action
             android:id="@+id/action_movieDetailsFragment_to_personDetailsFragment"
             app:destination="@id/personDetailsFragment" />
@@ -52,6 +53,9 @@
         <argument
             android:name="query"
             app:argType="string"
-            android:defaultValue='"q"' />
+            android:defaultValue="q" />
+        <action
+            android:id="@+id/action_searchMovieFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
 </navigation>

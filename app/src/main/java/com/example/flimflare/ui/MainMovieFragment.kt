@@ -51,6 +51,7 @@ class MainMovieFragment : Fragment() {
         getUpcomingMovie()
         searchMovie()
 
+
         navigationToDetailFragment()
 
         viewModel.getNowPlayingMovie()
@@ -143,19 +144,10 @@ class MainMovieFragment : Fragment() {
     }
 
     private fun searchMovie() {
-        binding.edtSearchMovie.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun afterTextChanged(query: Editable?) {
-                if (query!!.isNotEmpty()) {
-                    val action = MainMovieFragmentDirections
-                        .actionMainMovieFragmentToSearchMovieFragment(query.toString())
-                    findNavController().navigate(action)
-                }
-            }
-        })
+        binding.imvSearch.setOnClickListener{
+            val action = MainMovieFragmentDirections.actionMainMovieFragmentToSearchMovieFragment("")
+            findNavController().navigate(action)
+        }
     }
 
     private fun navigationToDetailFragment() {
