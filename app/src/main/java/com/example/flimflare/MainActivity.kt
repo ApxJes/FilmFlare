@@ -1,6 +1,7 @@
 package com.example.flimflare
 
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -29,5 +30,13 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         binding.btmNav.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener{_, destination, _ ->
+            if(destination.id == R.id.movieDetailsFragment) {
+                binding.txvTitle.visibility = View.GONE
+            } else {
+                binding.txvTitle.visibility = View.VISIBLE
+            }
+        }
     }
 }

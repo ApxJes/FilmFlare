@@ -56,6 +56,15 @@ class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularItemViewHolder>
             movieTitle.text = popularMovie.title
             movieReleaseDate.text = popularMovie.release_date
             language.text = popularMovie.original_language
+
+            setOnClickListener {
+                onClick?.let {it(popularMovie.id)}
+            }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onItemClick(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }

@@ -57,6 +57,11 @@ class MainMovieFragment : Fragment() {
             val action = MainMovieFragmentDirections.actionMainMovieFragmentToMovieDetailsFragment(it)
             findNavController().navigate(action)
         }
+
+        popularAdapter.onItemClick {
+            val action = MainMovieFragmentDirections.actionMainMovieFragmentToMovieDetailsFragment(it)
+            findNavController().navigate(action)
+        }
     }
 
     private fun getNowPlayingMovie() {

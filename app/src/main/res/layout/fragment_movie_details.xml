@@ -40,7 +40,7 @@
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/spiderman" />
+                        />
 
                 </androidx.cardview.widget.CardView>
 
@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:fontFamily="@font/supreme_regular"
+                    android:fontFamily="@font/worksans_bold"
                     android:text="Movie Name"
                     android:textColor="@color/white"
                     android:textSize="25sp" />
@@ -73,6 +73,7 @@
                         android:layout_marginStart="5dp"
                         android:text="Release Date: "
                         android:textColor="@color/white"
+                        android:fontFamily="@font/supreme_regular"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -95,6 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:text="Run Time: "
+                        android:fontFamily="@font/supreme_regular"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
 
@@ -114,6 +116,7 @@
                         android:background="@drawable/outline_tv_search_style"
                         android:padding="5dp"
                         android:text="Type"
+                        android:fontFamily="@font/worksans_bold"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -124,6 +127,7 @@
                         android:background="@drawable/outline_tv_search_style"
                         android:padding="5dp"
                         android:text="Type"
+                        android:fontFamily="@font/worksans_bold"
                         android:textColor="@color/white" />
 
                 </LinearLayout>
@@ -132,16 +136,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:fontFamily="@font/supreme_regular"
+                    android:fontFamily="@font/worksans_bold"
                     android:text="Overview"
                     android:textColor="@color/white"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="143dp"
+                    android:layout_height="4dp"
+                    android:background="@color/whiteBlue"
+                    android:layout_marginStart="10dp"/>
 
                 <TextView
                     android:id="@+id/txvOverView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="7dp"
                     android:fontFamily="@font/supreme_regular"
                     android:text="@string/overview"
                     android:textColor="@color/white"

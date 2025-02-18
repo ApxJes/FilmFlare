@@ -36,12 +36,12 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val nowPlayingId = args.nowPlayingId
-        setupDetailsForNowPlaying(nowPlayingId)
+        val id = args.nowPlayingId
+        setupDetails(id)
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setupDetailsForNowPlaying(nowPlayingId: Int) {
+    private fun setupDetails(nowPlayingId: Int) {
         viewModel.getMovieDetails(nowPlayingId)
 
         viewModel.movieDetailsResponse.observe(viewLifecycleOwner) { response ->
@@ -49,8 +49,8 @@ class MovieDetailsFragment : Fragment() {
                 is Resource.Success -> {
                     response.data?.let { result ->
                         binding.txvDetailsTitle.text = result.title
-                        binding.txvDetailsReleaseDate.text = result.release_date
-                        binding.txvDetailsRunTime.text = result.runtime.toString() + "min"
+                        binding.txvDetailsReleaseDate.text = "Release date: ${result.release_date}"
+                        binding.txvDetailsRunTime.text = "Run time: ${result.runtime} min"
                         val genresText = result.genres.joinToString(",") {it.name }
                         binding.txvType1.text = genresText
                         view?.let {
