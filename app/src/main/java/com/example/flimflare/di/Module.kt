@@ -1,5 +1,7 @@
 package com.example.flimflare.di
 
+import com.example.flimflare.adapter.CastAdapter
+import com.example.flimflare.adapter.CrewAdapter
 import com.example.flimflare.adapter.NowPlayingAdapter
 import com.example.flimflare.adapter.PopularAdapter
 import com.example.flimflare.adapter.TopRateAdapter
@@ -58,5 +60,13 @@ object Module {
     @Singleton
     @Provides
     fun providesUpcomingAdapter(): UpcomingAdapter = UpcomingAdapter()
+
+    @Singleton
+    @Provides
+    fun providesCastAdapter(): CastAdapter = CastAdapter()
+
+    @Singleton
+    @Provides
+    fun providesCrewAdapter(): CrewAdapter = CrewAdapter()
 
 }

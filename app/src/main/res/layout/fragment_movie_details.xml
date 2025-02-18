@@ -168,7 +168,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/spiderman"
+                        android:src="@drawable/pf"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
                         android:id="@+id/imvDirectorPoster"/>
@@ -183,6 +183,39 @@
                     android:textColor="@color/white"
                     android:layout_gravity="center"
                     android:fontFamily="@font/supreme_regular"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cast"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/worksans_bold"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rcvCast"
+                    tools:listitem="@layout/cast"
+                    tools:itemCount="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Crew"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/worksans_bold"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rcvCrew"
+                    tools:listitem="@layout/crew"
+                    tools:itemCount="1"/>
+
             </LinearLayout>
 
 

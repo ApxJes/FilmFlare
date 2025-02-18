@@ -2,19 +2,23 @@ package com.example.flimflare.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.flimflare.R
+import com.example.flimflare.adapter.CastAdapter
+import com.example.flimflare.adapter.CrewAdapter
 import com.example.flimflare.databinding.FragmentMovieDetailsBinding
+import com.example.flimflare.model.details.credits.Crew
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.movieViewModel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {
@@ -24,6 +28,9 @@ class MovieDetailsFragment : Fragment() {
 
     private val viewModel: MovieViewModel by viewModels()
     val args: MovieDetailsFragmentArgs by navArgs()
+
+    @Inject lateinit var castAdapter: CastAdapter
+    @Inject lateinit var crewAdapter: CrewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -84,7 +91,6 @@ class MovieDetailsFragment : Fragment() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun getDirector(movieId: Int) {
 
         viewModel.getCredits(movieId)
@@ -92,25 +98,47 @@ class MovieDetailsFragment : Fragment() {
             when(result) {
                 is Resource.Success -> {
                     result.data?.let { resultResponse ->
-
                         val director = resultResponse.crew.firstOrNull { it.job ==  "Director" }
+                        movieDirector(director)
+                        castAdapter.differ.submitList(resultResponse.cast)
+                        recyclerViewForCast()
 
-                        if(director != null) {
-                            binding.txvDirectorName.text = "Directed by - ${director.name}"
-                            view?.let {
-                                Glide.with(it)
-                                    .load(IMAGE_URL + director.profile_path)
-                                    .into(binding.imvDirectorPoster)
-                            }
-                        } else {
-                            binding.txvDirectorName.text = ""
-                        }
+                        crewAdapter.differ.submitList(resultResponse.crew)
+                        recyclerViewForCrew()
                     }
                 }
 
                 is Resource.Error -> {}
                 is Resource.Loading -> {}
             }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun movieDirector(director: Crew?) {
+        if (director != null) {
+            binding.txvDirectorName.text = "Directed by - ${director.name}"
+            view?.let {
+                Glide.with(it)
+                    .load(IMAGE_URL + director.profile_path)
+                    .into(binding.imvDirectorPoster)
+            }
+        } else {
+            binding.txvDirectorName.text = ""
+        }
+    }
+
+    private fun recyclerViewForCast() {
+        binding.rcvCast.apply {
+            adapter = castAdapter
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    private fun recyclerViewForCrew() {
+        binding.rcvCrew.apply {
+            adapter = crewAdapter
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
     }
 }
