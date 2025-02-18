@@ -1,5 +1,6 @@
 package com.example.flimflare.api
 
+import com.example.flimflare.model.details.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
@@ -41,4 +42,10 @@ interface API {
         @Path ("movie_id") movieId: Int,
         @Query("api_key") apiKey: String
     ): Response<MovieDetailsResponse>
+
+    @GET("movie/{movie_id}/credits")
+    suspend fun getCredits(
+        @Path ("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String
+    ): Response<CreditsResponse>
 }

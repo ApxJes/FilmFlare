@@ -1,6 +1,7 @@
 package com.example.flimflare.repository.movieRepository
 
 import com.example.flimflare.api.API
+import com.example.flimflare.model.details.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
@@ -32,5 +33,9 @@ class MovieRepository
 
     suspend fun getDetails(movieId: Int, apiKey: String): Response<MovieDetailsResponse> {
         return api.getMovieDetails(movieId, apiKey)
+    }
+
+    suspend fun getCredits(movieId: Int, apiKey: String): Response<CreditsResponse> {
+        return api.getCredits(movieId, apiKey)
     }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.flimflare.model.details.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
@@ -37,10 +38,12 @@ class MovieViewModel
 
     private val _upcomingResponse: MutableLiveData<Resource<UpcomingResponse>> = MutableLiveData()
     val upcomingResponse: LiveData<Resource<UpcomingResponse>> get() = _upcomingResponse
-    var upcomingPage = 1
 
     private val _movieDetailsResponse: MutableLiveData<Resource<MovieDetailsResponse>> = MutableLiveData()
     val movieDetailsResponse: LiveData<Resource<MovieDetailsResponse>> get() = _movieDetailsResponse
+
+    private val _creditsResponse: MutableLiveData<Resource<CreditsResponse>> = MutableLiveData()
+    val creditsResponse: LiveData<Resource<CreditsResponse>> get() = _creditsResponse
 
     fun getNowPlayingMovie() = viewModelScope.launch {
         _nowPlayingResponse.postValue(Resource.Loading())
@@ -70,6 +73,12 @@ class MovieViewModel
         _movieDetailsResponse.postValue(Resource.Loading())
         val response = repository.getDetails(movieId = movieId, apiKey = API_KEY)
         _movieDetailsResponse.postValue(handleMovieDetails(response))
+    }
+
+    fun getCredits(movieId: Int) = viewModelScope.launch {
+        _creditsResponse.postValue(Resource.Loading())
+        val response = repository.getCredits(movieId = movieId, apiKey = API_KEY)
+        _creditsResponse.postValue(handleCredits(response))
     }
 
     private fun handleNowPlaying(response: Response<NowPlayingResponse>): Resource<NowPlayingResponse> {
@@ -113,6 +122,16 @@ class MovieViewModel
     }
 
     private fun handleMovieDetails(response: Response<MovieDetailsResponse>): Resource<MovieDetailsResponse> {
+        if(response.isSuccessful) {
+            response.body()?.let {resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+
+        return Resource.Error(response.errorBody().toString())
+    }
+
+    private fun handleCredits(response: Response<CreditsResponse>): Resource<CreditsResponse> {
         if(response.isSuccessful) {
             response.body()?.let {resultResponse ->
                 return Resource.Success(resultResponse)

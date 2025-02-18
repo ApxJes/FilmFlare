@@ -38,6 +38,7 @@ class MovieDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val id = args.nowPlayingId
         setupDetails(id)
+        getDirector(id)
     }
 
     @SuppressLint("SetTextI18n")
@@ -73,6 +74,36 @@ class MovieDetailsFragment : Fragment() {
                             binding.txvType2.visibility = View.VISIBLE
                         } else {
                             binding.txvType1.visibility = View.GONE
+                        }
+                    }
+                }
+
+                is Resource.Error -> {}
+                is Resource.Loading -> {}
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun getDirector(movieId: Int) {
+
+        viewModel.getCredits(movieId)
+        viewModel.creditsResponse.observe(viewLifecycleOwner) {result ->
+            when(result) {
+                is Resource.Success -> {
+                    result.data?.let { resultResponse ->
+
+                        val director = resultResponse.crew.firstOrNull { it.job ==  "Director" }
+
+                        if(director != null) {
+                            binding.txvDirectorName.text = "Directed by - ${director.name}"
+                            view?.let {
+                                Glide.with(it)
+                                    .load(IMAGE_URL + director.profile_path)
+                                    .into(binding.imvDirectorPoster)
+                            }
+                        } else {
+                            binding.txvDirectorName.text = ""
                         }
                     }
                 }
