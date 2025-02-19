@@ -22,5 +22,10 @@ class MainTvShowFragment : Fragment(R.layout.fragment_main_tv_show) {
             val action = MainTvShowFragmentDirections.actionMainTvShowFragmentToAmericanTvShowFragment()
             findNavController().navigate(action)
         }
+
+        binding.imvKoreaDrama.setOnClickListener {
+            val action = MainTvShowFragmentDirections.actionMainTvShowFragmentToKdramaTvShowFragment()
+            findNavController().navigate(action)
+        }
     }
 }

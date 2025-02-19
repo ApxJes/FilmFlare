@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_mainTvShowFragment_to_americanTvShowFragment"
             app:destination="@id/americanTvShowFragment" />
+        <action
+            android:id="@+id/action_mainTvShowFragment_to_kdramaTvShowFragment"
+            app:destination="@id/kdramaTvShowFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
@@ -68,4 +71,9 @@
         android:label="fragment_american_tv_show"
         tools:layout="@layout/fragment_american_tv_show" >
     </fragment>
+    <fragment
+        android:id="@+id/kdramaTvShowFragment"
+        android:name="com.example.flimflare.ui.kdrama.KdramaTvShowFragment"
+        android:label="fragment_kdrama_tv_show"
+        tools:layout="@layout/fragment_kdrama_tv_show" />
 </navigation>

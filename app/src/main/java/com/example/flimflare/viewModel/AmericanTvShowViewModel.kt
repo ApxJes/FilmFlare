@@ -14,7 +14,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class TvShowViewModel
+class AmericanTvShowViewModel
 @Inject constructor(
     private val repository: TvShowRepository
 ): ViewModel(){
@@ -22,13 +22,13 @@ class TvShowViewModel
     private val _trendingResponse: MutableLiveData<Resource<TrendingTvShowResponse>> = MutableLiveData()
     val trendingTvShowResponse: LiveData<Resource<TrendingTvShowResponse>> = _trendingResponse
 
-    fun getTrendingTvShow(language: String) = viewModelScope.launch {
+    fun getTrendingAmericanTvShow(language: String) = viewModelScope.launch {
         _trendingResponse.postValue(Resource.Loading())
         val response = repository.getTrendingTvShow(apiKey = API_KEY, language = language)
-        _trendingResponse.postValue(handleTrendingTvShow(response))
+        _trendingResponse.postValue(handleTrendingAmericanTvShow(response))
     }
 
-    private fun handleTrendingTvShow(response: Response<TrendingTvShowResponse>): Resource<TrendingTvShowResponse> {
+    private fun handleTrendingAmericanTvShow(response: Response<TrendingTvShowResponse>): Resource<TrendingTvShowResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 val filteredList = resultResponse.results.filter { "US" in it.origin_country }

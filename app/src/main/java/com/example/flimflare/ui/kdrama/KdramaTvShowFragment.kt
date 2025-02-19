@@ -1,60 +1,57 @@
-package com.example.flimflare.ui.american
+package com.example.flimflare.ui.kdrama
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flimflare.R
 import com.example.flimflare.adapter.TrendingTvShowAdapter
-import com.example.flimflare.databinding.FragmentAmericanTvShowBinding
+import com.example.flimflare.databinding.FragmentKdramaTvShowBinding
 import com.example.flimflare.util.Resource
-import com.example.flimflare.viewModel.AmericanTvShowViewModel
+import com.example.flimflare.viewModel.KdramaViweModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AmericanTvShowFragment : Fragment(R.layout.fragment_american_tv_show) {
+class KdramaTvShowFragment : Fragment(R.layout.fragment_kdrama_tv_show) {
 
-    private lateinit var binding: FragmentAmericanTvShowBinding
-
+    private lateinit var binding: FragmentKdramaTvShowBinding
     @Inject
     lateinit var trendingTvShowAdapter: TrendingTvShowAdapter
-    private val viewModel: AmericanTvShowViewModel by viewModels()
+    private val viewModel: KdramaViweModel by viewModels()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentAmericanTvShowBinding.bind(view)
+        binding = FragmentKdramaTvShowBinding.bind(view)
 
-        setupRecyclerView()
-        observeTrendingTvShows()
+        rcvForTrendingKdrama()
+        observeTrendingKdrama()
 
-        viewModel.getTrendingAmericanTvShow("en")
+        viewModel.getTrendingKdrama("kr")
     }
 
-    private fun observeTrendingTvShows() {
-        viewModel.trendingTvShowResponse.observe(viewLifecycleOwner) { resources ->
-            when (resources) {
+    private fun observeTrendingKdrama() {
+        viewModel.trendingKdramaResponse.observe(viewLifecycleOwner) {resultResponse ->
+            when(resultResponse) {
                 is Resource.Success -> {
-                    resources.data?.let { result ->
+                    resultResponse.data?.let { result ->
                         trendingTvShowAdapter.differ.submitList(result.results)
                     }
                 }
 
                 is Resource.Error -> {
-                    Log.e("AmericanTvShowFragment", "Error: ${resources.message}")
+                    Toast.makeText(requireContext(), "An error occur ${resultResponse.message}", Toast.LENGTH_SHORT).show()
                 }
-
-                is Resource.Loading -> {
-
-                }
+                is Resource.Loading -> {}
             }
         }
     }
 
-    private fun setupRecyclerView() {
-        binding.rvTrendingTvShow.apply {
+    private fun rcvForTrendingKdrama() {
+        binding.rvTrendingKdrama.apply {
             adapter = trendingTvShowAdapter
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }

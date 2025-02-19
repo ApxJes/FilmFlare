@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.american.AmericanTvShowFragment"
+    tools:context=".ui.kdrama.KdramaTvShowFragment"
     android:background="@color/black">
 
     <androidx.core.widget.NestedScrollView
@@ -32,7 +32,7 @@
                 android:layout_marginStart="10dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTrendingTvShow"
+                android:id="@+id/rvTrendingKdrama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/trending_tv_show"
@@ -61,7 +61,7 @@
                 android:layout_marginStart="10dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvOnAirTodayTvShow"
+                android:id="@+id/rvOnAirTodayKdrama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/popular_movie_layout"
@@ -80,7 +80,7 @@
                 android:layout_marginStart="10dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTopRateTvShow"
+                android:id="@+id/rvTopRateKdrama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/popular_movie_layout"
