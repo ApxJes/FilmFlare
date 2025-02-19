@@ -18,14 +18,5 @@ class MainTvShowFragment : Fragment(R.layout.fragment_main_tv_show) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainTvShowBinding.bind(view)
 
-        binding.imvAmerican.setOnClickListener {
-            val action = MainTvShowFragmentDirections.actionMainTvShowFragmentToAmericanTvShowFragment()
-            findNavController().navigate(action)
-        }
-
-        binding.imvKoreaDrama.setOnClickListener {
-            val action = MainTvShowFragmentDirections.actionMainTvShowFragmentToKdramaTvShowFragment()
-            findNavController().navigate(action)
-        }
     }
 }

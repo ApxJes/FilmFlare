@@ -7,6 +7,6 @@ class TvShowRepository
 @Inject constructor(
     private val api: API
 ){
-    suspend fun getTrendingTvShow(apiKey: String, language: String) =
-        api.getTrendingTvShowsByWeek(language = language, apiKey = apiKey)
+    suspend fun getTrendingTvShow(apiKey: String, language: String, page: Int) =
+        api.getTrendingTvShowsByWeek(language = language, apiKey = apiKey, page = page)
 }

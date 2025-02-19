@@ -72,6 +72,7 @@ interface API {
     @GET("trending/tv/week")
     suspend fun getTrendingTvShowsByWeek(
         @Query("language") language: String = "en-US",
-        @Query("api_key") apiKey: String = API_KEY
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("page") page: Int = 1
     ): Response<TrendingTvShowResponse>
 }
