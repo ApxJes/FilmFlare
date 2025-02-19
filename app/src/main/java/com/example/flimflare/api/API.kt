@@ -7,6 +7,7 @@ import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.search.SearchMovieResponse
 import com.example.flimflare.model.topRate.TopRateResponse
+import com.example.flimflare.model.trending.TrendingTvShowResponse
 import com.example.flimflare.model.upcoming.UpcomingResponse
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import retrofit2.Response
@@ -67,4 +68,10 @@ interface API {
         @Query("api_key")
         apiKey: String = API_KEY
     ): Response<SearchMovieResponse>
+
+    @GET("trending/tv/week")
+    suspend fun getTrendingTvShowsByWeek(
+        @Query("language") language: String = "en-US",
+        @Query("api_key") apiKey: String = API_KEY
+    ): Response<TrendingTvShowResponse>
 }

@@ -21,7 +21,11 @@
         android:id="@+id/mainTvShowFragment"
         android:name="com.example.flimflare.ui.MainTvShowFragment"
         android:label="fragment_main_tv_show"
-        tools:layout="@layout/fragment_main_tv_show" />
+        tools:layout="@layout/fragment_main_tv_show" >
+        <action
+            android:id="@+id/action_mainTvShowFragment_to_americanTvShowFragment"
+            app:destination="@id/americanTvShowFragment" />
+    </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.example.flimflare.ui.MovieDetailsFragment"
@@ -57,5 +61,11 @@
         <action
             android:id="@+id/action_searchMovieFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/americanTvShowFragment"
+        android:name="com.example.flimflare.ui.american.AmericanTvShowFragment"
+        android:label="fragment_american_tv_show"
+        tools:layout="@layout/fragment_american_tv_show" >
     </fragment>
 </navigation>

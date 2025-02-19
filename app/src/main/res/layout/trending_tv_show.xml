@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="280dp"
+    android:layout_height="350dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="25dp"
+    android:layout_margin="10dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/black"
+        tools:ignore="ExtraText">
+
+        <ImageView
+            android:id="@+id/imvTrendingPoster"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/black_adam" />
+
+        <TextView
+            android:id="@+id/imvTrendingTitle"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/supreme_regular"
+            android:layout_marginTop="5dp"
+            android:layout_margin="5dp"
+            android:padding="2dp"
+             />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_release_date"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txvTrendingReleaseDate"
+                android:text="Release Date: "
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
