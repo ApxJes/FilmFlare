@@ -7,7 +7,7 @@ import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.search.SearchMovieResponse
 import com.example.flimflare.model.topRate.TopRateResponse
-import com.example.flimflare.model.trending.TrendingTvShowResponse
+import com.example.flimflare.model.tvShow.TrendingTvShowResponse
 import com.example.flimflare.model.upcoming.UpcomingResponse
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import retrofit2.Response
@@ -61,18 +61,17 @@ interface API {
 
     @GET("search/movie")
     suspend fun searchingMovie(
-        @Query("query")
-        searchMovie: String,
-        @Query("language")
-        pageSize: Int = 1,
-        @Query("api_key")
-        apiKey: String = API_KEY
+        @Query("query") searchMovie: String,
+        @Query("language") pageSize: Int = 1,
+        @Query("api_key") apiKey: String = API_KEY
     ): Response<SearchMovieResponse>
 
-    @GET("trending/tv/week")
-    suspend fun getTrendingTvShowsByWeek(
-        @Query("language") language: String = "en-US",
-        @Query("api_key") apiKey: String = API_KEY,
-        @Query("page") page: Int = 1
+
+    @GET("trending/tv/{time_window}")
+    suspend fun getTrendingThisWeekTvShow(
+        @Path("time_window") timeWindow: String,
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String
     ): Response<TrendingTvShowResponse>
+
 }

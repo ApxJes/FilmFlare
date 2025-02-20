@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
-import com.example.flimflare.model.trending.Result
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
+import com.example.flimflare.model.tvShow.Result
 
 class TrendingTvShowAdapter: RecyclerView.Adapter<TrendingTvShowAdapter.TrendingViewHolder>() {
 
@@ -34,7 +34,7 @@ class TrendingTvShowAdapter: RecyclerView.Adapter<TrendingTvShowAdapter.Trending
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrendingViewHolder {
         return TrendingViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.trending_tv_show, parent, false)
+                .inflate(R.layout.now_playing_movie_item_layout, parent, false)
         )
     }
 
@@ -45,9 +45,9 @@ class TrendingTvShowAdapter: RecyclerView.Adapter<TrendingTvShowAdapter.Trending
     override fun onBindViewHolder(holder: TrendingViewHolder, position: Int) {
         val trendingTvShow = differ.currentList[position]
 
-        trendingPoster = holder.itemView.findViewById(R.id.imvTrendingPoster)
-        trendingTitle = holder.itemView.findViewById(R.id.imvTrendingTitle)
-        trendingReleaseDate = holder.itemView.findViewById(R.id.txvTrendingReleaseDate)
+        trendingPoster = holder.itemView.findViewById(R.id.imvMoviePoster)
+        trendingTitle = holder.itemView.findViewById(R.id.txvMovieTitle)
+        trendingReleaseDate = holder.itemView.findViewById(R.id.txvReleaseDate)
 
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL+ trendingTvShow.poster_path).into(trendingPoster)
