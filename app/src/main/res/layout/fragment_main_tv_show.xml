@@ -98,7 +98,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thai Drama"
+                android:text="Anime"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
@@ -115,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/imvThaiDrama"
-                    android:src="@drawable/thaidrama"
+                    android:src="@drawable/anime_poster"
                     android:scaleType="fitXY"
                     android:adjustViewBounds="true"/>
 

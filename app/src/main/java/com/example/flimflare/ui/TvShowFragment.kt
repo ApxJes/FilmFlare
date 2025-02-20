@@ -53,7 +53,6 @@ class TvShowFragment : Fragment(R.layout.fragment_tv_show) {
     private fun trendingOnTheWeek(nation: String) {
         viewModel.getTrendingOnTheWeekTvShow(API_KEY, nation)
 
-
         viewModel.trendingOnThisWeekTvShow.observe(viewLifecycleOwner) { resultResponse ->
             when (resultResponse) {
                 is Resource.Success -> {
