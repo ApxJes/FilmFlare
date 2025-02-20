@@ -18,4 +18,7 @@ class TvShowRepository
 
     suspend fun getTopRateTvShow(apiKey: String, language: String, page: Int) =
         api.getTopRateTvShow(apiKey, language, page)
+
+    suspend fun getTvShowDetails(showId: Int, language: String, apiKey: String) =
+        api.getTvShowDetails(showId, language, apiKey)
 }

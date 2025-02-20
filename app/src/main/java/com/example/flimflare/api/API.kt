@@ -6,6 +6,7 @@ import com.example.flimflare.model.details.person.PersonDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.search.SearchMovieResponse
+import com.example.flimflare.model.showDetails.TvShowDetailsResponse
 import com.example.flimflare.model.topRate.TopRateResponse
 import com.example.flimflare.model.tvShow.onTheAir.OnTheAirResponse
 import com.example.flimflare.model.tvShow.topRate.TopRateTvShowResponse
@@ -89,5 +90,12 @@ interface API {
         @Query("language") language: String,
         @Query("page") page: Int
     ): Response<TopRateTvShowResponse>
+
+    @GET("tv/{series_id}")
+    suspend fun getTvShowDetails(
+        @Path("show_id") showId: Int,
+        @Query("language") language: String,
+        @Query("api_key") apiKey: String
+    ): Response<TvShowDetailsResponse>
 
 }

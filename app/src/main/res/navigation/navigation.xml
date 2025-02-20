@@ -74,5 +74,18 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_tvShowFragment_to_tvShowDetailsFragment"
+            app:destination="@id/tvShowDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tvShowDetailsFragment"
+        android:name="com.example.flimflare.ui.TvShowDetailsFragment"
+        android:label="fragment_tv_show_details"
+        tools:layout="@layout/fragment_tv_show_details" >
+        <argument
+            android:name="showId"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 </navigation>

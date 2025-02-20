@@ -53,6 +53,17 @@ class TrendingTvShowAdapter: RecyclerView.Adapter<TrendingTvShowAdapter.Trending
             Glide.with(this).load(IMAGE_URL+ trendingTvShow.poster_path).into(trendingPoster)
             trendingTitle.text = trendingTvShow.name
             trendingReleaseDate.text = trendingTvShow.first_air_date
+
+            setOnClickListener {
+                onClick?.let {
+                    it(trendingTvShow.id)
+                }
+            }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onClickListener(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }

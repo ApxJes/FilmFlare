@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flimflare.R
@@ -35,11 +36,21 @@ class TvShowFragment : Fragment(R.layout.fragment_tv_show) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentTvShowBinding.bind(view)
+
+        trendingTvShowAdapter.onClickListener {
+            goToDetails(it)
+        }
+
         rcvTrending()
         rcvOnTheAir()
         rcvTopRate()
 
         getAllTvShow()
+    }
+
+    private fun goToDetails(id: Int) {
+        val action = TvShowFragmentDirections.actionTvShowFragmentToTvShowDetailsFragment(id)
+        findNavController().navigate(action)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

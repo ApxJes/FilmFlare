@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.flimflare.model.showDetails.TvShowDetailsResponse
 import com.example.flimflare.model.tvShow.onTheAir.OnTheAirResponse
 import com.example.flimflare.model.tvShow.topRate.TopRateTvShowResponse
 import com.example.flimflare.model.tvShow.trending.TrendingTvShowResponse
 import com.example.flimflare.repository.TvShowRepository
+import com.example.flimflare.util.ConstantsURL.API_KEY
 import com.example.flimflare.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -31,6 +33,9 @@ class TVShowViewModel
     val topRateTvShow: LiveData<Resource<TopRateTvShowResponse>> get() = _topRateTvShow
     var topRatePage = 1
 
+    private val _tvShowDetails: MutableLiveData<Resource<TvShowDetailsResponse>> = MutableLiveData()
+    val tvShowDetails: LiveData<Resource<TvShowDetailsResponse>> get() = _tvShowDetails
+
     fun getTrendingOnTheWeekTvShow(apiKey: String, language: String) = viewModelScope.launch {
         _trendingOnThisWeekTvShow.postValue(Resource.Loading())
         val response = repository.getTrendingOnThisWeekTvShow(apiKey, language)
@@ -47,6 +52,12 @@ class TVShowViewModel
         _topRateTvShow.postValue(Resource.Loading())
         val response = repository.getTopRateTvShow(apiKey, language, topRatePage)
         _topRateTvShow.postValue(handleTopRateTvShow(response))
+    }
+
+    fun getTvShowDetails(showId: Int) = viewModelScope.launch {
+        _tvShowDetails.postValue(Resource.Loading())
+        val response = repository.getTvShowDetails(showId, API_KEY, "en")
+        _tvShowDetails.postValue(handleTvShowDetails(response))
     }
 
     private fun handleTrendingTvShow(response: Response<TrendingTvShowResponse>): Resource<TrendingTvShowResponse> {
@@ -68,6 +79,16 @@ class TVShowViewModel
     }
 
     private fun handleTopRateTvShow(response: Response<TopRateTvShowResponse>): Resource<TopRateTvShowResponse>? {
+        if(response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+
+        return Resource.Error(response.errorBody().toString())
+    }
+
+    private fun handleTvShowDetails(response: Response<TvShowDetailsResponse>): Resource<TvShowDetailsResponse>? {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
