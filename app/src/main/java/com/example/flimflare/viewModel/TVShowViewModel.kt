@@ -56,7 +56,7 @@ class TVShowViewModel
 
     fun getTvShowDetails(showId: Int) = viewModelScope.launch {
         _tvShowDetails.postValue(Resource.Loading())
-        val response = repository.getTvShowDetails(showId, API_KEY, "en")
+        val response = repository.getTvShowDetails(showId, API_KEY)
         _tvShowDetails.postValue(handleTvShowDetails(response))
     }
 

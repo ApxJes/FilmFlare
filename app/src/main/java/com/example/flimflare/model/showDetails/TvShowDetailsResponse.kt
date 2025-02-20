@@ -1,12 +1,14 @@
 package com.example.flimflare.model.showDetails
 
+import com.example.flimflare.model.details.movie.Genre
+
 data class TvShowDetailsResponse(
     val adult: Boolean,
     val backdrop_path: String,
     val created_by: List<CreatedBy>,
     val episode_run_time: List<Int>,
     val first_air_date: String,
-    val genres: List<Any>,
+    val genres: List<Genre>,
     val homepage: String,
     val id: Int,
     val in_production: Boolean,

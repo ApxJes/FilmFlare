@@ -44,7 +44,7 @@ class TopRatingTvShowAdapter: RecyclerView.Adapter<TopRatingTvShowAdapter.TopRat
     }
 
     override fun onBindViewHolder(holder: TopRateItemViewHolder, position: Int) {
-        val onAirToday = differ.currentList[position]
+        val topRateing = differ.currentList[position]
 
         onAirPoster = holder.itemView.findViewById(R.id.imvPopularPoster)
         onAirTitle = holder.itemView.findViewById(R.id.txvPopularTitle)
@@ -52,10 +52,21 @@ class TopRatingTvShowAdapter: RecyclerView.Adapter<TopRatingTvShowAdapter.TopRat
         onAirReleaseDate = holder.itemView.findViewById(R.id.txvPopularReleaseDate)
 
         holder.itemView.apply {
-            Glide.with(this).load(IMAGE_URL + onAirToday.poster_path).into(onAirPoster)
-            onAirTitle.text = onAirToday.name
-            onAirLanguage.text = onAirToday.original_language
-            onAirReleaseDate.text = onAirToday.first_air_date
+            Glide.with(this).load(IMAGE_URL + topRateing.poster_path).into(onAirPoster)
+            onAirTitle.text = topRateing.name
+            onAirLanguage.text = topRateing.original_language
+            onAirReleaseDate.text = topRateing.first_air_date
+
+            setOnClickListener {
+                onClick?.let {
+                    it(topRateing.id)
+                }
+            }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onClickListener(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }

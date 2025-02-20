@@ -41,6 +41,14 @@ class TvShowFragment : Fragment(R.layout.fragment_tv_show) {
             goToDetails(it)
         }
 
+        topRatingTvShowAdapter.onClickListener {
+            goToDetails(it)
+        }
+
+        onTheAirAdapter.onClickListener {
+            goToDetails(it)
+        }
+
         rcvTrending()
         rcvOnTheAir()
         rcvTopRate()

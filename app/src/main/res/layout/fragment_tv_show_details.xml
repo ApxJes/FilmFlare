@@ -56,7 +56,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="First Air Date"
+                    android:text="First Air Date ->"
                     android:textSize="17sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/supreme_regular"
@@ -88,7 +88,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Last Air Date"
+                    android:text="Last Air Date ->"
                     android:textSize="17sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/supreme_regular"
@@ -116,47 +116,13 @@
                 <ImageView
                     android:layout_width="23dp"
                     android:layout_height="23dp"
-                    android:src="@drawable/ic_release_date"
-                    android:layout_margin="7dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Run time per episode"
-                    android:textSize="17sp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/supreme_regular"
-                    android:layout_margin="7dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txvRunTimePerEpisode"
-                    android:text="0:00"
-                    android:textSize="17sp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/supreme_regular"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="7dp"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
                     android:src="@drawable/ic_numbers"
                     android:layout_margin="7dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Number of seasons"
+                    android:text="Number of seasons ->"
                     android:textSize="17sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/supreme_regular"
@@ -190,7 +156,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Number of episodes"
+                    android:text="Number of episodes ->"
                     android:textSize="17sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/supreme_regular"

@@ -93,8 +93,7 @@ interface API {
 
     @GET("tv/{series_id}")
     suspend fun getTvShowDetails(
-        @Path("show_id") showId: Int,
-        @Query("language") language: String,
+        @Path("series_id") showId: Int,
         @Query("api_key") apiKey: String
     ): Response<TvShowDetailsResponse>
 

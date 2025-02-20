@@ -56,6 +56,16 @@ class OnTheAirAdapter: RecyclerView.Adapter<OnTheAirAdapter.TopRateItemViewHolde
             onAirTitle.text = onAirToday.name
             onAirLanguage.text = onAirToday.original_language
             onAirReleaseDate.text = onAirToday.first_air_date
+            setOnClickListener {
+                onClick?.let {
+                    it(onAirToday.id)
+                }
+            }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onClickListener(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }
