@@ -1,4 +1,4 @@
-package com.example.flimflare.model.tvShow
+package com.example.flimflare.model.tvShow.trending
 
 data class Result(
     val adult: Boolean,

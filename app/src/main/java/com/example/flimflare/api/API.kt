@@ -7,7 +7,9 @@ import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.search.SearchMovieResponse
 import com.example.flimflare.model.topRate.TopRateResponse
-import com.example.flimflare.model.tvShow.TrendingTvShowResponse
+import com.example.flimflare.model.tvShow.onTheAir.OnTheAirResponse
+import com.example.flimflare.model.tvShow.topRate.TopRateTvShowResponse
+import com.example.flimflare.model.tvShow.trending.TrendingTvShowResponse
 import com.example.flimflare.model.upcoming.UpcomingResponse
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import retrofit2.Response
@@ -73,5 +75,19 @@ interface API {
         @Query("api_key") apiKey: String,
         @Query("language") language: String
     ): Response<TrendingTvShowResponse>
+
+    @GET("tv/on_the_air")
+    suspend fun getOnTheAirTvShow(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int
+    ): Response<OnTheAirResponse>
+
+    @GET("tv/top_rated")
+    suspend fun getTopRateTvShow(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int
+    ): Response<TopRateTvShowResponse>
 
 }

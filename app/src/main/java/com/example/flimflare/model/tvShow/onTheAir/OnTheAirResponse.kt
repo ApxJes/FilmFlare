@@ -1,6 +1,6 @@
-package com.example.flimflare.model.tvShow
+package com.example.flimflare.model.tvShow.onTheAir
 
-data class TrendingTvShowResponse(
+data class OnTheAirResponse(
     val page: Int,
     val results: List<Result>,
     val total_pages: Int,

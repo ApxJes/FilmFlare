@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
-import com.example.flimflare.model.tvShow.Result
+import com.example.flimflare.model.tvShow.trending.Result
 
 class TrendingTvShowAdapter: RecyclerView.Adapter<TrendingTvShowAdapter.TrendingViewHolder>() {
 

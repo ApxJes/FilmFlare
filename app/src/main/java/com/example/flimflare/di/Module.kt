@@ -3,9 +3,11 @@ package com.example.flimflare.di
 import com.example.flimflare.adapter.CastAdapter
 import com.example.flimflare.adapter.CrewAdapter
 import com.example.flimflare.adapter.NowPlayingAdapter
+import com.example.flimflare.adapter.OnTheAirAdapter
 import com.example.flimflare.adapter.PopularAdapter
 import com.example.flimflare.adapter.SearchAdapter
 import com.example.flimflare.adapter.TopRateAdapter
+import com.example.flimflare.adapter.TopRatingTvShowAdapter
 import com.example.flimflare.adapter.TrendingTvShowAdapter
 import com.example.flimflare.adapter.UpcomingAdapter
 import com.example.flimflare.api.API
@@ -79,4 +81,11 @@ object Module {
     @Provides
     fun providesTrendingAdapter(): TrendingTvShowAdapter = TrendingTvShowAdapter()
 
+    @Singleton
+    @Provides
+    fun providesTrendingOnAirAdapter(): OnTheAirAdapter = OnTheAirAdapter()
+
+    @Singleton
+    @Provides
+    fun providesTopRatingTvShowAdapter(): TopRatingTvShowAdapter = TopRatingTvShowAdapter()
 }
