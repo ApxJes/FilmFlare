@@ -96,5 +96,4 @@ interface API {
         @Path("series_id") showId: Int,
         @Query("api_key") apiKey: String
     ): Response<TvShowDetailsResponse>
-
 }

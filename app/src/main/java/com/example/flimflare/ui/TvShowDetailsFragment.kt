@@ -2,20 +2,22 @@ package com.example.flimflare.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
+import com.example.flimflare.adapter.ShowCreatorAdapter
 import com.example.flimflare.databinding.FragmentTvShowDetailsBinding
+import com.example.flimflare.model.details.credits.Crew
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.TVShowViewModel
+import com.example.flimflare.viewModel.movieViewModel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
@@ -23,6 +25,8 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
     private lateinit var binding: FragmentTvShowDetailsBinding
     private val viewModel: TVShowViewModel by viewModels()
     val args: TvShowDetailsFragmentArgs by navArgs()
+
+    @Inject lateinit var showCreatorAdapter: ShowCreatorAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,12 +52,22 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
                         binding.txvNumberOfEpisodes.text = response.number_of_episodes.toString()
                         view?.let { Glide.with(it).load(IMAGE_URL + response.poster_path ).into(binding.imvShowPoster)}
                         binding.txvShowType.text = response.genres.joinToString(",") { it.name }
+
+                        rcvForShowCreator()
+                        showCreatorAdapter.differ.submitList(response.created_by)
                     }
                 }
 
                 is Resource.Error -> {}
                 is Resource.Loading -> {}
             }
+        }
+    }
+
+    private fun rcvForShowCreator() {
+        binding.rvShowCreator.apply {
+            adapter = showCreatorAdapter
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
     }
 }
