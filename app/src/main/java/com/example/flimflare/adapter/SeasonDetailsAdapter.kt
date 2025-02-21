@@ -55,10 +55,10 @@ class SeasonDetailsAdapter: RecyclerView.Adapter<SeasonDetailsAdapter.SeasonDeta
 
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL + episode.still_path).into(episodePoster)
-            episodeNumber.text = "Episode: ${episode.episode_number}"
-            episodeName.text = "Name: ${episode.name}"
-            episodeAirDate.text = "First Air Date: ${episode.air_date}"
-            episodeRunTime.text = "Run time: ${episode.runtime}"
+            episodeNumber.text = "${episode.episode_number}"
+            episodeName.text = " ${episode.name}"
+            episodeAirDate.text = "${episode.air_date}"
+            episodeRunTime.text = "${episode.runtime} min"
 
         }
     }
