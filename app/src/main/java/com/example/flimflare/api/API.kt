@@ -6,8 +6,9 @@ import com.example.flimflare.model.details.person.PersonDetailsResponse
 import com.example.flimflare.model.nowPlaying.NowPlayingResponse
 import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.search.SearchMovieResponse
-import com.example.flimflare.model.showDetails.TvShowDetailsResponse
+import com.example.flimflare.model.tvShow.showDetails.TvShowDetailsResponse
 import com.example.flimflare.model.topRate.TopRateResponse
+import com.example.flimflare.model.tvShow.each_season_details.EachSeasonDetailsResponse
 import com.example.flimflare.model.tvShow.onTheAir.OnTheAirResponse
 import com.example.flimflare.model.tvShow.topRate.TopRateTvShowResponse
 import com.example.flimflare.model.tvShow.trending.TrendingTvShowResponse
@@ -96,4 +97,11 @@ interface API {
         @Path("series_id") showId: Int,
         @Query("api_key") apiKey: String
     ): Response<TvShowDetailsResponse>
+
+    @GET("tv/{series_id}/season/{season_number}")
+    suspend fun getEachSeasonDetails(
+        @Path("series_id") seriesId: Int,
+        @Path("season_number") seasonNumber: Int,
+        @Query("api_key") apiKey: String
+    ): Response<EachSeasonDetailsResponse>
 }

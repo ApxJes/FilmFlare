@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.flimflare.model.showDetails.TvShowDetailsResponse
+import com.example.flimflare.model.tvShow.each_season_details.EachSeasonDetailsResponse
+import com.example.flimflare.model.tvShow.showDetails.TvShowDetailsResponse
 import com.example.flimflare.model.tvShow.onTheAir.OnTheAirResponse
 import com.example.flimflare.model.tvShow.topRate.TopRateTvShowResponse
 import com.example.flimflare.model.tvShow.trending.TrendingTvShowResponse
@@ -36,6 +37,9 @@ class TVShowViewModel
     private val _tvShowDetails: MutableLiveData<Resource<TvShowDetailsResponse>> = MutableLiveData()
     val tvShowDetails: LiveData<Resource<TvShowDetailsResponse>> get() = _tvShowDetails
 
+    private val _eachSeasonDetails: MutableLiveData<Resource<EachSeasonDetailsResponse>> = MutableLiveData()
+    val eachSeasonDetails: LiveData<Resource<EachSeasonDetailsResponse>> get() = _eachSeasonDetails
+
     fun getTrendingOnTheWeekTvShow(apiKey: String, language: String) = viewModelScope.launch {
         _trendingOnThisWeekTvShow.postValue(Resource.Loading())
         val response = repository.getTrendingOnThisWeekTvShow(apiKey, language)
@@ -60,6 +64,12 @@ class TVShowViewModel
         _tvShowDetails.postValue(handleTvShowDetails(response))
     }
 
+    fun getEachSeasonDetails(seriesId: Int, seasonNumber: Int) = viewModelScope.launch {
+        _eachSeasonDetails.postValue(Resource.Loading())
+        val response = repository.getEachSeasonDetails(seriesId, seasonNumber, API_KEY)
+        _eachSeasonDetails.postValue(handleEachSeasonDetails(response))
+    }
+
     private fun handleTrendingTvShow(response: Response<TrendingTvShowResponse>): Resource<TrendingTvShowResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
@@ -69,7 +79,7 @@ class TVShowViewModel
         return Resource.Error(response.errorBody()?.string() ?: "Unknown Error")
     }
 
-    private fun handleOnTheAirResponse(response: Response<OnTheAirResponse>): Resource<OnTheAirResponse>? {
+    private fun handleOnTheAirResponse(response: Response<OnTheAirResponse>): Resource<OnTheAirResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
@@ -78,7 +88,7 @@ class TVShowViewModel
         return Resource.Error(response.errorBody()?.string() ?: "Unknown Error")
     }
 
-    private fun handleTopRateTvShow(response: Response<TopRateTvShowResponse>): Resource<TopRateTvShowResponse>? {
+    private fun handleTopRateTvShow(response: Response<TopRateTvShowResponse>): Resource<TopRateTvShowResponse> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
@@ -89,6 +99,16 @@ class TVShowViewModel
     }
 
     private fun handleTvShowDetails(response: Response<TvShowDetailsResponse>): Resource<TvShowDetailsResponse>? {
+        if(response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+
+        return Resource.Error(response.errorBody().toString())
+    }
+
+    private fun handleEachSeasonDetails(response: Response<EachSeasonDetailsResponse>): Resource<EachSeasonDetailsResponse>? {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)

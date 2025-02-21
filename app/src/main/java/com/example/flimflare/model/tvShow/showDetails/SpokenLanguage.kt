@@ -1,4 +1,4 @@
-package com.example.flimflare.model.showDetails
+package com.example.flimflare.model.tvShow.showDetails
 
 data class SpokenLanguage(
     val english_name: String,

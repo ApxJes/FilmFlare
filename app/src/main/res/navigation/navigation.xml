@@ -87,5 +87,22 @@
             android:name="showId"
             app:argType="integer"
             android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_tvShowDetailsFragment_to_eachSeasonDetailsFragment"
+            app:destination="@id/eachSeasonDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eachSeasonDetailsFragment"
+        android:name="com.example.flimflare.ui.EachSeasonDetailsFragment"
+        android:label="fragment_each_season_details"
+        tools:layout="@layout/fragment_each_season_details" >
+        <argument
+            android:name="seriedId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="season_number"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 </navigation>

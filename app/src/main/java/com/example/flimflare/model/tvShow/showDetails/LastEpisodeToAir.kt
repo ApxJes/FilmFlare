@@ -1,4 +1,4 @@
-package com.example.flimflare.model.showDetails
+package com.example.flimflare.model.tvShow.showDetails
 
 data class LastEpisodeToAir(
     val air_date: String,

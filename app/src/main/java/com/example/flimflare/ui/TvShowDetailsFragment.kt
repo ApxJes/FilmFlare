@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -34,8 +35,16 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentTvShowDetailsBinding.bind(view)
 
+        seasonAdapter.onClickListener {
+            goToSeasonDetails(args.showId, it)
+        }
         val id = args.showId
         getDetails(id)
+    }
+
+    private fun goToSeasonDetails(seriesId: Int, seasonNumber: Int) {
+        val action = TvShowDetailsFragmentDirections.actionTvShowDetailsFragmentToEachSeasonDetailsFragment(seriesId, seasonNumber)
+        findNavController().navigate(action)
     }
 
     @SuppressLint("SetTextI18n")

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
-import com.example.flimflare.model.showDetails.Season
+import com.example.flimflare.model.tvShow.showDetails.Season
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import org.jetbrains.annotations.Async
 
@@ -58,6 +58,13 @@ class SeasonAdapter: RecyclerView.Adapter<SeasonAdapter.SeasonItemViewHolder>() 
             seasonNumber.text = "Season ${season.season_number}"
             seasonFirstAirDate.text = "1st air date: ${season.air_date}"
             seasonEpisodeNumber.text = "Season's episode count ${season.episode_count}"
+
+            setOnClickListener { onClick?.let { it(season.season_number) } }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onClickListener(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }

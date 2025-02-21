@@ -1,4 +1,4 @@
-package com.example.flimflare.model.showDetails
+package com.example.flimflare.model.tvShow.showDetails
 
 import com.example.flimflare.model.details.movie.Genre
 

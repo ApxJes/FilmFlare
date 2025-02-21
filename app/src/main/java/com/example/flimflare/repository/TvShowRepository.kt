@@ -21,4 +21,7 @@ class TvShowRepository
 
     suspend fun getTvShowDetails(showId: Int, apiKey: String) =
         api.getTvShowDetails(showId, apiKey)
+
+    suspend fun getEachSeasonDetails(seriesId: Int, seasonNumber: Int, apiKey: String) =
+        api.getEachSeasonDetails(seriesId, seasonNumber, apiKey)
 }

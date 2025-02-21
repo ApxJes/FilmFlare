@@ -1,4 +1,4 @@
-package com.example.flimflare.model.showDetails
+package com.example.flimflare.model.tvShow.showDetails
 
 data class CreatedBy(
     val credit_id: String,
