@@ -6,6 +6,7 @@ import com.example.flimflare.adapter.NowPlayingAdapter
 import com.example.flimflare.adapter.OnTheAirAdapter
 import com.example.flimflare.adapter.PopularAdapter
 import com.example.flimflare.adapter.SearchAdapter
+import com.example.flimflare.adapter.SeasonAdapter
 import com.example.flimflare.adapter.ShowCreatorAdapter
 import com.example.flimflare.adapter.TopRateAdapter
 import com.example.flimflare.adapter.TopRatingTvShowAdapter
@@ -93,4 +94,8 @@ object Module {
     @Singleton
     @Provides
     fun providesShowCreatorAdapter(): ShowCreatorAdapter = ShowCreatorAdapter()
+
+    @Singleton
+    @Provides
+    fun providesSeasonAdapter(): SeasonAdapter = SeasonAdapter()
 }

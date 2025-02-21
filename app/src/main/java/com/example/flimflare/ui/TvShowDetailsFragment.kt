@@ -9,6 +9,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
+import com.example.flimflare.adapter.SeasonAdapter
 import com.example.flimflare.adapter.ShowCreatorAdapter
 import com.example.flimflare.databinding.FragmentTvShowDetailsBinding
 import com.example.flimflare.model.details.credits.Crew
@@ -27,6 +28,7 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
     val args: TvShowDetailsFragmentArgs by navArgs()
 
     @Inject lateinit var showCreatorAdapter: ShowCreatorAdapter
+    @Inject lateinit var seasonAdapter: SeasonAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,6 +57,9 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
 
                         rcvForShowCreator()
                         showCreatorAdapter.differ.submitList(response.created_by)
+
+                        rcvForSeason()
+                        seasonAdapter.differ.submitList(response.seasons)
                     }
                 }
 
@@ -67,6 +72,13 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
     private fun rcvForShowCreator() {
         binding.rvShowCreator.apply {
             adapter = showCreatorAdapter
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    private fun rcvForSeason() {
+        binding.rvShowSeason.apply {
+            adapter = seasonAdapter
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
     }
