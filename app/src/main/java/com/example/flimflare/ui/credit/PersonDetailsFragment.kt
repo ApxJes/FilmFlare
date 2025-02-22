@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.flimflare.databinding.FragmentPersonDetailsBinding
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
-import com.example.flimflare.viewModel.movieViewModel.MovieViewModel
+import com.example.flimflare.viewModel.movie.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

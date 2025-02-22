@@ -17,7 +17,7 @@ import com.example.flimflare.databinding.FragmentMovieDetailsBinding
 import com.example.flimflare.model.details.credits.Crew
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
-import com.example.flimflare.viewModel.movieViewModel.MovieViewModel
+import com.example.flimflare.viewModel.movie.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

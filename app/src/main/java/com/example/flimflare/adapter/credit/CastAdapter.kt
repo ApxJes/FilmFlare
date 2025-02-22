@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
-import com.example.flimflare.model.details.credits.Cast
+import com.example.flimflare.model.credits.Cast
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 
 class CastAdapter: RecyclerView.Adapter<CastAdapter.CastItemViewHolder>() {

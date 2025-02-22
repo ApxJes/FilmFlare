@@ -13,7 +13,7 @@ import com.example.flimflare.R
 import com.example.flimflare.adapter.SearchAdapter
 import com.example.flimflare.databinding.FragmentSearchMovieBinding
 import com.example.flimflare.util.Resource
-import com.example.flimflare.viewModel.movieViewModel.MovieViewModel
+import com.example.flimflare.viewModel.movie.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope

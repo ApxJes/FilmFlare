@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
-import com.example.flimflare.model.tvShow.showDetails.Season
+import com.example.flimflare.model.details.show.Season
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
-import org.jetbrains.annotations.Async
 
 class SeasonAdapter: RecyclerView.Adapter<SeasonAdapter.SeasonItemViewHolder>() {
     

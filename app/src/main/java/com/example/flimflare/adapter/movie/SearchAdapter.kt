@@ -10,30 +10,37 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
-import com.example.flimflare.model.upcoming.UpcomingResult
+import com.example.flimflare.model.movie.search.SearchMovieResult
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 
-class UpcomingAdapter: RecyclerView.Adapter<UpcomingAdapter.UpcomingItemViewHolder>() {
+class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchItemViewHolder>() {
 
-    inner class UpcomingItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+    inner class SearchItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     private lateinit var moviePoster: ImageView
     private lateinit var movieTitle: TextView
     private lateinit var language: TextView
     private lateinit var movieReleaseDate: TextView
 
-    private val differCall = object : DiffUtil.ItemCallback<UpcomingResult>(){
-        override fun areItemsTheSame(oldItem: UpcomingResult, newItem: UpcomingResult): Boolean {
+    private val differCall = object : DiffUtil.ItemCallback<SearchMovieResult>(){
+        override fun areItemsTheSame(
+            oldItem: SearchMovieResult,
+            newItem: SearchMovieResult
+        ): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: UpcomingResult, newItem: UpcomingResult): Boolean {
+        override fun areContentsTheSame(
+            oldItem: SearchMovieResult,
+            newItem: SearchMovieResult
+        ): Boolean {
             return oldItem == newItem
         }
+
     }
 
     val differ = AsyncListDiffer(this, differCall)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpcomingItemViewHolder {
-        return UpcomingItemViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchItemViewHolder {
+        return SearchItemViewHolder(
             LayoutInflater.from(
                 parent.context
             ).inflate(R.layout.upcoming_movie_layout, parent, false)
@@ -44,8 +51,8 @@ class UpcomingAdapter: RecyclerView.Adapter<UpcomingAdapter.UpcomingItemViewHold
         return differ.currentList.size
     }
 
-    override fun onBindViewHolder(holder: UpcomingItemViewHolder, position: Int) {
-        val upcomingMovie = differ.currentList[position]
+    override fun onBindViewHolder(holder: SearchItemViewHolder, position: Int) {
+        val searchMovie = differ.currentList[position]
 
         moviePoster = holder.itemView.findViewById(R.id.imvUpcomingPoster)
         movieTitle = holder.itemView.findViewById(R.id.txvUpcomingTitle)
@@ -53,13 +60,13 @@ class UpcomingAdapter: RecyclerView.Adapter<UpcomingAdapter.UpcomingItemViewHold
         movieReleaseDate = holder.itemView.findViewById(R.id.txvUpcomingReleaseDate)
 
         holder.itemView.apply {
-            Glide.with(this).load(IMAGE_URL + upcomingMovie.poster_path).into(moviePoster)
-            movieTitle.text = upcomingMovie.title
-            language.text = upcomingMovie.original_language
-            movieReleaseDate.text = upcomingMovie.release_date
+            Glide.with(this).load(IMAGE_URL + searchMovie.poster_path).into(moviePoster)
+            movieTitle.text = searchMovie.title
+            language.text = searchMovie.original_language
+            movieReleaseDate.text = searchMovie.release_date
 
             setOnClickListener {
-                onClick?.let { it(upcomingMovie.id) }
+                onClick?.let { it(searchMovie.id!!) }
             }
         }
     }

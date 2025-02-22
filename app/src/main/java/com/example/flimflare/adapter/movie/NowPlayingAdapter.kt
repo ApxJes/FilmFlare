@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
-import com.example.flimflare.model.nowPlaying.Result
+import com.example.flimflare.model.movie.nowPlaying.Result
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 
 class NowPlayingAdapter: RecyclerView.Adapter<NowPlayingAdapter.NowPlayingItemViewHolder>() {

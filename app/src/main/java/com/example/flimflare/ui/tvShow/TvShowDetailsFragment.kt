@@ -15,7 +15,7 @@ import com.example.flimflare.adapter.ShowCreatorAdapter
 import com.example.flimflare.databinding.FragmentTvShowDetailsBinding
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
-import com.example.flimflare.viewModel.TVShowViewModel
+import com.example.flimflare.viewModel.tvShow.TVShowViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

@@ -15,7 +15,7 @@ import com.example.flimflare.adapter.TopRateAdapter
 import com.example.flimflare.adapter.UpcomingAdapter
 import com.example.flimflare.databinding.FragmentMainMovieBinding
 import com.example.flimflare.util.Resource
-import com.example.flimflare.viewModel.movieViewModel.MovieViewModel
+import com.example.flimflare.viewModel.movie.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

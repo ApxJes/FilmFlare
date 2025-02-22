@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
-import com.example.flimflare.model.popular.PopularResult
+import com.example.flimflare.model.movie.popular.PopularResult
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 
 class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularItemViewHolder>() {

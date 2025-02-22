@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
 
-import com.example.flimflare.model.topRate.TopRateResult
+import com.example.flimflare.model.movie.topRate.TopRateResult
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 
 class TopRateAdapter: RecyclerView.Adapter<TopRateAdapter.TopRateItemViewHolder>() {

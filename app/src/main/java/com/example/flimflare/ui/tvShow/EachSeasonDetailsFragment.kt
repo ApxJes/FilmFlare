@@ -14,7 +14,7 @@ import com.example.flimflare.adapter.CrewAdapter
 import com.example.flimflare.adapter.SeasonDetailsAdapter
 import com.example.flimflare.databinding.FragmentEachSeasonDetailsBinding
 import com.example.flimflare.util.Resource
-import com.example.flimflare.viewModel.TVShowViewModel
+import com.example.flimflare.viewModel.tvShow.TVShowViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
