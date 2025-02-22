@@ -1,8 +1,6 @@
 package com.example.flimflare.ui
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.flimflare.R
 import com.example.flimflare.adapter.NowPlayingAdapter
 import com.example.flimflare.adapter.PopularAdapter
 import com.example.flimflare.adapter.TopRateAdapter
@@ -206,5 +203,10 @@ class MainMovieFragment : Fragment() {
 
     private fun hidePrg() {
         binding.prgBar.visibility = View.INVISIBLE
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

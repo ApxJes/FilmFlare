@@ -13,11 +13,9 @@ import com.example.flimflare.R
 import com.example.flimflare.adapter.SeasonAdapter
 import com.example.flimflare.adapter.ShowCreatorAdapter
 import com.example.flimflare.databinding.FragmentTvShowDetailsBinding
-import com.example.flimflare.model.details.credits.Crew
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.TVShowViewModel
-import com.example.flimflare.viewModel.movieViewModel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -26,7 +24,7 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
 
     private lateinit var binding: FragmentTvShowDetailsBinding
     private val viewModel: TVShowViewModel by viewModels()
-    val args: TvShowDetailsFragmentArgs by navArgs()
+    private val args: TvShowDetailsFragmentArgs by navArgs()
 
     @Inject lateinit var showCreatorAdapter: ShowCreatorAdapter
     @Inject lateinit var seasonAdapter: SeasonAdapter

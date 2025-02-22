@@ -104,5 +104,8 @@
             android:name="season_number"
             app:argType="integer"
             android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_eachSeasonDetailsFragment_to_personDetailsFragment"
+            app:destination="@id/personDetailsFragment" />
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.flimflare.repository.movieRepository
+package com.example.flimflare.repository.movie
 
 import com.example.flimflare.api.API
 import com.example.flimflare.model.details.credits.CreditsResponse

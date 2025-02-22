@@ -28,7 +28,7 @@ class MovieDetailsFragment : Fragment() {
     private val binding: FragmentMovieDetailsBinding get() = _binding!!
 
     private val viewModel: MovieViewModel by viewModels()
-    val args: MovieDetailsFragmentArgs by navArgs()
+    private val args: MovieDetailsFragmentArgs by navArgs()
 
     @Inject lateinit var castAdapter: CastAdapter
     @Inject lateinit var crewAdapter: CrewAdapter

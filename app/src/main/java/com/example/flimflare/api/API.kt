@@ -104,4 +104,11 @@ interface API {
         @Path("season_number") seasonNumber: Int,
         @Query("api_key") apiKey: String
     ): Response<EachSeasonDetailsResponse>
+
+    @GET("tv/{series_id}/season/{season_number}/credits")
+    suspend fun getShowCredits(
+        @Path("series_id") seriesId: Int,
+        @Path("season_number") seasonNumber: Int,
+        @Query("api_key") apiKey: String
+    ): Response<CreditsResponse>
 }

@@ -8,13 +8,78 @@
     android:background="@color/primary_color"
     >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvForEpisode"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/episode_per_season" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvForEpisode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:itemCount="1"
+                tools:listitem="@layout/episode_per_season" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cast"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:fontFamily="@font/supreme_regular"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="02dp"
+                android:background="@color/whiteBlue"
+                android:layout_marginStart="7dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rcvForCast"
+                tools:listitem="@layout/cast"
+                tools:itemCount="1"
+                android:layout_gravity="center"
+                android:layout_margin="7dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crew"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:fontFamily="@font/supreme_regular"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="02dp"
+                android:background="@color/whiteBlue"
+                android:layout_marginStart="7dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rcvForCrew"
+                tools:listitem="@layout/cast"
+                tools:itemCount="1"
+                android:layout_gravity="center"
+                android:layout_margin="7dp"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

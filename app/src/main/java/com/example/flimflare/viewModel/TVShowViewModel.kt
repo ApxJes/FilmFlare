@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.flimflare.model.details.credits.CreditsResponse
 import com.example.flimflare.model.tvShow.each_season_details.EachSeasonDetailsResponse
 import com.example.flimflare.model.tvShow.showDetails.TvShowDetailsResponse
 import com.example.flimflare.model.tvShow.onTheAir.OnTheAirResponse
 import com.example.flimflare.model.tvShow.topRate.TopRateTvShowResponse
 import com.example.flimflare.model.tvShow.trending.TrendingTvShowResponse
-import com.example.flimflare.repository.TvShowRepository
+import com.example.flimflare.repository.tvShow.TvShowRepository
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import com.example.flimflare.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -40,6 +41,9 @@ class TVShowViewModel
     private val _eachSeasonDetails: MutableLiveData<Resource<EachSeasonDetailsResponse>> = MutableLiveData()
     val eachSeasonDetails: LiveData<Resource<EachSeasonDetailsResponse>> get() = _eachSeasonDetails
 
+    private val _showCredits: MutableLiveData<Resource<CreditsResponse>> = MutableLiveData()
+    val showCredits: LiveData<Resource<CreditsResponse>> = _showCredits
+
     fun getTrendingOnTheWeekTvShow(apiKey: String, language: String) = viewModelScope.launch {
         _trendingOnThisWeekTvShow.postValue(Resource.Loading())
         val response = repository.getTrendingOnThisWeekTvShow(apiKey, language)
@@ -68,6 +72,13 @@ class TVShowViewModel
         _eachSeasonDetails.postValue(Resource.Loading())
         val response = repository.getEachSeasonDetails(seriesId, seasonNumber, API_KEY)
         _eachSeasonDetails.postValue(handleEachSeasonDetails(response))
+    }
+
+    fun getShowCredits(seriesId: Int, seasonNumber: Int) = viewModelScope.launch {
+        _showCredits.postValue(Resource.Loading())
+        val response = repository.getShowCredits(seriesId, seasonNumber, API_KEY)
+        _showCredits.postValue(handleShowCredits(response))
+
     }
 
     private fun handleTrendingTvShow(response: Response<TrendingTvShowResponse>): Resource<TrendingTvShowResponse> {
@@ -116,5 +127,14 @@ class TVShowViewModel
         }
 
         return Resource.Error(response.errorBody().toString())
+    }
+
+    private fun handleShowCredits(response: Response<CreditsResponse>): Resource<CreditsResponse>? {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+        return Resource.Error(response.errorBody()?.string() ?: "Unknown Error")
     }
 }

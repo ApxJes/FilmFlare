@@ -12,7 +12,7 @@ import com.example.flimflare.model.popular.PopularResponse
 import com.example.flimflare.model.search.SearchMovieResponse
 import com.example.flimflare.model.topRate.TopRateResponse
 import com.example.flimflare.model.upcoming.UpcomingResponse
-import com.example.flimflare.repository.movieRepository.MovieRepository
+import com.example.flimflare.repository.movie.MovieRepository
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import com.example.flimflare.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

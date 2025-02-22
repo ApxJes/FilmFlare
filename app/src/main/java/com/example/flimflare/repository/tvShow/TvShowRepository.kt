@@ -1,4 +1,4 @@
-package com.example.flimflare.repository
+package com.example.flimflare.repository.tvShow
 
 import com.example.flimflare.api.API
 import com.example.flimflare.model.tvShow.trending.TrendingTvShowResponse
@@ -24,4 +24,7 @@ class TvShowRepository
 
     suspend fun getEachSeasonDetails(seriesId: Int, seasonNumber: Int, apiKey: String) =
         api.getEachSeasonDetails(seriesId, seasonNumber, apiKey)
+
+    suspend fun getShowCredits(seriesId: Int, seasonNumber: Int, apiKey: String) =
+        api.getShowCredits(seriesId, seasonNumber, apiKey)
 }
