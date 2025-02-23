@@ -1,14 +1,14 @@
 package com.example.flimflare.repository.movie
 
 import com.example.flimflare.api.API
-import com.example.flimflare.model.details.credits.CreditsResponse
+import com.example.flimflare.model.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.details.person.PersonDetailsResponse
-import com.example.flimflare.model.nowPlaying.NowPlayingResponse
-import com.example.flimflare.model.popular.PopularResponse
-import com.example.flimflare.model.search.SearchMovieResponse
-import com.example.flimflare.model.topRate.TopRateResponse
-import com.example.flimflare.model.upcoming.UpcomingResponse
+import com.example.flimflare.model.movie.nowPlaying.NowPlayingResponse
+import com.example.flimflare.model.movie.popular.PopularResponse
+import com.example.flimflare.model.movie.search.SearchMovieResponse
+import com.example.flimflare.model.movie.topRate.TopRateResponse
+import com.example.flimflare.model.movie.upcoming.UpcomingResponse
 import retrofit2.Response
 import javax.inject.Inject
 

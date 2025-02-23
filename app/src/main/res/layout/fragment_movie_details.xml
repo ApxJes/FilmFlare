@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".ui.MovieDetailsFragment">
+    tools:context=".ui.movie.MovieDetailsFragment"
+    android:background="@drawable/gradient_bg2">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -13,26 +13,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:elevation="20dp"
-            app:cardCornerRadius="30dp">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/black"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="500dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:elevation="20dp"
-                    app:cardCornerRadius="30dp">
+                    android:elevation="9dp"
+                    app:cardCornerRadius="12dp">
 
                     <ImageView
                         android:id="@+id/imvDetailsPoster"
@@ -44,142 +36,162 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/txvDetailsTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/worksans_bold"
-                    android:text="Movie Name"
-                    android:textColor="@color/white"
-                    android:textSize="25sp" />
-
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal">
+                    app:cardElevation="12dp"
+                    app:cardCornerRadius="59dp"
+                    android:layout_marginTop="8dp"
+                    >
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="2dp"
-                        android:src="@drawable/ic_date" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/gradient_bg2"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        >
 
-                    <TextView
-                        android:id="@+id/txvDetailsReleaseDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Release Date: "
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/supreme_regular"
-                        android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/txvDetailsTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="@font/worksans_bold"
+                            android:text="Movie Name"
+                            android:textColor="@color/white"
+                            android:textSize="25sp" />
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginTop="2dp"
+                                android:src="@drawable/ic_date" />
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="2dp"
-                        android:src="@drawable/ic_release_date" />
+                            <TextView
+                                android:id="@+id/txvDetailsReleaseDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="Release Date: "
+                                android:textColor="@color/white"
+                                android:fontFamily="@font/supreme_regular"
+                                android:textSize="15sp" />
 
-                    <TextView
-                        android:id="@+id/txvDetailsRunTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Run Time: "
-                        android:fontFamily="@font/supreme_regular"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        </LinearLayout>
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginTop="2dp"
+                                android:src="@drawable/ic_release_date" />
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="2dp"
-                        android:src="@drawable/rating" />
+                            <TextView
+                                android:id="@+id/txvDetailsRunTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="Run Time: "
+                                android:fontFamily="@font/supreme_regular"
+                                android:textColor="@color/white"
+                                android:textSize="15sp" />
 
-                    <TextView
-                        android:id="@+id/txvDetailsRating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Rating: "
-                        android:fontFamily="@font/supreme_regular"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        </LinearLayout>
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginTop="2dp"
+                                android:src="@drawable/rating" />
 
-                    <TextView
-                        android:id="@+id/txvType1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/outline_tv_search_style"
-                        android:padding="5dp"
-                        android:text="Type"
-                        android:fontFamily="@font/worksans_bold"
-                        android:textColor="@color/white" />
+                            <TextView
+                                android:id="@+id/txvDetailsRating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="Rating: "
+                                android:fontFamily="@font/supreme_regular"
+                                android:textColor="@color/white"
+                                android:textSize="15sp" />
 
-                    <TextView
-                        android:id="@+id/txvType2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/outline_tv_search_style"
-                        android:padding="5dp"
-                        android:text="Type"
-                        android:fontFamily="@font/worksans_bold"
-                        android:textColor="@color/white" />
+                        </LinearLayout>
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/worksans_bold"
-                    android:text="Overview"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
+                            <TextView
+                                android:id="@+id/txvType1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/outline_tv_search_style"
+                                android:padding="5dp"
+                                android:text="Type"
+                                android:fontFamily="@font/worksans_bold"
+                                android:textColor="@color/white" />
 
-                <View
-                    android:layout_width="143dp"
-                    android:layout_height="4dp"
-                    android:background="@color/whiteBlue"
-                    android:layout_marginStart="10dp"/>
+                            <TextView
+                                android:id="@+id/txvType2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/outline_tv_search_style"
+                                android:padding="5dp"
+                                android:text="Type"
+                                android:fontFamily="@font/worksans_bold"
+                                android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/txvOverView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="7dp"
-                    android:fontFamily="@font/supreme_regular"
-                    android:text="@string/overview"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="@font/worksans_bold"
+                            android:text="Overview"
+                            android:textColor="@color/white"
+                            android:textSize="30sp" />
+
+                        <View
+                            android:layout_width="143dp"
+                            android:layout_height="4dp"
+                            android:background="@color/whiteBlue"
+                            android:layout_marginStart="10dp"/>
+
+                        <TextView
+                            android:id="@+id/txvOverView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
+                            android:fontFamily="@font/supreme_regular"
+                            android:text="@string/overview"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="120dp"
@@ -242,6 +254,5 @@
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

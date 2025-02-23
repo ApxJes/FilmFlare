@@ -27,4 +27,7 @@ class TvShowRepository
 
     suspend fun getShowCredits(seriesId: Int, seasonNumber: Int, apiKey: String) =
         api.getShowCredits(seriesId, seasonNumber, apiKey)
+
+    suspend fun getSearchTvShow(searchString: String, apiKey: String) =
+        api.getSearchTvShow(searchString, apiKey)
 }

@@ -1,4 +1,4 @@
-package com.example.flimflare.model.search
+package com.example.flimflare.model.movie.search
 
 data class SearchMovieResponse(
     val page: Int,

@@ -1,4 +1,4 @@
-package com.example.flimflare.model.topRate
+package com.example.flimflare.model.movie.topRate
 
 data class TopRateResult(
     val adult: Boolean,

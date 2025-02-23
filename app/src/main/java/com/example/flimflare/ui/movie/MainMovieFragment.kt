@@ -1,4 +1,4 @@
-package com.example.flimflare.ui
+package com.example.flimflare.ui.movie
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,10 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.flimflare.adapter.NowPlayingAdapter
-import com.example.flimflare.adapter.PopularAdapter
-import com.example.flimflare.adapter.TopRateAdapter
-import com.example.flimflare.adapter.UpcomingAdapter
+import com.example.flimflare.adapter.movie.NowPlayingAdapter
+import com.example.flimflare.adapter.movie.PopularAdapter
+import com.example.flimflare.adapter.movie.TopRateAdapter
+import com.example.flimflare.adapter.movie.UpcomingAdapter
 import com.example.flimflare.databinding.FragmentMainMovieBinding
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.movie.MovieViewModel

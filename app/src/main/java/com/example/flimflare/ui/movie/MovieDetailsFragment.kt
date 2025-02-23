@@ -1,4 +1,4 @@
-package com.example.flimflare.ui
+package com.example.flimflare.ui.movie
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,10 +11,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.flimflare.adapter.CastAdapter
-import com.example.flimflare.adapter.CrewAdapter
+import com.example.flimflare.adapter.credit.CastAdapter
+import com.example.flimflare.adapter.credit.CrewAdapter
 import com.example.flimflare.databinding.FragmentMovieDetailsBinding
-import com.example.flimflare.model.details.credits.Crew
+import com.example.flimflare.model.credits.Crew
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.movie.MovieViewModel

@@ -1,4 +1,4 @@
-package com.example.flimflare.ui
+package com.example.flimflare.ui.credit
 
 import android.annotation.SuppressLint
 import android.os.Bundle

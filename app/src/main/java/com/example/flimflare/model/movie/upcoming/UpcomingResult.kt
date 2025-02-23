@@ -1,4 +1,4 @@
-package com.example.flimflare.model.upcoming
+package com.example.flimflare.model.movie.upcoming
 
 data class UpcomingResult(
     val adult: Boolean,

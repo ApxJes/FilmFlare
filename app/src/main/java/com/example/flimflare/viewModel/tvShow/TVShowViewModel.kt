@@ -1,12 +1,13 @@
-package com.example.flimflare.viewModel
+package com.example.flimflare.viewModel.tvShow
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.flimflare.model.details.credits.CreditsResponse
+import com.example.flimflare.model.credits.CreditsResponse
 import com.example.flimflare.model.tvShow.each_season_details.EachSeasonDetailsResponse
-import com.example.flimflare.model.tvShow.showDetails.TvShowDetailsResponse
+import com.example.flimflare.model.details.show.TvShowDetailsResponse
+import com.example.flimflare.model.movie.search.SearchMovieResponse
 import com.example.flimflare.model.tvShow.onTheAir.OnTheAirResponse
 import com.example.flimflare.model.tvShow.topRate.TopRateTvShowResponse
 import com.example.flimflare.model.tvShow.trending.TrendingTvShowResponse

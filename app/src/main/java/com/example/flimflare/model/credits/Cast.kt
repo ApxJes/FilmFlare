@@ -1,4 +1,4 @@
-package com.example.flimflare.model.details.credits
+package com.example.flimflare.model.credits
 
 data class Cast(
     val adult: Boolean,

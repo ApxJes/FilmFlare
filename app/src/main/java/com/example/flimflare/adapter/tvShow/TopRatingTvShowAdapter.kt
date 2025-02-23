@@ -1,4 +1,4 @@
-package com.example.flimflare.adapter
+package com.example.flimflare.adapter.tvShow
 
 import android.view.LayoutInflater
 import android.view.View

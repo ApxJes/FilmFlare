@@ -1,4 +1,4 @@
-package com.example.flimflare.ui
+package com.example.flimflare.ui.tvShow
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -26,6 +26,11 @@ class MainTvShowFragment : Fragment(R.layout.fragment_main_tv_show) {
 
         binding.imvThaiDrama.setOnClickListener {
             tvShows("thailand")
+        }
+
+        binding.imvSearch.setOnClickListener {
+            val action = MainTvShowFragmentDirections.actionMainTvShowFragmentToSearchMovieFragment("")
+            findNavController().navigate(action)
         }
     }
 

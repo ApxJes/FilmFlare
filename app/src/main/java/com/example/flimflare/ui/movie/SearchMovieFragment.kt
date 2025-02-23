@@ -1,4 +1,4 @@
-package com.example.flimflare.ui
+package com.example.flimflare.ui.movie
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flimflare.R
-import com.example.flimflare.adapter.SearchAdapter
+import com.example.flimflare.adapter.movie.SearchAdapter
 import com.example.flimflare.databinding.FragmentSearchMovieBinding
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.movie.MovieViewModel
+import com.example.flimflare.viewModel.tvShow.TVShowViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -51,7 +53,7 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search_movie) {
         var job: Job? = null
         binding.edtSearchMovie.addTextChangedListener {
             job?.cancel()
-            job = MainScope().launch {
+            job = lifecycleScope.launch {
                 delay(300L)
                 it?.let {
                     if(it.toString().isNotEmpty()) {

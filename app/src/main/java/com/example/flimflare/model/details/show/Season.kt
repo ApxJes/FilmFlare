@@ -1,4 +1,4 @@
-package com.example.flimflare.model.tvShow.showDetails
+package com.example.flimflare.model.details.show
 
 data class Season(
     val air_date: String,

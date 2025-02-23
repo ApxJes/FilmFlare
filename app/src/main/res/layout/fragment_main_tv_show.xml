@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.MainTvShowFragment"
-    android:background="@color/black">
+    tools:context=".ui.tvShow.MainTvShowFragment"
+    android:background="@drawable/gradient_bg2">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -24,7 +24,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/outline_tv_search_style"
                 android:src="@drawable/ic_search_two"
                 android:drawablePadding="12dp"
                 android:padding="10dp"

@@ -1,17 +1,17 @@
-package com.example.flimflare.viewModel.movieViewModel
+package com.example.flimflare.viewModel.movie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.flimflare.model.details.credits.CreditsResponse
+import com.example.flimflare.model.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.details.person.PersonDetailsResponse
-import com.example.flimflare.model.nowPlaying.NowPlayingResponse
-import com.example.flimflare.model.popular.PopularResponse
-import com.example.flimflare.model.search.SearchMovieResponse
-import com.example.flimflare.model.topRate.TopRateResponse
-import com.example.flimflare.model.upcoming.UpcomingResponse
+import com.example.flimflare.model.movie.nowPlaying.NowPlayingResponse
+import com.example.flimflare.model.movie.popular.PopularResponse
+import com.example.flimflare.model.movie.search.SearchMovieResponse
+import com.example.flimflare.model.movie.topRate.TopRateResponse
+import com.example.flimflare.model.movie.upcoming.UpcomingResponse
 import com.example.flimflare.repository.movie.MovieRepository
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import com.example.flimflare.util.Resource

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainMovieFragment"
-        android:name="com.example.flimflare.ui.MainMovieFragment"
+        android:name="com.example.flimflare.ui.movie.MainMovieFragment"
         android:label="fragment_main_movie"
         tools:layout="@layout/fragment_main_movie" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
-        android:name="com.example.flimflare.ui.MovieDetailsFragment"
+        android:name="com.example.flimflare.ui.movie.MovieDetailsFragment"
         android:label="fragment_movie_details"
         tools:layout="@layout/fragment_movie_details" >
         <argument
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/personDetailsFragment"
-        android:name="com.example.flimflare.ui.PersonDetailsFragment"
+        android:name="com.example.flimflare.ui.credit.PersonDetailsFragment"
         android:label="fragment_person_details"
         tools:layout="@layout/fragment_person_details" >
         <argument
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchMovieFragment"
-        android:name="com.example.flimflare.ui.SearchMovieFragment"
+        android:name="com.example.flimflare.ui.movie.SearchMovieFragment"
         android:label="fragment_search_movie"
         tools:layout="@layout/fragment_search_movie" >
         <argument
@@ -56,17 +56,20 @@
 
     <fragment
         android:id="@+id/mainTvShowFragment"
-        android:name="com.example.flimflare.ui.MainTvShowFragment"
+        android:name="com.example.flimflare.ui.tvShow.MainTvShowFragment"
         android:label="fragment_main_tv_show"
         tools:layout="@layout/fragment_main_tv_show" >
         <action
             android:id="@+id/action_mainTvShowFragment_to_tvShowFragment"
             app:destination="@id/tvShowFragment" />
+        <action
+            android:id="@+id/action_mainTvShowFragment_to_searchMovieFragment"
+            app:destination="@id/searchMovieFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/tvShowFragment"
-        android:name="com.example.flimflare.ui.TvShowFragment"
+        android:name="com.example.flimflare.ui.tvShow.TvShowFragment"
         android:label="fragment_tv_show"
         tools:layout="@layout/fragment_tv_show" >
         <argument
@@ -80,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/tvShowDetailsFragment"
-        android:name="com.example.flimflare.ui.TvShowDetailsFragment"
+        android:name="com.example.flimflare.ui.tvShow.TvShowDetailsFragment"
         android:label="fragment_tv_show_details"
         tools:layout="@layout/fragment_tv_show_details" >
         <argument
@@ -93,7 +96,7 @@
     </fragment>
     <fragment
         android:id="@+id/eachSeasonDetailsFragment"
-        android:name="com.example.flimflare.ui.EachSeasonDetailsFragment"
+        android:name="com.example.flimflare.ui.tvShow.EachSeasonDetailsFragment"
         android:label="fragment_each_season_details"
         tools:layout="@layout/fragment_each_season_details" >
         <argument

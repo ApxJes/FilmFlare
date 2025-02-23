@@ -1,4 +1,4 @@
-package com.example.flimflare.ui
+package com.example.flimflare.ui.tvShow
 
 import android.os.Build
 import android.os.Bundle
@@ -11,9 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flimflare.R
-import com.example.flimflare.adapter.OnTheAirAdapter
-import com.example.flimflare.adapter.TopRatingTvShowAdapter
-import com.example.flimflare.adapter.TrendingTvShowAdapter
+import com.example.flimflare.adapter.tvShow.OnTheAirAdapter
+import com.example.flimflare.adapter.tvShow.TopRatingTvShowAdapter
+import com.example.flimflare.adapter.tvShow.TrendingTvShowAdapter
 import com.example.flimflare.databinding.FragmentTvShowBinding
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import com.example.flimflare.util.Resource

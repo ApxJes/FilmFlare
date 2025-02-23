@@ -1,4 +1,4 @@
-package com.example.flimflare.ui
+package com.example.flimflare.ui.tvShow
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,8 +10,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
-import com.example.flimflare.adapter.SeasonAdapter
-import com.example.flimflare.adapter.ShowCreatorAdapter
+import com.example.flimflare.adapter.tvShow.SeasonAdapter
+import com.example.flimflare.adapter.tvShow.ShowCreatorAdapter
 import com.example.flimflare.databinding.FragmentTvShowDetailsBinding
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource

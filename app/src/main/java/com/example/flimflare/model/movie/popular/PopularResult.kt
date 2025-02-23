@@ -1,4 +1,4 @@
-package com.example.flimflare.model.popular
+package com.example.flimflare.model.movie.popular
 
 data class PopularResult(
     val adult: Boolean,

@@ -1,4 +1,4 @@
-package com.example.flimflare.model.nowPlaying
+package com.example.flimflare.model.movie.nowPlaying
 
 data class Result(
     val adult: Boolean,

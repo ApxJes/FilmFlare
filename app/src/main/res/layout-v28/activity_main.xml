@@ -5,22 +5,31 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".MainActivity">
+    android:background="@drawable/gradient_bg2"
+    tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/txvTitle"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/outline_tv_search_style"
-        android:padding="7dp"
-        android:text="FilmFlare"
-        android:textColor="@color/whiteBlue"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="20dp"
+        android:elevation="9dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="28dp">
+
+        <TextView
+            android:id="@+id/txvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_bg2"
+            android:textColor="@color/white"
+            android:padding="4dp"
+            android:text="FilmFlare"
+            android:textSize="28sp" />
+
+    </androidx.cardview.widget.CardView>
 
     <FrameLayout
         android:id="@+id/flLayout"
@@ -29,7 +38,7 @@
         app:layout_constraintBottom_toTopOf="@id/btmNav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txvTitle">
+        app:layout_constraintTop_toBottomOf="@id/cardView">
 
 
         <androidx.fragment.app.FragmentContainerView
@@ -46,7 +55,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btmNav"
         app:menu="@menu/bottom_nav_menu"
-        android:background="@color/black"
+        android:background="@drawable/gradient_bg2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

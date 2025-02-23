@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainMovieFragment"
-    android:background="@color/black">
+    tools:context=".ui.movie.MainMovieFragment"
+    android:background="@drawable/gradient_bg2">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -13,7 +13,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="20dp">
 
 
         <LinearLayout
@@ -28,7 +29,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/outline_tv_search_style"
                 android:src="@drawable/ic_search_two"
                 android:drawablePadding="12dp"
                 android:padding="10dp"
@@ -42,7 +42,7 @@
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/space_grotesk_bold"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"/>
 
             <androidx.recyclerview.widget.RecyclerView

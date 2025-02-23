@@ -1,4 +1,4 @@
-package com.example.flimflare.ui
+package com.example.flimflare.ui.tvShow
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,9 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flimflare.R
-import com.example.flimflare.adapter.CastAdapter
-import com.example.flimflare.adapter.CrewAdapter
-import com.example.flimflare.adapter.SeasonDetailsAdapter
+import com.example.flimflare.adapter.credit.CastAdapter
+import com.example.flimflare.adapter.credit.CrewAdapter
+import com.example.flimflare.adapter.tvShow.SeasonDetailsAdapter
 import com.example.flimflare.databinding.FragmentEachSeasonDetailsBinding
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.tvShow.TVShowViewModel

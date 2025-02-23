@@ -1,4 +1,4 @@
-package com.example.flimflare.adapter
+package com.example.flimflare.adapter.tvShow
 
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +48,13 @@ class ShowCreatorAdapter: RecyclerView.Adapter<ShowCreatorAdapter.CreatorItemVie
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL + creator.profile_path).into(creatorProfile)
             creatorName.text = creator.name
+
+            setOnClickListener { onClick?.let { it(creator.id) } }
         }
+    }
+
+    private var onClick: ((Int) -> Unit)? = null
+    fun onClickListener(listener: (Int) -> Unit) {
+        onClick = listener
     }
 }

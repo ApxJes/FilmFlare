@@ -1,4 +1,4 @@
-package com.example.flimflare.adapter
+package com.example.flimflare.adapter.credit
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
