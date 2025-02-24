@@ -13,6 +13,7 @@ import com.example.flimflare.adapter.movie.TopRateAdapter
 import com.example.flimflare.adapter.tvShow.TopRatingTvShowAdapter
 import com.example.flimflare.adapter.tvShow.TrendingTvShowAdapter
 import com.example.flimflare.adapter.movie.UpcomingAdapter
+import com.example.flimflare.adapter.save.SaveAdapter
 import com.example.flimflare.api.API
 import com.example.flimflare.util.ConstantsURL.BASE_URL
 import dagger.Module
@@ -103,4 +104,5 @@ object Module {
     @Singleton
     @Provides
     fun providesSeasonDetailsAdapter(): SeasonDetailsAdapter = SeasonDetailsAdapter()
+
 }
