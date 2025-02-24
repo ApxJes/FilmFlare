@@ -56,7 +56,6 @@ class MainMovieFragment : Fragment() {
         viewModel.getTopRateMovie()
         viewModel.getUpcomingMovie()
 
-
     }
 
     private fun getNowPlayingMovie() {

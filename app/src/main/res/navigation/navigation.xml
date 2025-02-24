@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_movieDetailsFragment_to_personDetailsFragment"
             app:destination="@id/personDetailsFragment" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_saveFragment"
+            app:destination="@id/saveFragment" />
     </fragment>
     <fragment
         android:id="@+id/personDetailsFragment"
@@ -111,4 +114,9 @@
             android:id="@+id/action_eachSeasonDetailsFragment_to_personDetailsFragment"
             app:destination="@id/personDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/saveFragment"
+        android:name="com.example.flimflare.ui.save.SaveFragment"
+        android:label="fragment_save"
+        tools:layout="@layout/fragment_save" />
 </navigation>
