@@ -4,11 +4,7 @@ import com.example.flimflare.api.API
 import com.example.flimflare.model.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.details.person.PersonDetailsResponse
-import com.example.flimflare.model.movie.nowPlaying.NowPlayingResponse
-import com.example.flimflare.model.movie.popular.PopularResponse
-import com.example.flimflare.model.movie.search.SearchMovieResponse
-import com.example.flimflare.model.movie.topRate.TopRateResponse
-import com.example.flimflare.model.movie.upcoming.UpcomingResponse
+import com.example.flimflare.model.movie.MovieResponse
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -17,19 +13,19 @@ class MovieRepository
     private val api: API
 ){
 
-    suspend fun getNowPlaying(apiKey: String, pageNumber: Int): Response<NowPlayingResponse> {
+    suspend fun getNowPlaying(apiKey: String, pageNumber: Int): Response<MovieResponse> {
         return api.getNowPlaying(apiKey, pageNumber)
     }
 
-    suspend fun getPopular(apiKey: String, pageNumber: Int): Response<PopularResponse> {
+    suspend fun getPopular(apiKey: String, pageNumber: Int): Response<MovieResponse> {
         return api.getPopular(apiKey, pageNumber)
     }
 
-    suspend fun getTopRate(apiKey: String, pageNumber: Int): Response<TopRateResponse> {
+    suspend fun getTopRate(apiKey: String, pageNumber: Int): Response<MovieResponse> {
         return api.getTopRate(apiKey, pageNumber)
     }
 
-    suspend fun getUpcoming(apiKey: String, pageNumber: Int): Response<UpcomingResponse> {
+    suspend fun getUpcoming(apiKey: String, pageNumber: Int): Response<MovieResponse> {
         return api.getUpcoming(apiKey, pageNumber)
     }
 
@@ -45,7 +41,7 @@ class MovieRepository
         return api.getPersonDetails(personId, apiKey)
     }
 
-    suspend fun getSearch(query: String, pageInt: Int, apiKey: String): Response<SearchMovieResponse> {
+    suspend fun getSearch(query: String, pageInt: Int, apiKey: String): Response<MovieResponse> {
         return api.searchingMovie(query, pageInt, apiKey)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.flimflare.model.tvShow.trending
+package com.example.flimflare.model.tvShow
 
 data class Result(
     val adult: Boolean,
@@ -6,7 +6,6 @@ data class Result(
     val first_air_date: String,
     val genre_ids: List<Int>,
     val id: Int,
-    val media_type: String,
     val name: String,
     val origin_country: List<String>,
     val original_language: String,

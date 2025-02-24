@@ -1,7 +1,7 @@
 package com.example.flimflare.repository.tvShow
 
 import com.example.flimflare.api.API
-import com.example.flimflare.model.tvShow.trending.TrendingTvShowResponse
+import com.example.flimflare.model.tvShow.TvShowResponse
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -9,7 +9,7 @@ class TvShowRepository
 @Inject constructor(
     private val api: API
 ) {
-    suspend fun getTrendingOnThisWeekTvShow(apiKey: String, language: String): Response<TrendingTvShowResponse> {
+    suspend fun getTrendingOnThisWeekTvShow(apiKey: String, language: String): Response<TvShowResponse> {
         return api.getTrendingThisWeekTvShow("week", apiKey, language)
     }
 

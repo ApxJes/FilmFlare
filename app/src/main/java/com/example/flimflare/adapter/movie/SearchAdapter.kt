@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
-import com.example.flimflare.model.movie.search.SearchMovieResult
+import com.example.flimflare.model.movie.Result
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 
 class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchItemViewHolder>() {
@@ -21,17 +21,17 @@ class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchItemViewHolder>() 
     private lateinit var language: TextView
     private lateinit var movieReleaseDate: TextView
 
-    private val differCall = object : DiffUtil.ItemCallback<SearchMovieResult>(){
+    private val differCall = object : DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(
-            oldItem: SearchMovieResult,
-            newItem: SearchMovieResult
+            oldItem: Result,
+            newItem: Result
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: SearchMovieResult,
-            newItem: SearchMovieResult
+            oldItem: Result,
+            newItem: Result
         ): Boolean {
             return oldItem == newItem
         }

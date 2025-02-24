@@ -7,10 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.flimflare.model.credits.CreditsResponse
 import com.example.flimflare.model.tvShow.each_season_details.EachSeasonDetailsResponse
 import com.example.flimflare.model.details.show.TvShowDetailsResponse
-import com.example.flimflare.model.movie.search.SearchMovieResponse
-import com.example.flimflare.model.tvShow.onTheAir.OnTheAirResponse
-import com.example.flimflare.model.tvShow.topRate.TopRateTvShowResponse
-import com.example.flimflare.model.tvShow.trending.TrendingTvShowResponse
+import com.example.flimflare.model.tvShow.TvShowResponse
 import com.example.flimflare.repository.tvShow.TvShowRepository
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import com.example.flimflare.util.Resource
@@ -25,15 +22,15 @@ class TVShowViewModel
     private val repository: TvShowRepository
 ) : ViewModel() {
 
-    private val _trendingOnThisWeekTvShow: MutableLiveData<Resource<TrendingTvShowResponse>> = MutableLiveData()
-    val trendingOnThisWeekTvShow: LiveData<Resource<TrendingTvShowResponse>> get() = _trendingOnThisWeekTvShow
+    private val _trendingOnThisWeekTvShow: MutableLiveData<Resource<TvShowResponse>> = MutableLiveData()
+    val trendingOnThisWeekTvShow: LiveData<Resource<TvShowResponse>> get() = _trendingOnThisWeekTvShow
 
-    private val _onTheAirTvShow: MutableLiveData<Resource<OnTheAirResponse>> = MutableLiveData()
-    val onTheAirTvShow: LiveData<Resource<OnTheAirResponse>> get() = _onTheAirTvShow
+    private val _onTheAirTvShow: MutableLiveData<Resource<TvShowResponse>> = MutableLiveData()
+    val onTheAirTvShow: LiveData<Resource<TvShowResponse>> get() = _onTheAirTvShow
     var onTheAirPage = 1
 
-    private val _topRateTvShow: MutableLiveData<Resource<TopRateTvShowResponse>> = MutableLiveData()
-    val topRateTvShow: LiveData<Resource<TopRateTvShowResponse>> get() = _topRateTvShow
+    private val _topRateTvShow: MutableLiveData<Resource<TvShowResponse>> = MutableLiveData()
+    val topRateTvShow: LiveData<Resource<TvShowResponse>> get() = _topRateTvShow
     var topRatePage = 1
 
     private val _tvShowDetails: MutableLiveData<Resource<TvShowDetailsResponse>> = MutableLiveData()
@@ -82,7 +79,7 @@ class TVShowViewModel
 
     }
 
-    private fun handleTrendingTvShow(response: Response<TrendingTvShowResponse>): Resource<TrendingTvShowResponse> {
+    private fun handleTrendingTvShow(response: Response<TvShowResponse>): Resource<TvShowResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
@@ -91,7 +88,7 @@ class TVShowViewModel
         return Resource.Error(response.errorBody()?.string() ?: "Unknown Error")
     }
 
-    private fun handleOnTheAirResponse(response: Response<OnTheAirResponse>): Resource<OnTheAirResponse> {
+    private fun handleOnTheAirResponse(response: Response<TvShowResponse>): Resource<TvShowResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
@@ -100,7 +97,7 @@ class TVShowViewModel
         return Resource.Error(response.errorBody()?.string() ?: "Unknown Error")
     }
 
-    private fun handleTopRateTvShow(response: Response<TopRateTvShowResponse>): Resource<TopRateTvShowResponse> {
+    private fun handleTopRateTvShow(response: Response<TvShowResponse>): Resource<TvShowResponse> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)

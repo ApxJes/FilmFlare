@@ -7,11 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.flimflare.model.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.details.person.PersonDetailsResponse
-import com.example.flimflare.model.movie.nowPlaying.NowPlayingResponse
-import com.example.flimflare.model.movie.popular.PopularResponse
-import com.example.flimflare.model.movie.search.SearchMovieResponse
-import com.example.flimflare.model.movie.topRate.TopRateResponse
-import com.example.flimflare.model.movie.upcoming.UpcomingResponse
+import com.example.flimflare.model.movie.MovieResponse
 import com.example.flimflare.repository.movie.MovieRepository
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import com.example.flimflare.util.Resource
@@ -26,20 +22,20 @@ class MovieViewModel
     private val repository: MovieRepository
 ): ViewModel(){
 
-    private val _nowPlayingResponse: MutableLiveData<Resource<NowPlayingResponse>> = MutableLiveData()
-    val nowPlayingResponse: LiveData<Resource<NowPlayingResponse>> get() = _nowPlayingResponse
+    private val _nowPlayingResponse: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
+    val nowPlayingResponse: LiveData<Resource<MovieResponse>> get() = _nowPlayingResponse
     var nowPlayingPage = 1
 
-    private val _popularResponse: MutableLiveData<Resource<PopularResponse>> = MutableLiveData()
-    val popularResponse: LiveData<Resource<PopularResponse>> get() = _popularResponse
+    private val _popularResponse: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
+    val popularResponse: LiveData<Resource<MovieResponse>> get() = _popularResponse
     var popularPage = 1
 
-    private val _topRateResponse: MutableLiveData<Resource<TopRateResponse>> = MutableLiveData()
-    val topRateResponse: LiveData<Resource<TopRateResponse>> get() = _topRateResponse
+    private val _topRateResponse: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
+    val topRateResponse: LiveData<Resource<MovieResponse>> get() = _topRateResponse
     var topRatePage = 1
 
-    private val _upcomingResponse: MutableLiveData<Resource<UpcomingResponse>> = MutableLiveData()
-    val upcomingResponse: LiveData<Resource<UpcomingResponse>> get() = _upcomingResponse
+    private val _upcomingResponse: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
+    val upcomingResponse: LiveData<Resource<MovieResponse>> get() = _upcomingResponse
 
     private val _movieDetailsResponse: MutableLiveData<Resource<MovieDetailsResponse>> = MutableLiveData()
     val movieDetailsResponse: LiveData<Resource<MovieDetailsResponse>> get() = _movieDetailsResponse
@@ -50,8 +46,8 @@ class MovieViewModel
     private val _personDetailResponse: MutableLiveData<Resource<PersonDetailsResponse>> = MutableLiveData()
     val personDetailResponse: LiveData<Resource<PersonDetailsResponse>> get() = _personDetailResponse
 
-    private val _searchResponse: MutableLiveData<Resource<SearchMovieResponse>> = MutableLiveData()
-    val searchResponse: LiveData<Resource<SearchMovieResponse>> get() = _searchResponse
+    private val _searchResponse: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
+    val searchResponse: LiveData<Resource<MovieResponse>> get() = _searchResponse
     var searchPage = 1
 
     fun getNowPlayingMovie() = viewModelScope.launch {
@@ -102,7 +98,7 @@ class MovieViewModel
         _searchResponse.postValue(handleSearchResponse(response))
     }
 
-    private fun handleNowPlaying(response: Response<NowPlayingResponse>): Resource<NowPlayingResponse> {
+    private fun handleNowPlaying(response: Response<MovieResponse>): Resource<MovieResponse> {
         if(response.isSuccessful) {
             response.body()?.let {resultResponse ->
                 return Resource.Success(resultResponse)
@@ -112,7 +108,7 @@ class MovieViewModel
         return Resource.Error(response.errorBody().toString())
     }
 
-    private fun handlePopular(response: Response<PopularResponse>): Resource<PopularResponse> {
+    private fun handlePopular(response: Response<MovieResponse>): Resource<MovieResponse> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
@@ -122,7 +118,7 @@ class MovieViewModel
         return Resource.Error(response.errorBody().toString())
     }
 
-    private fun handleTopRate(response: Response<TopRateResponse>): Resource<TopRateResponse> {
+    private fun handleTopRate(response: Response<MovieResponse>): Resource<MovieResponse> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
@@ -132,7 +128,7 @@ class MovieViewModel
         return Resource.Error(response.errorBody().toString())
     }
 
-    private fun handleUpcoming(response: Response<UpcomingResponse>): Resource<UpcomingResponse> {
+    private fun handleUpcoming(response: Response<MovieResponse>): Resource<MovieResponse> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
@@ -172,7 +168,7 @@ class MovieViewModel
         return Resource.Error(response.errorBody().toString())
     }
 
-    private fun handleSearchResponse(response: Response<SearchMovieResponse>): Resource<SearchMovieResponse>? {
+    private fun handleSearchResponse(response: Response<MovieResponse>): Resource<MovieResponse>? {
         if(response.isSuccessful) {
             response.body()?.let {resultResponse ->
                 return Resource.Success(resultResponse)

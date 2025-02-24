@@ -1,6 +1,7 @@
-package com.example.flimflare.model.tvShow.topRate
+package com.example.flimflare.model.tvShow
 
-data class TopRateTvShowResponse(
+
+data class TvShowResponse(
     val page: Int,
     val results: List<Result>,
     val total_pages: Int,

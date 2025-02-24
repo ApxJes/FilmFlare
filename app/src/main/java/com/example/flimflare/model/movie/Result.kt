@@ -1,6 +1,6 @@
-package com.example.flimflare.model.movie.upcoming
+package com.example.flimflare.model.movie
 
-data class UpcomingResult(
+data class Result(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,

@@ -3,16 +3,10 @@ package com.example.flimflare.api
 import com.example.flimflare.model.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.details.person.PersonDetailsResponse
-import com.example.flimflare.model.movie.nowPlaying.NowPlayingResponse
-import com.example.flimflare.model.movie.popular.PopularResponse
-import com.example.flimflare.model.movie.search.SearchMovieResponse
+import com.example.flimflare.model.movie.MovieResponse
 import com.example.flimflare.model.details.show.TvShowDetailsResponse
-import com.example.flimflare.model.movie.topRate.TopRateResponse
 import com.example.flimflare.model.tvShow.each_season_details.EachSeasonDetailsResponse
-import com.example.flimflare.model.tvShow.onTheAir.OnTheAirResponse
-import com.example.flimflare.model.tvShow.topRate.TopRateTvShowResponse
-import com.example.flimflare.model.tvShow.trending.TrendingTvShowResponse
-import com.example.flimflare.model.movie.upcoming.UpcomingResponse
+import com.example.flimflare.model.tvShow.TvShowResponse
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -25,25 +19,25 @@ interface API {
     suspend fun getNowPlaying(
         @Query("api_key") apiKey: String,
         @Query("page") pageNumber: Int
-    ): Response<NowPlayingResponse>
+    ): Response<MovieResponse>
 
     @GET("movie/popular")
     suspend fun getPopular(
         @Query("api_key") apiKey: String,
         @Query("page") pageNumber: Int,
-    ): Response<PopularResponse>
+    ): Response<MovieResponse>
 
     @GET("movie/top_rated")
     suspend fun getTopRate(
         @Query("api_key") apiKey: String,
         @Query("page") pageNumber: Int
-    ): Response<TopRateResponse>
+    ): Response<MovieResponse>
 
     @GET("movie/upcoming")
     suspend fun getUpcoming(
         @Query("api_key") apiKey: String,
         @Query("page") pageNumber: Int
-    ): Response<UpcomingResponse>
+    ): Response<MovieResponse>
 
     @GET("movie/{movie_id}")
     suspend fun getMovieDetails(
@@ -68,7 +62,7 @@ interface API {
         @Query("query") searchMovie: String,
         @Query("language") pageSize: Int = 1,
         @Query("api_key") apiKey: String = API_KEY
-    ): Response<SearchMovieResponse>
+    ): Response<MovieResponse>
 
 
     @GET("trending/tv/{time_window}")
@@ -76,21 +70,21 @@ interface API {
         @Path("time_window") timeWindow: String,
         @Query("api_key") apiKey: String,
         @Query("language") language: String
-    ): Response<TrendingTvShowResponse>
+    ): Response<TvShowResponse>
 
     @GET("tv/on_the_air")
     suspend fun getOnTheAirTvShow(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("page") page: Int
-    ): Response<OnTheAirResponse>
+    ): Response<TvShowResponse>
 
     @GET("tv/top_rated")
     suspend fun getTopRateTvShow(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("page") page: Int
-    ): Response<TopRateTvShowResponse>
+    ): Response<TvShowResponse>
 
     @GET("tv/{series_id}")
     suspend fun getTvShowDetails(
@@ -116,5 +110,5 @@ interface API {
     suspend fun getSearchTvShow(
         @Query("query") searchString: String,
         @Query("api_key") apiKey: String
-    ): Response<SearchMovieResponse>
+    ): Response<MovieResponse>
 }
