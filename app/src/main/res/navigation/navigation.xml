@@ -22,17 +22,16 @@
         android:name="com.example.flimflare.ui.movie.MovieDetailsFragment"
         android:label="fragment_movie_details"
         tools:layout="@layout/fragment_movie_details" >
-        <argument
-            android:name="id"
-            app:argType="integer"
-            android:defaultValue="-1"
-            />
         <action
             android:id="@+id/action_movieDetailsFragment_to_personDetailsFragment"
             app:destination="@id/personDetailsFragment" />
         <action
             android:id="@+id/action_movieDetailsFragment_to_saveFragment"
             app:destination="@id/saveFragment" />
+        <argument
+            android:name="result"
+            app:argType="com.example.flimflare.model.movie.Result"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/personDetailsFragment"

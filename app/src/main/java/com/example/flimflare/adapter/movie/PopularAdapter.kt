@@ -58,13 +58,13 @@ class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularItemViewHolder>
             language.text = popularMovie.original_language
 
             setOnClickListener {
-                onClick?.let {it(popularMovie.id)}
+                onClick?.let {it(popularMovie)}
             }
         }
     }
 
-    private var onClick: ((Int) -> Unit)? = null
-    fun onItemClick(listener: (Int) -> Unit) {
+    private var onClick: ((Result) -> Unit)? = null
+    fun onItemClick(listener: (Result) -> Unit) {
         onClick = listener
     }
 }

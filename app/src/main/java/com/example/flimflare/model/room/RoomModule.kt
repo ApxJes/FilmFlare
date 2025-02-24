@@ -23,5 +23,7 @@ object RoomModule {
         "save_db"
     ).build()
 
+    @Singleton
+    @Provides
     fun providesSaveDao(db: SaveDatabase) = db.saveDao()
 }

@@ -56,14 +56,14 @@ class NowPlayingAdapter: RecyclerView.Adapter<NowPlayingAdapter.NowPlayingItemVi
 
             setOnClickListener {
                 onClick?.let {
-                    it(nowPlayingMovie.id)
+                    it(nowPlayingMovie)
                 }
             }
         }
     }
 
-    private var onClick: ((Int) -> Unit)? = null
-    fun onItemClick(listener: (Int) -> Unit) {
+    private var onClick: ((Result) -> Unit)? = null
+    fun onItemClick(listener: (Result) -> Unit) {
         onClick = listener
     }
 }

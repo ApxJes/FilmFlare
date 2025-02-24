@@ -11,11 +11,14 @@ import androidx.room.Query
 interface SaveDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMovie(movie: SaveEntity)
+    suspend fun insertMovie(movie: MovieEntity)
 
     @Delete
-    suspend fun deleteMovie(movie: SaveEntity)
+    suspend fun deleteMovie(movie: MovieEntity)
 
     @Query("SELECT * FROM save_table ORDER by id ASC")
-    fun getAllMovie(): LiveData<List<SaveEntity>>
+    fun getAllMovie(): LiveData<List<MovieEntity>>
+
+    @Query("SELECT * FROM save_table WHERE id = :movieId")
+    fun getMovieById(movieId: Int): LiveData<MovieEntity>
 }

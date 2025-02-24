@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.example.flimflare.model.movie.Result
 
 @Entity(tableName = "save_table")
-data class SaveEntity(
+data class MovieEntity(
 
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "movie_title") val movieTitle: String?,

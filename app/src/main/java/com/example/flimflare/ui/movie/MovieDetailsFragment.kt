@@ -15,6 +15,7 @@ import com.example.flimflare.adapter.credit.CastAdapter
 import com.example.flimflare.adapter.credit.CrewAdapter
 import com.example.flimflare.databinding.FragmentMovieDetailsBinding
 import com.example.flimflare.model.credits.Crew
+import com.example.flimflare.model.room.MovieEntity
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.movie.MovieViewModel
@@ -33,6 +34,8 @@ class MovieDetailsFragment : Fragment() {
     @Inject lateinit var castAdapter: CastAdapter
     @Inject lateinit var crewAdapter: CrewAdapter
 
+    private lateinit var movieEntity: MovieEntity
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,9 +47,9 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = args.id
-        setupDetails(id)
-        getDirector(id)
+        val result = args.result
+        setupDetails(result!!.id)
+        getDirector(result.id)
 
         toPersonDetails()
     }
@@ -85,6 +88,13 @@ class MovieDetailsFragment : Fragment() {
                         } else {
                             binding.txvType1.visibility = View.GONE
                         }
+
+                        movieEntity = MovieEntity(
+                            id = result.id,
+                            movieTitle = result.title,
+                            moviePoster = result.poster_path,
+                            movieResult = args.result
+                        )
                     }
                 }
 

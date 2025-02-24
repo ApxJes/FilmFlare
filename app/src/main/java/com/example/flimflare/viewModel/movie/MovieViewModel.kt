@@ -8,6 +8,7 @@ import com.example.flimflare.model.credits.CreditsResponse
 import com.example.flimflare.model.details.movie.MovieDetailsResponse
 import com.example.flimflare.model.details.person.PersonDetailsResponse
 import com.example.flimflare.model.movie.MovieResponse
+import com.example.flimflare.model.room.MovieEntity
 import com.example.flimflare.repository.movie.MovieRepository
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import com.example.flimflare.util.Resource
@@ -49,6 +50,9 @@ class MovieViewModel
     private val _searchResponse: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
     val searchResponse: LiveData<Resource<MovieResponse>> get() = _searchResponse
     var searchPage = 1
+
+    lateinit var saveMovieList: LiveData<List<MovieEntity>>
+    lateinit var getSaveMovieById: LiveData<MovieEntity>
 
     fun getNowPlayingMovie() = viewModelScope.launch {
         _nowPlayingResponse.postValue(Resource.Loading())
@@ -96,6 +100,22 @@ class MovieViewModel
         _searchResponse.postValue(Resource.Loading())
         val response = repository.getSearch(query = query, pageInt = searchPage, apiKey = API_KEY)
         _searchResponse.postValue(handleSearchResponse(response))
+    }
+
+    fun insertMovie(result: MovieEntity) = viewModelScope.launch {
+        repository.insertMovie(result)
+    }
+
+    fun deleteMovie(result: MovieEntity) = viewModelScope.launch {
+        repository.deleteMovie(result)
+    }
+
+    fun getAllMovie() = viewModelScope.launch {
+        saveMovieList = repository.getAllMovie()
+    }
+
+    fun getSaveMovieById(id: Int) = viewModelScope.launch {
+        getSaveMovieById = repository.getMovieById(id)
     }
 
     private fun handleNowPlaying(response: Response<MovieResponse>): Resource<MovieResponse> {

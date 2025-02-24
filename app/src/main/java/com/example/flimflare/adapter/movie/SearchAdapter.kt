@@ -66,13 +66,13 @@ class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchItemViewHolder>() 
             movieReleaseDate.text = searchMovie.release_date
 
             setOnClickListener {
-                onClick?.let { it(searchMovie.id!!) }
+                onClick?.let { it(searchMovie) }
             }
         }
     }
 
-    private var onClick: ((Int) -> Unit)? = null
-    fun onItemClick(listener: (Int) -> Unit) {
+    private var onClick: ((Result) -> Unit)? = null
+    fun onItemClick(listener: (Result) -> Unit) {
         onClick = listener
     }
 }
