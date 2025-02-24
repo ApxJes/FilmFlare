@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.flimflare.R
 import com.example.flimflare.adapter.credit.CastAdapter
 import com.example.flimflare.adapter.credit.CrewAdapter
 import com.example.flimflare.databinding.FragmentMovieDetailsBinding
@@ -19,6 +20,7 @@ import com.example.flimflare.model.room.MovieEntity
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.movie.MovieViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -95,11 +97,67 @@ class MovieDetailsFragment : Fragment() {
                             moviePoster = result.poster_path,
                             movieResult = args.result
                         )
+                        setSaveMovie()
+                        binding.imvSave.setOnClickListener {
+                            isSaveMovie = if (!isSaveMovie) {
+                                viewModel.insertMovie(movieEntity)
+                                binding.imvSave.setImageResource(R.drawable.ic_red_heart)
+                                view?.let { v ->
+                                    Snackbar.make(
+                                        v,
+                                        "Successfully saved",
+                                        Snackbar.LENGTH_SHORT
+                                    ).apply {
+                                        setAction("Undo") {
+                                            viewModel.deleteMovie(movieEntity)
+                                            binding.imvSave.setImageResource(R.drawable.ic_save)
+                                            view.let { v ->
+                                                Snackbar.make(
+                                                    v,
+                                                    "Undo saved",
+                                                    Snackbar.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                        }
+                                    } .show()
+                                }
+                                true
+
+                            } else {
+                                viewModel.deleteMovie(movieEntity)
+                                binding.imvSave.setImageResource(R.drawable.ic_save)
+                                view?.let { v ->
+                                    Snackbar.make(
+                                        v,
+                                        "Unsaved",
+                                        Snackbar.LENGTH_SHORT
+                                    ).show()
+                                }
+                                false
+                            }
+                        }
                     }
                 }
 
                 is Resource.Error -> {}
                 is Resource.Loading -> {}
+            }
+        }
+    }
+
+    private var isSaveMovie = false
+
+    private fun setSaveMovie() {
+        viewModel.getAllMovie()
+        viewModel.saveMovieList.observe(viewLifecycleOwner) { entity ->
+            for (i in entity.indices) {
+                if (args.result?.id == entity[i].id) {
+                    binding.imvSave.setImageResource(R.drawable.ic_red_heart)
+                    isSaveMovie = true
+                    break
+                } else {
+                    isSaveMovie = false
+                }
             }
         }
     }
