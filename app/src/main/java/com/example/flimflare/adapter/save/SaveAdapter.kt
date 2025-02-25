@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
-import com.example.flimflare.model.movie.Result
 import com.example.flimflare.model.room.MovieEntity
+import com.example.flimflare.model.room.TvShowEntity
+import com.example.flimflare.ui.save.SaveFragmentDirections
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 
 class SaveAdapter(
@@ -40,6 +40,11 @@ class SaveAdapter(
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL + item.moviePoster).into(moviePoster)
             movieTitle.text = item.movieTitle
+
+            setOnClickListener {
+                val action = SaveFragmentDirections.actionSaveFragmentToMovieDetailsFragment(item.movieResult)
+                findNavController().navigate(action)
+            }
         }
     }
 }

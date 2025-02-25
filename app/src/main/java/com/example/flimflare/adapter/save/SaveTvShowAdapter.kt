@@ -5,10 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flimflare.R
 import com.example.flimflare.model.room.TvShowEntity
+import com.example.flimflare.ui.save.SaveFragmentDirections
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 
 class SaveTvShowAdapter(
@@ -16,8 +18,8 @@ class SaveTvShowAdapter(
 ): RecyclerView.Adapter<SaveTvShowAdapter.SaveItemViewHolder>() {
 
     inner class SaveItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
-    private lateinit var moviePoster: ImageView
-    private lateinit var movieTitle: TextView
+    private lateinit var showPoster: ImageView
+    private lateinit var showTitle: TextView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SaveItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.save_item, parent, false)
@@ -31,12 +33,17 @@ class SaveTvShowAdapter(
     override fun onBindViewHolder(holder: SaveItemViewHolder, position: Int) {
         val item = savedMovieList[position]
 
-        moviePoster = holder.itemView.findViewById(R.id.imvSavePoster)
-        movieTitle = holder.itemView.findViewById(R.id.txvSaveTitle)
+        showPoster = holder.itemView.findViewById(R.id.imvSavePoster)
+        showTitle = holder.itemView.findViewById(R.id.txvSaveTitle)
 
         holder.itemView.apply {
-            Glide.with(this).load(IMAGE_URL + item.showPoster).into(moviePoster)
-            movieTitle.text = item.showTitle
+            Glide.with(this).load(IMAGE_URL + item.showPoster).into(showPoster)
+            showTitle.text = item.showTitle
+
+            setOnClickListener {
+                val action = SaveFragmentDirections.actionSaveFragmentToTvShowDetailsFragment(item.showResult)
+                findNavController().navigate(action)
+            }
         }
     }
 }

@@ -117,5 +117,24 @@
         android:id="@+id/saveFragment"
         android:name="com.example.flimflare.ui.save.SaveFragment"
         android:label="fragment_save"
-        tools:layout="@layout/fragment_save" />
+        tools:layout="@layout/fragment_save" >
+        <action
+            android:id="@+id/action_saveFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/action_saveFragment_to_tvShowDetailsFragment"
+            app:destination="@id/tvShowDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/saveMovieFragment"
+        android:name="com.example.flimflare.ui.save.SaveMovieFragment"
+        android:label="fragment_save_movie"
+        tools:layout="@layout/fragment_save_movie" >
+    </fragment>
+    <fragment
+        android:id="@+id/saveTVShowFragment"
+        android:name="com.example.flimflare.ui.save.SaveTVShowFragment"
+        android:label="fragment_save_t_v_show"
+        tools:layout="@layout/fragment_save_t_v_show" >
+    </fragment>
 </navigation>
