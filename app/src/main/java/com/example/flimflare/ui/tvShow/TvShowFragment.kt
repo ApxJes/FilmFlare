@@ -15,6 +15,7 @@ import com.example.flimflare.adapter.tvShow.OnTheAirAdapter
 import com.example.flimflare.adapter.tvShow.TopRatingTvShowAdapter
 import com.example.flimflare.adapter.tvShow.TrendingTvShowAdapter
 import com.example.flimflare.databinding.FragmentTvShowBinding
+import com.example.flimflare.model.tvShow.Result
 import com.example.flimflare.util.ConstantsURL.API_KEY
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.tvShow.TVShowViewModel
@@ -56,8 +57,8 @@ class TvShowFragment : Fragment(R.layout.fragment_tv_show) {
         getAllTvShow()
     }
 
-    private fun goToDetails(id: Int) {
-        val action = TvShowFragmentDirections.actionTvShowFragmentToTvShowDetailsFragment(id)
+    private fun goToDetails(result: Result) {
+        val action = TvShowFragmentDirections.actionTvShowFragmentToTvShowDetailsFragment(result)
         findNavController().navigate(action)
     }
 

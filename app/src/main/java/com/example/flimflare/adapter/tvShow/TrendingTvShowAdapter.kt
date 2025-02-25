@@ -56,14 +56,14 @@ class TrendingTvShowAdapter: RecyclerView.Adapter<TrendingTvShowAdapter.Trending
 
             setOnClickListener {
                 onClick?.let {
-                    it(trendingTvShow.id)
+                    it(trendingTvShow)
                 }
             }
         }
     }
 
-    private var onClick: ((Int) -> Unit)? = null
-    fun onClickListener(listener: (Int) -> Unit) {
+    private var onClick: ((Result) -> Unit)? = null
+    fun onClickListener(listener: (Result) -> Unit) {
         onClick = listener
     }
 }

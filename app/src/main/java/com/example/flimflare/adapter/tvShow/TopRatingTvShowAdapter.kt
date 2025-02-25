@@ -59,14 +59,14 @@ class TopRatingTvShowAdapter: RecyclerView.Adapter<TopRatingTvShowAdapter.TopRat
 
             setOnClickListener {
                 onClick?.let {
-                    it(topRateing.id)
+                    it(topRateing)
                 }
             }
         }
     }
 
-    private var onClick: ((Int) -> Unit)? = null
-    fun onClickListener(listener: (Int) -> Unit) {
+    private var onClick: ((Result) -> Unit)? = null
+    fun onClickListener(listener: (Result) -> Unit) {
         onClick = listener
     }
 }

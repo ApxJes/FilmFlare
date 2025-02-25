@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.flimflare.model.credits.CreditsResponse
 import com.example.flimflare.model.tvShow.each_season_details.EachSeasonDetailsResponse
 import com.example.flimflare.model.details.show.TvShowDetailsResponse
+import com.example.flimflare.model.room.TvShowEntity
 import com.example.flimflare.model.tvShow.TvShowResponse
 import com.example.flimflare.repository.tvShow.TvShowRepository
 import com.example.flimflare.util.ConstantsURL.API_KEY
@@ -32,6 +33,8 @@ class TVShowViewModel
     private val _topRateTvShow: MutableLiveData<Resource<TvShowResponse>> = MutableLiveData()
     val topRateTvShow: LiveData<Resource<TvShowResponse>> get() = _topRateTvShow
     var topRatePage = 1
+
+    lateinit var saveTvShowList: LiveData<List<TvShowEntity>>
 
     private val _tvShowDetails: MutableLiveData<Resource<TvShowDetailsResponse>> = MutableLiveData()
     val tvShowDetails: LiveData<Resource<TvShowDetailsResponse>> get() = _tvShowDetails
@@ -77,6 +80,18 @@ class TVShowViewModel
         val response = repository.getShowCredits(seriesId, seasonNumber, API_KEY)
         _showCredits.postValue(handleShowCredits(response))
 
+    }
+
+    fun saveTvShow(show: TvShowEntity) = viewModelScope.launch {
+        repository.insertTvShow(show)
+    }
+
+    fun deleteTvShow(show: TvShowEntity) = viewModelScope.launch {
+        repository.deleteTvShow(show)
+    }
+
+    fun getAllTvShow() = viewModelScope.launch {
+        saveTvShowList = repository.getAllTvShow()
     }
 
     private fun handleTrendingTvShow(response: Response<TvShowResponse>): Resource<TvShowResponse> {

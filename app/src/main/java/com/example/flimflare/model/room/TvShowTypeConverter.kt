@@ -1,11 +1,11 @@
 package com.example.flimflare.model.room
 
 import androidx.room.TypeConverter
-import com.example.flimflare.model.movie.Result
+import com.example.flimflare.model.tvShow.Result
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class MovieTypeConverter {
+class TvShowTypeConverter {
 
     val gson = Gson()
 

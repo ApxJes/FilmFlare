@@ -56,5 +56,4 @@ class MovieRepository
 
     fun getAllMovie() = dao.getAllMovie()
 
-    fun getMovieById(movieId: Int) = dao.getMovieById(movieId)
 }

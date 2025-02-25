@@ -88,13 +88,13 @@
         android:name="com.example.flimflare.ui.tvShow.TvShowDetailsFragment"
         android:label="fragment_tv_show_details"
         tools:layout="@layout/fragment_tv_show_details" >
-        <argument
-            android:name="showId"
-            app:argType="integer"
-            android:defaultValue="-1" />
         <action
             android:id="@+id/action_tvShowDetailsFragment_to_eachSeasonDetailsFragment"
             app:destination="@id/eachSeasonDetailsFragment" />
+        <argument
+            android:name="tvShow"
+            app:argType="com.example.flimflare.model.tvShow.Result"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/eachSeasonDetailsFragment"

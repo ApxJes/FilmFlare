@@ -13,9 +13,11 @@ import com.example.flimflare.R
 import com.example.flimflare.adapter.tvShow.SeasonAdapter
 import com.example.flimflare.adapter.tvShow.ShowCreatorAdapter
 import com.example.flimflare.databinding.FragmentTvShowDetailsBinding
+import com.example.flimflare.model.room.TvShowEntity
 import com.example.flimflare.util.ConstantsURL.IMAGE_URL
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.tvShow.TVShowViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,6 +27,7 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
     private lateinit var binding: FragmentTvShowDetailsBinding
     private val viewModel: TVShowViewModel by viewModels()
     private val args: TvShowDetailsFragmentArgs by navArgs()
+    private lateinit var saveTvShowEntity: TvShowEntity
 
     @Inject lateinit var showCreatorAdapter: ShowCreatorAdapter
     @Inject lateinit var seasonAdapter: SeasonAdapter
@@ -34,10 +37,10 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
         binding = FragmentTvShowDetailsBinding.bind(view)
 
         seasonAdapter.onClickListener {
-            goToSeasonDetails(args.showId, it)
+            goToSeasonDetails(args.tvShow!!.id, it)
         }
-        val id = args.showId
-        getDetails(id)
+        val result = args.tvShow
+        getDetails(result!!.id)
     }
 
     private fun goToSeasonDetails(seriesId: Int, seasonNumber: Int) {
@@ -67,11 +70,58 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
 
                         rcvForSeason()
                         seasonAdapter.differ.submitList(response.seasons)
+
+                        setUpSaveTvShow()
+
+                        saveTvShowEntity = TvShowEntity(
+                            id = response.id,
+                            showTitle = response.name,
+                            showPoster = response.poster_path,
+                            showResult = args.tvShow
+                        )
+
+                        binding.imvSave.setOnClickListener {
+                            isSaveTvShow = if (!isSaveTvShow) {
+                                viewModel.saveTvShow(saveTvShowEntity)
+                                binding.imvSave.setImageResource(R.drawable.ic_red_heart)
+                                view?.let {
+                                    Snackbar.make(it, "Successfully saved", Snackbar.LENGTH_SHORT).show()
+                                }
+
+                                true
+
+                            } else {
+                                viewModel.deleteTvShow(saveTvShowEntity)
+                                view?.let {
+                                    Snackbar.make(it, "Unsaved", Snackbar.LENGTH_SHORT).show()
+                                }
+                                false
+                            }
+                        }
+
                     }
                 }
 
                 is Resource.Error -> {}
                 is Resource.Loading -> {}
+            }
+        }
+    }
+
+    private var isSaveTvShow = false
+    private fun setUpSaveTvShow() {
+        viewModel.getAllTvShow()
+
+        viewModel.saveTvShowList.observe(viewLifecycleOwner) { entities ->
+            for (i in entities.indices) {
+                if (args.tvShow?.id == entities[i].id) {
+                    isSaveTvShow = true
+                    binding.imvSave.setImageResource(R.drawable.ic_red_heart)
+                    break
+
+                } else {
+                    isSaveTvShow = false
+                }
             }
         }
     }

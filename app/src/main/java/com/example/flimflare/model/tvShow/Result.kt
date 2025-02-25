@@ -1,5 +1,7 @@
 package com.example.flimflare.model.tvShow
 
+import java.io.Serializable
+
 data class Result(
     val adult: Boolean,
     val backdrop_path: String,
@@ -15,4 +17,4 @@ data class Result(
     val poster_path: String,
     val vote_average: Double,
     val vote_count: Int
-)
+): Serializable

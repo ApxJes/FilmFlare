@@ -52,7 +52,6 @@ class MovieViewModel
     var searchPage = 1
 
     lateinit var saveMovieList: LiveData<List<MovieEntity>>
-    lateinit var getSaveMovieById: LiveData<MovieEntity>
 
     fun getNowPlayingMovie() = viewModelScope.launch {
         _nowPlayingResponse.postValue(Resource.Loading())
@@ -112,10 +111,6 @@ class MovieViewModel
 
     fun getAllMovie() = viewModelScope.launch {
         saveMovieList = repository.getAllMovie()
-    }
-
-    fun getSaveMovieById(id: Int) = viewModelScope.launch {
-        getSaveMovieById = repository.getMovieById(id)
     }
 
     private fun handleNowPlaying(response: Response<MovieResponse>): Resource<MovieResponse> {

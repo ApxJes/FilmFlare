@@ -19,6 +19,12 @@ interface SaveDao {
     @Query("SELECT * FROM save_table ORDER by id ASC")
     fun getAllMovie(): LiveData<List<MovieEntity>>
 
-    @Query("SELECT * FROM save_table WHERE id = :movieId")
-    fun getMovieById(movieId: Int): LiveData<MovieEntity>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTvShow(show: TvShowEntity)
+
+    @Delete
+    suspend fun deleteShow(show: TvShowEntity)
+
+    @Query("SELECT * FROM show_table ORDER BY id ASC")
+    fun getAllTvShow(): LiveData<List<TvShowEntity>>
 }

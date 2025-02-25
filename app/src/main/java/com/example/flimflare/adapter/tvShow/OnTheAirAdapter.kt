@@ -58,14 +58,14 @@ class OnTheAirAdapter: RecyclerView.Adapter<OnTheAirAdapter.TopRateItemViewHolde
             onAirReleaseDate.text = onAirToday.first_air_date
             setOnClickListener {
                 onClick?.let {
-                    it(onAirToday.id)
+                    it(onAirToday)
                 }
             }
         }
     }
 
-    private var onClick: ((Int) -> Unit)? = null
-    fun onClickListener(listener: (Int) -> Unit) {
+    private var onClick: ((Result) -> Unit)? = null
+    fun onClickListener(listener: (Result) -> Unit) {
         onClick = listener
     }
 }

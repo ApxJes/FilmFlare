@@ -107,19 +107,7 @@ class MovieDetailsFragment : Fragment() {
                                         v,
                                         "Successfully saved",
                                         Snackbar.LENGTH_SHORT
-                                    ).apply {
-                                        setAction("Undo") {
-                                            viewModel.deleteMovie(movieEntity)
-                                            binding.imvSave.setImageResource(R.drawable.ic_save)
-                                            view.let { v ->
-                                                Snackbar.make(
-                                                    v,
-                                                    "Undo saved",
-                                                    Snackbar.LENGTH_SHORT
-                                                ).show()
-                                            }
-                                        }
-                                    } .show()
+                                    ).show()
                                 }
                                 true
 
