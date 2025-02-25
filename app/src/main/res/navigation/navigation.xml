@@ -137,4 +137,9 @@
         android:label="fragment_save_t_v_show"
         tools:layout="@layout/fragment_save_t_v_show" >
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.flimflare.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

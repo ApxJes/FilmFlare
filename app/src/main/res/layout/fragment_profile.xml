@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.ProfileFragment"
+    android:background="@color/primary_color">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="290dp"
+            android:layout_height="300dp"
+            app:cardCornerRadius="30dp"
+            android:elevation="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/primary_color"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/pf"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    app:civ_border_width="1dp"
+                    app:civ_border_color="@color/whiteBlue"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aung Pyae Kyaw"
+                    android:textSize="17sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/switzer_bold"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(shwyzee109@gmail.com)"
+                    android:textSize="17sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/supreme_regular"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:id="@+id/imvFacebook"
+                        android:src="@drawable/facebook"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:id="@+id/imvInstagram"
+                        android:src="@drawable/instagram"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:id="@+id/imvPhone"
+                        android:src="@drawable/phone"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"/>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:id="@+id/imvGitHub"
+                        android:src="@drawable/git"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/whiteBlue"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About me!"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/supreme_regular"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/whiteBlue"
+            android:layout_marginTop="7dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aboutMe"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/supreme_regular"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/whiteBlue"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About this project!!"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/supreme_regular"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/whiteBlue"
+            android:layout_marginTop="7dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aboutThisProject"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/supreme_regular"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.  MVVM"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/switzer_bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.  Retrofit"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/switzer_bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3.  Room"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/switzer_bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.  Dagger Hilt"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/switzer_bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5.  ViewModel, LiveData and Coroutines"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/switzer_bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6.  Navigation Component and Safe Args PlugIn"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/switzer_bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7.  Many UI Component"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/switzer_bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="20dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGitHubRepo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="Project GutHib Repository"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

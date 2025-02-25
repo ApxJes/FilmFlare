@@ -31,7 +31,6 @@ class SaveMovieFragment : Fragment() {
     ): View? {
         _binding = FragmentSaveMovieBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

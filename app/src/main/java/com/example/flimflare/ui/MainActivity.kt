@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
             if(destination.id == R.id.movieDetailsFragment ||
                 destination.id == R.id.searchMovieFragment ||
                 destination.id == R.id.tvShowDetailsFragment ||
-                destination.id == R.id.eachSeasonDetailsFragment
+                destination.id == R.id.eachSeasonDetailsFragment ||
+                destination.id == R.id.profileFragment
                 ) {
                 binding.txvTitle.visibility = View.GONE
             } else {
