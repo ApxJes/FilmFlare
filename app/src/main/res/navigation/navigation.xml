@@ -3,7 +3,7 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mainMovieFragment">
+    app:startDestination="@id/signUpFragment">
 
     <fragment
         android:id="@+id/mainMovieFragment"
@@ -139,7 +139,31 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.flimflare.ui.ProfileFragment"
+        android:name="com.example.flimflare.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.example.flimflare.ui.auth.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_mainMovieFragment"
+            app:destination="@id/mainMovieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.flimflare.ui.auth.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_self"
+            app:destination="@id/signUpFragment" />
+    </fragment>
 </navigation>

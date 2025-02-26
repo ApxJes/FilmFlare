@@ -28,7 +28,6 @@
                 android:layout_height="120dp"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
-                android:src="@drawable/pf"
                 />
 
             <TextView

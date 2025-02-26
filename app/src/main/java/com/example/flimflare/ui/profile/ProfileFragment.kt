@@ -1,4 +1,4 @@
-package com.example.flimflare.ui
+package com.example.flimflare.ui.profile
 
 import android.content.Intent
 import android.net.Uri
@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.flimflare.R
 import com.example.flimflare.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {

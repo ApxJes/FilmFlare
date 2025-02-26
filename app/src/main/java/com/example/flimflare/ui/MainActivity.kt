@@ -29,17 +29,24 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         binding.btmNav.setupWithNavController(navController)
 
-        navController.addOnDestinationChangedListener{_, destination, _ ->
-            if(destination.id == R.id.movieDetailsFragment ||
-                destination.id == R.id.searchMovieFragment ||
-                destination.id == R.id.tvShowDetailsFragment ||
-                destination.id == R.id.eachSeasonDetailsFragment ||
-                destination.id == R.id.profileFragment
-                ) {
-                binding.txvTitle.visibility = View.GONE
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val hideBottomNavFragments = setOf(
+                R.id.movieDetailsFragment,
+                R.id.searchMovieFragment,
+                R.id.tvShowDetailsFragment,
+                R.id.eachSeasonDetailsFragment,
+                R.id.profileFragment,
+                R.id.logInFragment,
+                R.id.signUpFragment
+            )
+
+            if (destination.id in hideBottomNavFragments) {
+                binding.btmNav.visibility = View.GONE
             } else {
-                binding.txvTitle.visibility = View.VISIBLE
+                binding.btmNav.visibility = View.VISIBLE
             }
+
+            binding.txvTitle.visibility = if (destination.id in hideBottomNavFragments) View.GONE else View.VISIBLE
         }
     }
 }
