@@ -153,6 +153,9 @@
         <action
             android:id="@+id/action_logInFragment_to_mainMovieFragment"
             app:destination="@id/mainMovieFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -165,5 +168,14 @@
         <action
             android:id="@+id/action_signUpFragment_self"
             app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.example.flimflare.ui.auth.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
     </fragment>
 </navigation>

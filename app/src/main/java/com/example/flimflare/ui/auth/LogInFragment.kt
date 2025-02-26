@@ -31,6 +31,7 @@ class LogInFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         logIn()
+        forgetPassword()
 
         binding.btnSignUp.setOnClickListener {
             val action = LogInFragmentDirections.actionLogInFragmentToSignUpFragment()
@@ -63,6 +64,30 @@ class LogInFragment : Fragment() {
                 findNavController().navigate(action)
             } else {
                 Toast.makeText(requireContext(), "Don't have an account", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun forgetPassword() {
+        binding.btnForgetPassword.setOnClickListener {
+            val email = binding.edtLogInEmail.text.toString()
+
+            if(TextUtils.isEmpty(email)) {
+                binding.edtLogInEmail.error = "Email is require!"
+                binding.edtLogInEmail.requestFocus()
+            } else {
+                setUpForgetPassword(email)
+            }
+        }
+    }
+
+    private fun setUpForgetPassword(email: String) {
+        auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
+            if(task.isSuccessful) {
+                val action = LogInFragmentDirections.actionLogInFragmentToForgetPasswordFragment()
+                findNavController().navigate(action)
+            } else {
+                Toast.makeText(requireContext(), "Wrong email!", Toast.LENGTH_SHORT).show()
             }
         }
     }

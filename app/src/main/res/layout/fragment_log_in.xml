@@ -64,26 +64,35 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account?"
+        android:textSize="18sp"
+        android:fontFamily="@font/supreme_regular"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="20dp">
+        android:id="@+id/btnSignUp"
+        android:text="Sign up" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSignUp"
-            android:text="Sign up"
-            android:layout_weight="1" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forget your password?"
+        android:textSize="14sp"
+        android:fontFamily="@font/supreme_regular"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnForgetPassword"
-            android:text="Forget Password"
-            android:layout_weight="1"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnForgetPassword"
+        android:text="Forget Password" />
 
-    </LinearLayout>
 
 </LinearLayout>

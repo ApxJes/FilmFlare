@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.eachSeasonDetailsFragment,
                 R.id.profileFragment,
                 R.id.logInFragment,
-                R.id.signUpFragment
+                R.id.signUpFragment,
+                R.id.forgetPasswordFragment
             )
 
             if (destination.id in hideBottomNavFragments) {
