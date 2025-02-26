@@ -1,5 +1,7 @@
 package com.example.flimflare.ui.auth
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -59,6 +61,11 @@ class LogInFragment : Fragment() {
     private fun setUpLogIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if(task.isSuccessful) {
+                val sharePerf = requireActivity().getSharedPreferences("LoginInfo", Context.MODE_PRIVATE)
+                val editor = sharePerf.edit()
+                editor.putBoolean("Login", true)
+                editor.apply()
+
                 Toast.makeText(requireContext(), "Log in successful", Toast.LENGTH_SHORT).show()
                 val action = LogInFragmentDirections.actionLogInFragmentToMainMovieFragment()
                 findNavController().navigate(action)

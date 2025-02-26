@@ -1,9 +1,12 @@
 package com.example.flimflare.ui
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.flimflare.R
@@ -16,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding: ActivityMainBinding get() = _binding!!
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         binding.btmNav.setupWithNavController(navController)
+
+        checkLoginStatusAndNavigate(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val hideBottomNavFragments = setOf(
@@ -48,6 +54,15 @@ class MainActivity : AppCompatActivity() {
             }
 
             binding.txvTitle.visibility = if (destination.id in hideBottomNavFragments) View.GONE else View.VISIBLE
+        }
+    }
+
+    private fun checkLoginStatusAndNavigate(navController: NavController) {
+        val sharedPreferences = getSharedPreferences("LoginInfo", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("Login", false)
+
+        if (isLoggedIn) {
+           navController.navigate(R.id.mainMovieFragment)
         }
     }
 }

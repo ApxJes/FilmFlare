@@ -77,7 +77,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnSignUp"
-        android:text="Sign up" />
+        android:text="Sign up"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -92,7 +94,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnForgetPassword"
-        android:text="Forget Password" />
+        android:text="Forget Password"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"/>
 
 
 </LinearLayout>
