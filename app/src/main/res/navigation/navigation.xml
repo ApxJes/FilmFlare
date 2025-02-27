@@ -190,4 +190,9 @@
             android:id="@+id/action_splashFragment_to_mainMovieFragment"
             app:destination="@id/mainMovieFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.flimflare.ui.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
 </navigation>

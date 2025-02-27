@@ -1,17 +1,14 @@
 package com.example.flimflare.ui
 
 import android.annotation.SuppressLint
-import android.content.Context
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.navOptions
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.example.flimflare.R
 import com.example.flimflare.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,11 +29,14 @@ class MainActivity : AppCompatActivity() {
         )
         setContentView(binding.root)
 
-        Log.d("MainActivity", "Navigating to MainMovieFragment")
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         binding.btmNav.setupWithNavController(navController)
+
+        binding.imvDisplayProfile.setOnClickListener {
+            navController.navigate(R.id.profileFragment)
+        }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val hideBottomNavFragments = setOf(

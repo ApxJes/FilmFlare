@@ -8,28 +8,28 @@
     android:background="@drawable/gradient_bg2"
     tools:context=".ui.MainActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
-        android:elevation="9dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="28dp">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:elevation="9dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_bg2"
-            android:textColor="@color/white"
-            android:padding="4dp"
-            android:text="FilmFlare"
-            android:textSize="28sp" />
+            <TextView
+                android:id="@+id/txvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_bg2"
+                android:padding="4dp"
+                android:text="FilmFlare"
+                android:textColor="@color/white"
+                android:textSize="28sp" />
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
     <FrameLayout
         android:id="@+id/flLayout"
