@@ -1,7 +1,5 @@
 package com.example.flimflare.ui.auth
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -9,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.flimflare.R
 import com.example.flimflare.databinding.FragmentLogInBinding
@@ -61,14 +60,13 @@ class LogInFragment : Fragment() {
     private fun setUpLogIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if(task.isSuccessful) {
-                val sharePerf = requireActivity().getSharedPreferences("LoginInfo", Context.MODE_PRIVATE)
-                val editor = sharePerf.edit()
-                editor.putBoolean("Login", true)
-                editor.apply()
-
                 Toast.makeText(requireContext(), "Log in successful", Toast.LENGTH_SHORT).show()
+                val navOption = NavOptions.Builder()
+                    .setPopUpTo(R.id.logInFragment, true)
+                    .build()
+
                 val action = LogInFragmentDirections.actionLogInFragmentToMainMovieFragment()
-                findNavController().navigate(action)
+                findNavController().navigate(action, navOption)
             } else {
                 Toast.makeText(requireContext(), "Don't have an account", Toast.LENGTH_SHORT).show()
             }

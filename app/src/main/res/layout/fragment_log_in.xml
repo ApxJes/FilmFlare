@@ -5,7 +5,44 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.auth.LogInFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/gradient_bg2">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="40dp"
+        android:elevation="1dp"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/gradient_bg2">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/vd"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"/>
+
+            <TextView
+                android:id="@+id/txvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/outline_tv_search_style"
+                android:padding="7dp"
+                android:text="FilmFlare"
+                android:textColor="@color/whiteBlue"
+                android:textSize="28sp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,7 +65,8 @@
             android:id="@+id/edtLogInEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email" />
+            android:hint="Email"
+            android:background="@drawable/outline_tv_search_style"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -52,17 +90,20 @@
             android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password" />
+            android:hint="Password"
+            android:background="@drawable/outline_tv_search_style"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/btnLogIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnLogIn"
-        android:text="Log in"
-        android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:text="Log In"
+        android:textColor="@color/white"
+        android:background="@drawable/outline_tv_search_style"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,8 +119,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnSignUp"
         android:text="Sign up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/outline_tv_search_style"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -95,8 +139,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnForgetPassword"
         android:text="Forget Password"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"/>
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/outline_tv_search_style"/>
 
 
 </LinearLayout>

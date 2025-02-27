@@ -3,11 +3,14 @@ package com.example.flimflare.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import androidx.navigation.ui.setupWithNavController
 import com.example.flimflare.R
 import com.example.flimflare.databinding.ActivityMainBinding
@@ -29,11 +32,11 @@ class MainActivity : AppCompatActivity() {
         )
         setContentView(binding.root)
 
+        Log.d("MainActivity", "Navigating to MainMovieFragment")
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         binding.btmNav.setupWithNavController(navController)
-
-        checkLoginStatusAndNavigate(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val hideBottomNavFragments = setOf(
@@ -41,7 +44,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.searchMovieFragment,
                 R.id.tvShowDetailsFragment,
                 R.id.eachSeasonDetailsFragment,
-                R.id.profileFragment,
                 R.id.logInFragment,
                 R.id.signUpFragment,
                 R.id.forgetPasswordFragment
@@ -54,15 +56,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             binding.txvTitle.visibility = if (destination.id in hideBottomNavFragments) View.GONE else View.VISIBLE
-        }
-    }
-
-    private fun checkLoginStatusAndNavigate(navController: NavController) {
-        val sharedPreferences = getSharedPreferences("LoginInfo", Context.MODE_PRIVATE)
-        val isLoggedIn = sharedPreferences.getBoolean("Login", false)
-
-        if (isLoggedIn) {
-           navController.navigate(R.id.mainMovieFragment)
         }
     }
 }
