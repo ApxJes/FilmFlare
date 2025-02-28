@@ -34,10 +34,6 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         binding.btmNav.setupWithNavController(navController)
 
-        binding.imvDisplayProfile.setOnClickListener {
-            navController.navigate(R.id.profileFragment)
-        }
-
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val hideBottomNavFragments = setOf(
                 R.id.movieDetailsFragment,
@@ -46,7 +42,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.eachSeasonDetailsFragment,
                 R.id.logInFragment,
                 R.id.signUpFragment,
-                R.id.forgetPasswordFragment
+                R.id.forgetPasswordFragment,
+                R.id.splashFragment
             )
 
             if (destination.id in hideBottomNavFragments) {
@@ -54,8 +51,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 binding.btmNav.visibility = View.VISIBLE
             }
-
-            binding.txvTitle.visibility = if (destination.id in hideBottomNavFragments) View.GONE else View.VISIBLE
         }
     }
 }

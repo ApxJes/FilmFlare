@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.tvShow.EachSeasonDetailsFragment"
-    android:background="@drawable/gradient_bg2"
     >
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_bg2">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                 tools:listitem="@layout/cast"
                 tools:itemCount="1"
                 android:layout_gravity="center"
-                android:layout_margin="7dp"/>
+                android:layout_margin="7dp" />
 
             <TextView
                 android:layout_width="wrap_content"

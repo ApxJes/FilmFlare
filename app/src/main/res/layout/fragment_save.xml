@@ -11,14 +11,15 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabGravity="fill"
         app:tabMode="fixed"
+        android:background="@drawable/outline_movie_recycler_style"
         app:tabIndicatorColor="@color/whiteBlue"
-        app:tabRippleColor="@color/whiteBlue"/>
+        app:tabRippleColor="@color/whiteBlue" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"

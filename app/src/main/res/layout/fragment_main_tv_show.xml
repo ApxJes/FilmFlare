@@ -40,9 +40,10 @@
                 android:fontFamily="@font/supreme_regular"/>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="250dp"
-                app:cardCornerRadius="25dp"
+                android:elevation="1dp"
+                app:cardCornerRadius="50dp"
                 android:layout_margin="10dp"
                 >
 
@@ -72,19 +73,19 @@
                 android:fontFamily="@font/supreme_regular"/>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="250dp"
-                app:cardCornerRadius="25dp"
+                app:cardCornerRadius="40dp"
                 android:layout_margin="10dp"
                 >
 
                 <ImageView
+                    android:id="@+id/imvKoreaDrama"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/imvKoreaDrama"
-                    android:src="@drawable/kdrama"
+                    android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    android:adjustViewBounds="true"/>
+                    android:src="@drawable/kdrama" />
 
             </androidx.cardview.widget.CardView>
 
@@ -106,7 +107,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                app:cardCornerRadius="25dp"
+                app:cardCornerRadius="40dp"
                 android:layout_margin="10dp"
                 >
 
