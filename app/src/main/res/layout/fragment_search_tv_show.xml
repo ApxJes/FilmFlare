@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.movie.SearchMovieFragment"
+    tools:context=".ui.tvShow.SearchTvShowFragment"
     android:background="@drawable/gradient_bg2">
 
     <EditText
-        android:id="@+id/edtSearchMovie"
+        android:id="@+id/edtSearchShow"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -24,17 +24,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvSearch"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edtSearchMovie"
-            app:layout_constraintVertical_bias="0.687"
-            tools:listitem="@layout/now_playing_movie_item_layout" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvSearch"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edtSearchShow"
+                app:layout_constraintVertical_bias="0.687"
+                tools:listitem="@layout/now_playing_movie_item_layout" />
 
     <ProgressBar
         android:layout_width="wrap_content"

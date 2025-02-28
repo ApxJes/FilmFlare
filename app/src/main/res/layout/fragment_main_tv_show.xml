@@ -18,17 +18,16 @@
             >
 
             <ImageView
-                android:id="@+id/imvSearch"
+                android:id="@+id/imvSearchTvShow"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_gravity="end"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_search_two"
                 android:drawablePadding="12dp"
                 android:padding="10dp"
-                android:layout_gravity="end"
-                />
+                android:src="@drawable/ic_search_two" />
 
             <TextView
                 android:layout_width="wrap_content"

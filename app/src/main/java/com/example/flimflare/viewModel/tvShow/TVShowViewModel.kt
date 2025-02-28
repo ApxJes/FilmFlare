@@ -45,6 +45,9 @@ class TVShowViewModel
     private val _showCredits: MutableLiveData<Resource<CreditsResponse>> = MutableLiveData()
     val showCredits: LiveData<Resource<CreditsResponse>> = _showCredits
 
+    private val _searchTvShow: MutableLiveData<Resource<TvShowResponse>> = MutableLiveData()
+    val searchTvShow: LiveData<Resource<TvShowResponse>> get() = _searchTvShow
+
     fun getTrendingOnTheWeekTvShow(apiKey: String, language: String) = viewModelScope.launch {
         _trendingOnThisWeekTvShow.postValue(Resource.Loading())
         val response = repository.getTrendingOnThisWeekTvShow(apiKey, language)
@@ -80,6 +83,12 @@ class TVShowViewModel
         val response = repository.getShowCredits(seriesId, seasonNumber, API_KEY)
         _showCredits.postValue(handleShowCredits(response))
 
+    }
+
+    fun getSearchTvShow(searchString: String) = viewModelScope.launch {
+        _searchTvShow.postValue(Resource.Loading())
+        val response = repository.getSearchTvShow(searchString, API_KEY)
+        _searchTvShow.postValue(handleSearchTvShow(response))
     }
 
     fun saveTvShow(show: TvShowEntity) = viewModelScope.launch {
@@ -143,6 +152,15 @@ class TVShowViewModel
     }
 
     private fun handleShowCredits(response: Response<CreditsResponse>): Resource<CreditsResponse>? {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+        return Resource.Error(response.errorBody()?.string() ?: "Unknown Error")
+    }
+
+    private fun handleSearchTvShow(response: Response<TvShowResponse>): Resource<TvShowResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)

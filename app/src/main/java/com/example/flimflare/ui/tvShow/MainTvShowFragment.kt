@@ -28,8 +28,8 @@ class MainTvShowFragment : Fragment(R.layout.fragment_main_tv_show) {
             tvShows("thailand")
         }
 
-        binding.imvSearch.setOnClickListener {
-            val action = MainTvShowFragmentDirections.actionMainTvShowFragmentToSearchMovieFragment("")
+        binding.imvSearchTvShow.setOnClickListener {
+            val action = MainTvShowFragmentDirections.actionMainTvShowFragmentToSearchTvShowFragment("")
             findNavController().navigate(action)
         }
     }

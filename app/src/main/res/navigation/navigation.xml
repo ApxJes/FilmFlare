@@ -65,8 +65,8 @@
             android:id="@+id/action_mainTvShowFragment_to_tvShowFragment"
             app:destination="@id/tvShowFragment" />
         <action
-            android:id="@+id/action_mainTvShowFragment_to_searchMovieFragment"
-            app:destination="@id/searchMovieFragment" />
+            android:id="@+id/action_mainTvShowFragment_to_searchTvShowFragment"
+            app:destination="@id/searchTvShowFragment" />
     </fragment>
 
     <fragment
@@ -189,5 +189,18 @@
         <action
             android:id="@+id/action_splashFragment_to_mainMovieFragment"
             app:destination="@id/mainMovieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchTvShowFragment"
+        android:name="com.example.flimflare.ui.tvShow.SearchTvShowFragment"
+        android:label="fragment_search_tv_show"
+        tools:layout="@layout/fragment_search_tv_show" >
+        <argument
+            android:name="tvShow"
+            app:argType="string"
+            android:defaultValue='""' />
+        <action
+            android:id="@+id/action_searchTvShowFragment_to_tvShowDetailsFragment"
+            app:destination="@id/tvShowDetailsFragment" />
     </fragment>
 </navigation>

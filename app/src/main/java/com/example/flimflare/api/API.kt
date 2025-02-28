@@ -110,5 +110,5 @@ interface API {
     suspend fun getSearchTvShow(
         @Query("query") searchString: String,
         @Query("api_key") apiKey: String
-    ): Response<MovieResponse>
+    ): Response<TvShowResponse>
 }
