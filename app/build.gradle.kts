@@ -5,9 +5,11 @@ plugins {
     kotlin("kapt")
 
     id("androidx.navigation.safeargs.kotlin")
-    id ("kotlin-parcelize")
+    id("kotlin-parcelize")
     alias(libs.plugins.google.gms.google.services)
+    id("com.google.firebase.crashlytics")
 }
+
 
 android {
     namespace = "com.example.flimflare"
@@ -42,6 +44,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -95,4 +98,12 @@ dependencies {
 
     implementation ("androidx.paging:paging-runtime:3.2.1")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:33.10.0"))
+
+    // Add the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-crashlytics")
+    implementation("com.google.firebase:firebase-analytics")
 }

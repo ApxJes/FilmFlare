@@ -4,22 +4,22 @@
     <item
         android:id="@+id/mainMovieFragment"
         android:icon="@drawable/ic_movie"
-        android:title="Movie"
-        />
+        android:title="" />
 
     <item
         android:id="@+id/mainTvShowFragment"
         android:icon="@drawable/ic_tv"
-        android:title="TV Show"/>
+        android:title=""
+        />
 
     <item
         android:id="@+id/saveFragment"
         android:icon="@drawable/ic_save"
-        android:title="Save"/>
+        android:title=""/>
 
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
-        android:title="Profile"/>
+        android:title=""/>
 
 </menu>

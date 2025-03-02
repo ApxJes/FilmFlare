@@ -20,6 +20,7 @@ class OnTheAirAdapter: RecyclerView.Adapter<OnTheAirAdapter.TopRateItemViewHolde
     private lateinit var onAirTitle: TextView
     private lateinit var onAirLanguage: TextView
     private lateinit var onAirReleaseDate: TextView
+    private lateinit var rating: TextView
 
     private val differCallBack = object: DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
@@ -50,12 +51,15 @@ class OnTheAirAdapter: RecyclerView.Adapter<OnTheAirAdapter.TopRateItemViewHolde
         onAirTitle = holder.itemView.findViewById(R.id.txvPopularTitle)
         onAirLanguage = holder.itemView.findViewById(R.id.txvPopularLanguage)
         onAirReleaseDate = holder.itemView.findViewById(R.id.txvPopularReleaseDate)
+        rating = holder.itemView.findViewById(R.id.txvPopularMovieRating)
 
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL + onAirToday.poster_path).into(onAirPoster)
             onAirTitle.text = onAirToday.name
             onAirLanguage.text = onAirToday.original_language
             onAirReleaseDate.text = onAirToday.first_air_date
+            rating.text = "Rating: ★ ${onAirToday.vote_average}"
+
             setOnClickListener {
                 onClick?.let {
                     it(onAirToday)

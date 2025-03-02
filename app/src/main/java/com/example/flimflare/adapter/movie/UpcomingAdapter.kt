@@ -20,6 +20,7 @@ class UpcomingAdapter: RecyclerView.Adapter<UpcomingAdapter.UpcomingItemViewHold
     private lateinit var movieTitle: TextView
     private lateinit var language: TextView
     private lateinit var movieReleaseDate: TextView
+    private lateinit var movieRating: TextView
 
     private val differCall = object : DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
@@ -51,12 +52,14 @@ class UpcomingAdapter: RecyclerView.Adapter<UpcomingAdapter.UpcomingItemViewHold
         movieTitle = holder.itemView.findViewById(R.id.txvUpcomingTitle)
         language = holder.itemView.findViewById(R.id.txvUpcomingLanguage)
         movieReleaseDate = holder.itemView.findViewById(R.id.txvUpcomingReleaseDate)
+        movieRating = holder.itemView.findViewById(R.id.txvUpcomingMovieRating)
 
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL + upcomingMovie.poster_path).into(moviePoster)
             movieTitle.text = upcomingMovie.title
             language.text = upcomingMovie.original_language
             movieReleaseDate.text = upcomingMovie.release_date
+            movieRating.text = "Rating: ★ ${upcomingMovie.vote_average}"
 
             setOnClickListener {
                 onClick?.let { it(upcomingMovie) }

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:background="@drawable/gradient_bg2"
+        android:background="#00072D"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView

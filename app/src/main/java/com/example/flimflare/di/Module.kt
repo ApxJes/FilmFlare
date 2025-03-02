@@ -26,6 +26,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -40,6 +41,7 @@ object Module {
 
         val client = OkHttpClient.Builder()
             .addInterceptor(logging)
+            .connectTimeout(100000L, TimeUnit.MICROSECONDS)
             .build()
 
         return Retrofit.Builder()
@@ -54,61 +56,4 @@ object Module {
     fun providesApi(retrofit: Retrofit): API{
         return retrofit.create(API::class.java)
     }
-
-    @Singleton
-    @Provides
-    fun providesNowPlayingAdapter(): NowPlayingAdapter = NowPlayingAdapter()
-
-    @Singleton
-    @Provides
-    fun providesPopularAdapter(): PopularAdapter = PopularAdapter()
-
-    @Singleton
-    @Provides
-    fun providesTopRateAdapter(): TopRateAdapter = TopRateAdapter()
-
-    @Singleton
-    @Provides
-    fun providesUpcomingAdapter(): UpcomingAdapter = UpcomingAdapter()
-
-    @Singleton
-    @Provides
-    fun providesCastAdapter(): CastAdapter = CastAdapter()
-
-    @Singleton
-    @Provides
-    fun providesCrewAdapter(): CrewAdapter = CrewAdapter()
-
-    @Singleton
-    @Provides
-    fun providesSearchAdapter(): SearchAdapter = SearchAdapter()
-
-    @Singleton
-    @Provides
-    fun providesTrendingAdapter(): TrendingTvShowAdapter = TrendingTvShowAdapter()
-
-    @Singleton
-    @Provides
-    fun providesTrendingOnAirAdapter(): OnTheAirAdapter = OnTheAirAdapter()
-
-    @Singleton
-    @Provides
-    fun providesTopRatingTvShowAdapter(): TopRatingTvShowAdapter = TopRatingTvShowAdapter()
-
-    @Singleton
-    @Provides
-    fun providesShowCreatorAdapter(): ShowCreatorAdapter = ShowCreatorAdapter()
-
-    @Singleton
-    @Provides
-    fun providesSeasonAdapter(): SeasonAdapter = SeasonAdapter()
-
-    @Singleton
-    @Provides
-    fun providesSeasonDetailsAdapter(): SeasonDetailsAdapter = SeasonDetailsAdapter()
-
-    @Singleton
-    @Provides
-    fun providesSearchTvShowAdapter(): SearchTvShowAdapter = SearchTvShowAdapter()
-
 }

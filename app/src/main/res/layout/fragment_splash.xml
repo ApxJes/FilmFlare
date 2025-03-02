@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.auth.SplashFragment"
-    android:background="@drawable/gradient_bg2">
+    android:background="#00072D">
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

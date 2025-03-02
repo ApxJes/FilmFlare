@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.tvShow.TvShowFragment"
-    android:background="@drawable/gradient_bg2">
+    android:background="#00072D">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.core.widget.NestedScrollView
@@ -41,7 +41,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gradient_bg2"
+                    android:background="#00072D"
                     android:padding="7dp">
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -86,7 +86,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gradient_bg2"
+                    android:background="#00072D"
                     android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -122,7 +122,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gradient_bg2"
+                    android:background="#00072D"
                     android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView

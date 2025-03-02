@@ -20,6 +20,7 @@ class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchItemViewHolder>() 
     private lateinit var movieTitle: TextView
     private lateinit var language: TextView
     private lateinit var movieReleaseDate: TextView
+    private lateinit var rating: TextView
 
     private val differCall = object : DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(
@@ -58,12 +59,14 @@ class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchItemViewHolder>() 
         movieTitle = holder.itemView.findViewById(R.id.txvUpcomingTitle)
         language = holder.itemView.findViewById(R.id.txvUpcomingLanguage)
         movieReleaseDate = holder.itemView.findViewById(R.id.txvUpcomingReleaseDate)
+        rating = holder.itemView.findViewById(R.id.txvUpcomingMovieRating)
 
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL + searchMovie.poster_path).into(moviePoster)
             movieTitle.text = searchMovie.title
             language.text = searchMovie.original_language
             movieReleaseDate.text = searchMovie.release_date
+            rating.text = "Rating: ★ ${searchMovie.vote_average}"
 
             setOnClickListener {
                 onClick?.let { it(searchMovie) }

@@ -5,33 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg2"
     tools:context=".ui.MainActivity">
-
-    <TextView
-        android:id="@+id/txvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/outline_tv_search_style"
-        android:padding="7dp"
-        android:text="FilmFlare"
-        android:textColor="@color/whiteBlue"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-
-        android:id="@+id/imvDisplayProfile"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/pf2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/txvTitle"
-        app:layout_constraintBottom_toBottomOf="@id/txvTitle"
-        android:layout_marginEnd="30dp"/>
 
 
     <FrameLayout
@@ -41,8 +15,7 @@
         app:layout_constraintBottom_toTopOf="@id/btmNav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txvTitle">
-
+        >
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"

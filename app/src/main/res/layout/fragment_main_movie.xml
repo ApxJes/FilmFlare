@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.movie.MainMovieFragment"
-    android:background="@drawable/gradient_bg2">
+    android:background="#00072D">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -20,7 +20,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#00072D">
 
             <ImageView
                 android:id="@+id/imvSearch"
@@ -50,12 +51,13 @@
                 android:layout_height="300dp"
                 android:layout_gravity="center_horizontal"
                 app:cardCornerRadius="40dp"
+                android:background="#00072D"
                 app:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gradient_bg2"
+                    android:background="#00072D"
                     android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -100,7 +102,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gradient_bg2"
+                    android:background="#00072D"
                     android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -135,7 +137,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gradient_bg2"
+                    android:background="#00072D"
                     android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -170,7 +172,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gradient_bg2"
+                    android:background="#00072D"
                     android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView

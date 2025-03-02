@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="270dp"
+    android:layout_width="280dp"
     android:layout_height="190dp"
     android:layout_margin="6dp"
     android:elevation="30dp"
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:background="@drawable/gradient_bg2">
+        android:background="#00072D">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -37,21 +37,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/cardView"
             app:layout_constraintTop_toTopOf="@id/cardView">
 
             <TextView
                 android:id="@+id/txvTopRateTitle"
                 android:layout_width="120dp"
-                android:maxLines="2"
-                android:breakStrategy="simple"
                 android:layout_height="wrap_content"
+                android:breakStrategy="simple"
+                android:fontFamily="@font/supreme_regular"
+                android:maxLines="2"
                 android:text="Spider Man"
                 android:textColor="@color/white"
-                android:fontFamily="@font/supreme_regular"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -62,17 +63,17 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_language"/>
+                    android:src="@drawable/ic_language" />
 
                 <TextView
                     android:id="@+id/txvTopRateLanguage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="en"
                     android:fontFamily="@font/supreme_regular"
+                    android:text="en"
                     android:textColor="@color/white"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -84,18 +85,27 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_release_date"/>
+                    android:src="@drawable/ic_release_date" />
 
                 <TextView
                     android:id="@+id/txvTopRateReleaseDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="Release date"
                     android:fontFamily="@font/supreme_regular"
+                    android:text="Release date"
                     android:textColor="@color/white"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/txvTopRatingMovieRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/supreme_regular"
+                android:padding="5dp"
+                android:text="Rating: ★★★★★"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 

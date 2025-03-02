@@ -1,5 +1,6 @@
 package com.example.flimflare.adapter.movie
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ class NowPlayingAdapter: RecyclerView.Adapter<NowPlayingAdapter.NowPlayingItemVi
     private lateinit var moviePoster: ImageView
     private lateinit var movieTitle: TextView
     private lateinit var movieReleaseDate: TextView
+    private lateinit var movieRating: TextView
 
     private val differCall = object : DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
@@ -42,17 +44,20 @@ class NowPlayingAdapter: RecyclerView.Adapter<NowPlayingAdapter.NowPlayingItemVi
         return differ.currentList.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: NowPlayingItemViewHolder, position: Int) {
         val nowPlayingMovie = differ.currentList[position]
 
         moviePoster = holder.itemView.findViewById(R.id.imvMoviePoster)
         movieTitle = holder.itemView.findViewById(R.id.txvMovieTitle)
         movieReleaseDate = holder.itemView.findViewById(R.id.txvReleaseDate)
+        movieRating = holder.itemView.findViewById(R.id.txvMovieRating)
 
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL + nowPlayingMovie.poster_path).into(moviePoster)
             movieTitle.text = nowPlayingMovie.title
             movieReleaseDate.text = nowPlayingMovie.release_date
+            movieRating.text = "Rating: ★ ${nowPlayingMovie.vote_average}"
 
             setOnClickListener {
                 onClick?.let {

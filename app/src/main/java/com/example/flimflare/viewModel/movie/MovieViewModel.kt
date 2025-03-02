@@ -189,8 +189,6 @@ class MovieViewModel
                 return Resource.Success(resultResponse)
             }
         }
-
         return Resource.Error(response.errorBody().toString())
     }
-
 }

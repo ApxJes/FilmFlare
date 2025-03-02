@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient_bg2"
+    android:background="#00072D"
     >
 
     <androidx.cardview.widget.CardView
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/outline_genre_style"
+            android:background="#00072D"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:scaleType="fitXY"
+                android:src="@drawable/pf2"
                 android:adjustViewBounds="true"
                 />
 

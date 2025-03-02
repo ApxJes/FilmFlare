@@ -19,6 +19,8 @@ class TrendingTvShowAdapter: RecyclerView.Adapter<TrendingTvShowAdapter.Trending
     private lateinit var trendingPoster: ImageView
     private lateinit var trendingTitle: TextView
     private lateinit var trendingReleaseDate: TextView
+    private lateinit var rating: TextView
+
 
     private val differCallBack = object: DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
@@ -48,11 +50,13 @@ class TrendingTvShowAdapter: RecyclerView.Adapter<TrendingTvShowAdapter.Trending
         trendingPoster = holder.itemView.findViewById(R.id.imvMoviePoster)
         trendingTitle = holder.itemView.findViewById(R.id.txvMovieTitle)
         trendingReleaseDate = holder.itemView.findViewById(R.id.txvReleaseDate)
+        rating = holder.itemView.findViewById(R.id.txvMovieRating)
 
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL+ trendingTvShow.poster_path).into(trendingPoster)
             trendingTitle.text = trendingTvShow.name
             trendingReleaseDate.text = trendingTvShow.first_air_date
+            rating.text = "Rating: ★ ${trendingTvShow.vote_average}"
 
             setOnClickListener {
                 onClick?.let {

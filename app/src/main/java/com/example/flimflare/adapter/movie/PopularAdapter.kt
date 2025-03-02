@@ -1,5 +1,6 @@
 package com.example.flimflare.adapter.movie
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularItemViewHolder>
     private lateinit var movieTitle: TextView
     private lateinit var language: TextView
     private lateinit var movieReleaseDate: TextView
+    private lateinit var movieRating: TextView
 
     private val differCall = object : DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
@@ -43,6 +45,7 @@ class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularItemViewHolder>
         return differ.currentList.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PopularItemViewHolder, position: Int) {
         val popularMovie = differ.currentList[position]
 
@@ -50,12 +53,14 @@ class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularItemViewHolder>
         movieTitle = holder.itemView.findViewById(R.id.txvPopularTitle)
         movieReleaseDate = holder.itemView.findViewById(R.id.txvPopularReleaseDate)
         language = holder.itemView.findViewById(R.id.txvPopularLanguage)
+        movieRating = holder.itemView.findViewById(R.id.txvPopularMovieRating)
 
         holder.itemView.apply {
             Glide.with(this).load(IMAGE_URL + popularMovie.poster_path).into(moviePoster)
             movieTitle.text = popularMovie.title
             movieReleaseDate.text = popularMovie.release_date
             language.text = popularMovie.original_language
+            movieRating.text = "Rating: ★ ${popularMovie.vote_average}"
 
             setOnClickListener {
                 onClick?.let {it(popularMovie)}

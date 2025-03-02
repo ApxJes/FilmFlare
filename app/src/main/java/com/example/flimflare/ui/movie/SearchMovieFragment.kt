@@ -15,10 +15,8 @@ import com.example.flimflare.adapter.movie.SearchAdapter
 import com.example.flimflare.databinding.FragmentSearchMovieBinding
 import com.example.flimflare.util.Resource
 import com.example.flimflare.viewModel.movie.MovieViewModel
-import com.example.flimflare.viewModel.tvShow.TVShowViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg2"
+    android:background="#00072D"
     tools:context=".ui.save.SaveFragment">
 
     <com.google.android.material.tabs.TabLayout
@@ -17,12 +17,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tabGravity="fill"
         app:tabMode="fixed"
-        android:background="@drawable/outline_movie_recycler_style"
-        app:tabIndicatorColor="@color/whiteBlue"
+        android:background="@drawable/outline_button_style"
+        app:tabTextColor="@color/white"
+        app:tabIndicatorColor="@color/white"
         app:tabRippleColor="@color/whiteBlue" />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:layout_marginTop="20dp"
+        android:padding="7dp"
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

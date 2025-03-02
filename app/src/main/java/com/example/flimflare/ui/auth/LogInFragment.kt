@@ -62,7 +62,7 @@ class LogInFragment : Fragment() {
             if(task.isSuccessful) {
                 Toast.makeText(requireContext(), "Log in successful", Toast.LENGTH_SHORT).show()
                 val navOption = NavOptions.Builder()
-                    .setPopUpTo(R.id.logInFragment, true)
+                    .setPopUpTo(R.id.logInFragment, false)
                     .build()
 
                 val action = LogInFragmentDirections.actionLogInFragmentToMainMovieFragment()

@@ -20,6 +20,7 @@ class SearchTvShowAdapter: RecyclerView.Adapter<SearchTvShowAdapter.SearchItemVi
     private lateinit var movieTitle: TextView
     private lateinit var language: TextView
     private lateinit var movieReleaseDate: TextView
+    private lateinit var rating: TextView
 
     private val differCall = object : DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(
@@ -52,21 +53,23 @@ class SearchTvShowAdapter: RecyclerView.Adapter<SearchTvShowAdapter.SearchItemVi
     }
 
     override fun onBindViewHolder(holder: SearchItemViewHolder, position: Int) {
-        val searchMovie = differ.currentList[position]
+        val searchTvShow = differ.currentList[position]
 
         moviePoster = holder.itemView.findViewById(R.id.imvUpcomingPoster)
         movieTitle = holder.itemView.findViewById(R.id.txvUpcomingTitle)
         language = holder.itemView.findViewById(R.id.txvUpcomingLanguage)
         movieReleaseDate = holder.itemView.findViewById(R.id.txvUpcomingReleaseDate)
+        rating = holder.itemView.findViewById(R.id.txvUpcomingMovieRating)
 
         holder.itemView.apply {
-            Glide.with(this).load(IMAGE_URL + searchMovie.poster_path).into(moviePoster)
-            movieTitle.text = searchMovie.name
-            language.text = searchMovie.original_language
-            movieReleaseDate.text = searchMovie.first_air_date
+            Glide.with(this).load(IMAGE_URL + searchTvShow.poster_path).into(moviePoster)
+            movieTitle.text = searchTvShow.name
+            language.text = searchTvShow.original_language
+            movieReleaseDate.text = searchTvShow.first_air_date
+            rating.text = "Rating: ★ ${searchTvShow.vote_average}"
 
             setOnClickListener {
-                onClick?.let { it(searchMovie) }
+                onClick?.let { it(searchTvShow) }
             }
         }
     }

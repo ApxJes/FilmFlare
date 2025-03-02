@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -29,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         )
         setContentView(binding.root)
 
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         binding.btmNav.setupWithNavController(navController)
@@ -43,7 +44,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.logInFragment,
                 R.id.signUpFragment,
                 R.id.forgetPasswordFragment,
-                R.id.splashFragment
+                R.id.splashFragment,
+                R.id.personDetailsFragment,
+                R.id.tvShowFragment,
+                R.id.eachSeasonDetailsFragment
             )
 
             if (destination.id in hideBottomNavFragments) {

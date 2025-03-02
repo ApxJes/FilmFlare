@@ -51,11 +51,11 @@ class MovieDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val result = args.result
         setupDetails(result!!.id)
-        getDirector(result.id)
+        getCredits(result.id)
 
         toPersonDetails()
     }
-
+ 
     @SuppressLint("SetTextI18n")
     private fun setupDetails(id: Int) {
         viewModel.getMovieDetails(id)
@@ -76,7 +76,10 @@ class MovieDetailsFragment : Fragment() {
                                 .into(binding.imvDetailsPoster)
                         }
 
-                        val genres = result.genres.map { it.name }
+                        val genres = result.genres.map {
+                            it.name
+                        }
+
                         if(genres.isNotEmpty()){
                             binding.txvType1.text = genres[0]
                             binding.txvType1.visibility = View.VISIBLE
@@ -97,6 +100,7 @@ class MovieDetailsFragment : Fragment() {
                             moviePoster = result.poster_path,
                             movieResult = args.result
                         )
+
                         setSaveMovie()
                         binding.imvSave.setOnClickListener {
                             isSaveMovie = if (!isSaveMovie) {
@@ -151,15 +155,18 @@ class MovieDetailsFragment : Fragment() {
     }
 
 
-    private fun getDirector(movieId: Int) {
+    private fun getCredits(movieId: Int) {
 
         viewModel.getCredits(movieId)
         viewModel.creditsResponse.observe(viewLifecycleOwner) {result ->
             when(result) {
                 is Resource.Success -> {
                     result.data?.let { resultResponse ->
-                        val director = resultResponse.crew.firstOrNull { it.job ==  "Director" }
+                        val director = resultResponse.crew.firstOrNull {
+                            it.job ==  "Director"
+                        }
                         movieDirector(director)
+
                         castAdapter.differ.submitList(resultResponse.cast)
                         recyclerViewForCast()
 

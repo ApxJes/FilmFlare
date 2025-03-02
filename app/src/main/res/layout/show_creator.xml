@@ -12,12 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/gradient_bg2">
+        android:background="#00072D">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="145dp"
-            android:src="@drawable/pf"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:id="@+id/imvCreatorProfile"/>
