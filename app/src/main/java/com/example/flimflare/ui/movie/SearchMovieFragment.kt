@@ -43,6 +43,10 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search_movie) {
         super.onViewCreated(view, savedInstanceState)
         setUpSearchRcv()
 
+        binding.imvBack.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+
         searchAdapter.onItemClick {
             val action = SearchMovieFragmentDirections.actionSearchMovieFragmentToMovieDetailsFragment(it)
             findNavController().navigate(action)

@@ -42,13 +42,17 @@ class SearchTvShowFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rcvForSearch()
 
+        binding.imvBack.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+
         searchAdapter.onItemClick {
             val action = SearchTvShowFragmentDirections.actionSearchTvShowFragmentToTvShowDetailsFragment(it)
             findNavController().navigate(action)
         }
 
         var job: Job? = null
-        binding.edtSearchShow.addTextChangedListener { editable ->
+        binding.edtSearchTvShow.addTextChangedListener { editable ->
             job?.cancel()
             job = lifecycleScope.launch {
                 delay(300L)

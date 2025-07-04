@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00072D"
-    tools:context=".ui.save.SaveFragment">
+    android:background="@color/primary_color"
+    tools:context=".ui.save.SaveFragment"
+    android:padding="16dp">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/outline_button_style"
         app:tabGravity="fill"
         app:tabMode="fixed"
-        android:background="@drawable/outline_button_style"
         app:tabTextColor="@color/white"
         app:tabIndicatorColor="@color/white"
-        app:tabRippleColor="@color/whiteBlue" />
+        app:tabIndicatorFullWidth="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <androidx.viewpager2.widget.ViewPager2
         android:padding="7dp"

@@ -7,10 +7,8 @@ import androidx.room.TypeConverters
 
 @Database(
     entities = [MovieEntity::class, TvShowEntity::class],
-    version = 2, exportSchema = true,
-    autoMigrations = [
-        AutoMigration(from = 1, to = 2)
-    ]
+    version = 2,
+    exportSchema = true
 )
 @TypeConverters(MovieTypeConverter::class, TvShowTypeConverter::class)
 abstract class SaveDatabase: RoomDatabase() {

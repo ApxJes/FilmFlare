@@ -1,59 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="6dp"
-    android:background="#00072D"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    android:layout_width="120dp"
+    android:layout_height="170dp"
+    android:background="#242A32"
+    android:layout_marginEnd="8dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="120dp"
-        android:layout_height="170dp"
-        android:elevation="10dp"
-        app:cardCornerRadius="13dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#242A32">
 
-        <LinearLayout
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imvCastProfile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pf2"
+            app:shapeAppearanceOverlay="@style/CircleImageView" />
+
+        <TextView
+            android:id="@+id/txvCastName"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="#00072D">
+            android:layout_height="wrap_content"
+            android:text="Dwayne Johnson"
+            android:textColor="@color/white"
+            android:fontFamily="@font/supreme_regular"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imvCastProfile"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/pf2"
-                android:adjustViewBounds="true"
-                />
+        <!-- Cast Character -->
+        <TextView
+            android:id="@+id/txvCastCharacter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Black Adam"
+            android:textColor="@color/white"
+            android:fontFamily="@font/supreme_regular"
+            android:gravity="center" />
 
-            <TextView
-                android:id="@+id/txvCastName"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:text="Dwayne Johnson"
-                android:textColor="@color/white"
-                android:fontFamily="@font/supreme_regular"
-                android:layout_marginStart="5dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/txvCastCharacter"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:text="Black Adam"
-                android:textColor="@color/white"
-                android:fontFamily="@font/supreme_regular"
-                android:layout_marginStart="5dp"/>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

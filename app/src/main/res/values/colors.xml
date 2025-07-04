@@ -8,12 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="primary_color">#212121</color>
+    <color name="primary_color">#242A32</color>
     <color name="secondary_color">#AB8923</color>
     <color name="accent_color">#FFFFFF</color>
 
     <color name="recycler_color">#1b1b1b</color>
 
     <color name="text_color">#FFFFFF</color>
-    <color name="whiteBlue">#006ae0</color>
+    <color name="whiteBlue">#0296E5</color>
 </resources>

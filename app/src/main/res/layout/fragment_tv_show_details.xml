@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.tvShow.TvShowDetailsFragment"
-    android:background="#00072D">
+    android:background="@color/primary_color"
+    android:padding="16dp">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -16,64 +17,108 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="350dp"
-                android:layout_height="420dp"
-                app:cardCornerRadius="20dp"
-                android:elevation="5dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/imvShowPoster"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <!-- Top Bar -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="30dp"
-                app:cardElevation="12dp">
+                android:orientation="horizontal">
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/imvBack"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/back_iocn" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/inter_semi_bold"
+                    android:text="Detail"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/imvSave"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_save"
+                    app:tint="@color/white" />
+
+            </LinearLayout>
+
+            <!-- Poster Area -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
+
+                <!-- Big Poster -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardBigPoster"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="10dp"
-                    android:background="#00072D">
+                    android:layout_height="210dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="12dp">
 
-                    <LinearLayout
+                    <ImageView
+                        android:id="@+id/imvDetailsPoster"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY" />
+                </androidx.cardview.widget.CardView>
 
-                        <TextView
-                            android:id="@+id/txvShowTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="7dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/supreme_regular"
-                            android:text="Title"
-                            android:textColor="@color/white"
-                            android:textSize="25sp" />
+                <!-- Real Poster overlapping -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardRealPoster"
+                    android:layout_width="95dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="bottom|start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:elevation="8dp"
+                    app:cardCornerRadius="18dp">
 
-                        <ImageView
-                            android:id="@+id/imvSave"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginEnd="20dp"
-                            android:src="@drawable/ic_save" />
+                    <ImageView
+                        android:id="@+id/imvRealPoster"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- Title -->
+                <TextView
+                    android:id="@+id/txvTvShowTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="130dp"
+                    android:layout_marginBottom="35dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/inter_semi_bold"
+                    android:maxLines="2"
+                    android:text="TV Show Title"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </FrameLayout>
 
 
-                    </LinearLayout>
-
-                    <LinearLayout
+            <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -221,26 +266,19 @@
                         android:text="Overview"
                         android:textColor="@color/white"
                         android:textSize="25sp"
-                        android:fontFamily="@font/switzer_bold"
-                        android:layout_margin="7dp"/>
-
-                    <View
-                        android:layout_width="143dp"
-                        android:layout_height="4dp"
-                        android:background="@color/whiteBlue"
-                        android:layout_margin="7dp"/>
+                        android:layout_marginStart="2dp"
+                        android:fontFamily="@font/switzer_bold"/>
 
                     <TextView
+                        android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/txvShowOverView"
                         android:text="@string/overview"
                         android:textSize="17sp"
                         android:textColor="@color/white"
+                        android:padding="7dp"
                         android:fontFamily="@font/supreme_regular"/>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:layout_width="wrap_content"

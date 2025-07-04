@@ -5,36 +5,63 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.tvShow.SearchTvShowFragment"
-    android:background="#00072D">
+    android:background="@color/primary_color"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/edtSearchShow"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/outline_tv_search_style"
-        android:drawableStart="@drawable/ic_search_two"
-        android:drawablePadding="12dp"
-        android:padding="10dp"
-        android:textColorHint="@color/white"
-        android:hint="Search"
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:id="@+id/imvBack"
+        android:src="@drawable/back_iocn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="@id/edtSearchInput" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcvSearch"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edtSearchShow"
-                app:layout_constraintVertical_bias="0.687"
-                tools:listitem="@layout/now_playing_movie_item_layout" />
+
+    <LinearLayout
+        android:id="@+id/edtSearchInput"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:background="@drawable/search_input_bg"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@id/imvBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp">
+
+        <EditText
+            android:id="@+id/edtSearchTvShow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/inter_semi_bold"
+            android:text="Search"
+            android:layout_weight="1"
+            android:textColor="#8E8E8E"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_search_two" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvSearch"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtSearchInput"
+        tools:listitem="@layout/now_playing_movie_item_layout" />
 
     <ProgressBar
         android:layout_width="wrap_content"

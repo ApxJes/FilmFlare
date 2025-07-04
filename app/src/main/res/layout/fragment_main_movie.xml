@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.movie.MainMovieFragment"
-    android:background="#00072D">
+    android:background="#242A32"
+    android:padding="12dp">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -16,25 +17,53 @@
         app:layout_constraintTop_toTopOf="parent"
         android:paddingBottom="20dp">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#00072D">
+            android:background="#242A32">
 
-            <ImageView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_semi_bold"
+                android:text="What do you want to watch?"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <LinearLayout
                 android:id="@+id/imvSearch"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_search_two"
-                android:drawablePadding="12dp"
-                android:padding="10dp"
-                android:layout_gravity="end"
-                 />
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/search_input_bg"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/inter_semi_bold"
+                    android:text="Search"
+                    android:textColor="#8E8E8E"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/ic_search_two" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -42,36 +71,16 @@
                 android:text="Now Playing"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/space_grotesk_bold"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="400dp"
-                android:layout_height="300dp"
-                android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="40dp"
-                android:background="#00072D"
-                app:cardElevation="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00072D"
-                    android:padding="7dp">
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_semi_bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNowPlayingMovie"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/now_playing_movie_item_layout"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
                 tools:itemCount="1"
-                android:layout_margin="5dp"
-                android:layout_gravity="fill"
-                />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                tools:listitem="@layout/now_playing_movie_item_layout" />
 
             <View
                 android:id="@+id/upComingDivider"
@@ -89,33 +98,15 @@
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/space_grotesk_bold"
-                android:layout_marginTop="18dp"
-                android:layout_marginStart="10dp"/>
+                android:layout_marginTop="18dp" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="400dp"
-                android:layout_height="210dp"
-                android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="40dp"
-                app:cardElevation="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00072D"
-                    android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopularMovie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/popular_movie_layout"
-                tools:itemCount="1"
-                android:layout_margin="5dp"
-                />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                tools:itemCount="1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -123,34 +114,16 @@
                 android:text="Top Rate"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/space_grotesk_bold"
+                android:fontFamily="@font/inter_semi_bold"
                 android:layout_marginTop="18dp"
                 android:layout_marginStart="10dp"/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="400dp"
-                android:layout_height="210dp"
-                android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="40dp"
-                app:cardElevation="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00072D"
-                    android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTopRateMovie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/popular_movie_layout"
-                tools:itemCount="1"
-                android:layout_margin="5dp"
-                />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                tools:itemCount="1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -158,22 +131,9 @@
                 android:text="Upcoming"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/space_grotesk_bold"
+                android:fontFamily="@font/inter_semi_bold"
                 android:layout_marginTop="18dp"
                 android:layout_marginStart="10dp"/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="400dp"
-                android:layout_height="210dp"
-                android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="40dp"
-                app:cardElevation="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00072D"
-                    android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvUpcoming"
@@ -183,9 +143,6 @@
                 tools:itemCount="1"
                 android:layout_margin="5dp"
                 />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

@@ -41,7 +41,7 @@ object Module {
 
         val client = OkHttpClient.Builder()
             .addInterceptor(logging)
-            .connectTimeout(100000L, TimeUnit.MICROSECONDS)
+            .connectTimeout(100000L, TimeUnit.MILLISECONDS)
             .build()
 
         return Retrofit.Builder()

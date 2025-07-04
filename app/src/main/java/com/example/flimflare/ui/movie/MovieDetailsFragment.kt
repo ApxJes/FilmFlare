@@ -76,6 +76,12 @@ class MovieDetailsFragment : Fragment() {
                                 .into(binding.imvDetailsPoster)
                         }
 
+                        view?.let {
+                            Glide.with(it)
+                                .load(IMAGE_URL + result.poster_path)
+                                .into(binding.imvRealPoster)
+                        }
+
                         val genres = result.genres.map {
                             it.name
                         }

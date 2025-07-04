@@ -56,13 +56,14 @@ class TvShowDetailsFragment : Fragment(R.layout.fragment_tv_show_details) {
             when(result) {
                 is Resource.Success -> {
                     result.data?.let { response ->
-                        binding.txvShowTitle.text = response.name
+                        binding.txvTvShowTitle.text = response.name
                         binding.txvFirstAirDate.text = response.first_air_date
                         binding.txvLastAirDate.text = response.last_air_date
                         binding.txvShowOverView.text = response.overview
                         binding.txvNumberOfSeason.text = response.number_of_seasons.toString()
                         binding.txvNumberOfEpisodes.text = response.number_of_episodes.toString()
-                        view?.let { Glide.with(it).load(IMAGE_URL + response.poster_path ).into(binding.imvShowPoster)}
+                        view?.let { Glide.with(it).load(IMAGE_URL + response.poster_path ).into(binding.imvDetailsPoster)}
+                        view?.let { Glide.with(it).load(IMAGE_URL + response.poster_path ).into(binding.imvRealPoster)}
                         binding.txvShowType.text = response.genres.joinToString(",") { it.name }
 
                         rcvForShowCreator()

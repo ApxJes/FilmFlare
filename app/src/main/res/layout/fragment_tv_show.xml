@@ -5,9 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.tvShow.TvShowFragment"
-    android:background="#00072D">
+    android:background="@color/primary_color">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,35 +26,19 @@
                 android:text="Trending TV show"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/space_grotesk_bold"
+                android:fontFamily="@font/inter_semi_bold"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"/>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="400dp"
-                android:layout_height="300dp"
-                android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="40dp"
-                app:cardElevation="1dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00072D"
-                    android:padding="7dp">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvTrendingTvShow"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="fill"
-                        android:layout_margin="5dp"
-                        tools:itemCount="1"
-                        tools:listitem="@layout/now_playing_movie_item_layout" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTrendingTvShow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill"
+                android:layout_margin="5dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/now_playing_movie_item_layout" />
 
             <View
                 android:id="@+id/upComingDivider"
@@ -72,22 +55,10 @@
                 android:text="On Air Today"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/space_grotesk_bold"
+                android:fontFamily="@font/inter_semi_bold"
                 android:layout_marginTop="18dp"
                 android:layout_marginStart="10dp"/>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="400dp"
-                android:layout_height="210dp"
-                android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="40dp"
-                app:cardElevation="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00072D"
-                    android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvOnAirToday"
@@ -95,12 +66,7 @@
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/popular_movie_layout"
                 tools:itemCount="1"
-                android:layout_margin="5dp"
-                />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
+                android:layout_margin="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -108,22 +74,9 @@
                 android:text="Top Rate"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/space_grotesk_bold"
+                android:fontFamily="@font/inter_semi_bold"
                 android:layout_marginTop="18dp"
                 android:layout_marginStart="10dp"/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="400dp"
-                android:layout_height="210dp"
-                android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="40dp"
-                app:cardElevation="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00072D"
-                    android:padding="7dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTopRateTvShow"
@@ -131,11 +84,7 @@
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/popular_movie_layout"
                 tools:itemCount="1"
-                android:layout_margin="5dp"
-                />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                android:layout_margin="5dp" />
 
         </LinearLayout>
 
@@ -149,6 +98,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone"/>" />
+        android:visibility="gone" />
 
 </FrameLayout>
