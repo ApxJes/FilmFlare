@@ -30,16 +30,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
+        <EditText
             android:id="@+id/edtSearchMovie"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:fontFamily="@font/inter_semi_bold"
-            android:text="Search"
+            android:hint="Search"
+            android:background="@android:color/transparent"
             android:layout_weight="1"
             android:textColor="#8E8E8E"
+            android:textColorHint="#8E8E8E"
             android:textSize="16sp" />
 
 

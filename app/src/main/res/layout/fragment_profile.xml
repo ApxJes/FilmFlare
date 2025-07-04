@@ -227,17 +227,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="7.  Firebase Authentication"
-            android:textSize="17sp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/switzer_bold"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="8.  Many UI Component"
+            android:text="7.  Many UI Component"
             android:textSize="17sp"
             android:textColor="@color/white"
             android:fontFamily="@font/switzer_bold"

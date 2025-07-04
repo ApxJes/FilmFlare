@@ -140,7 +140,7 @@ class MainMovieFragment : Fragment() {
     }
 
     private fun searchMovie() {
-        binding.imvSearch.setOnClickListener{
+        binding.search.setOnClickListener{
             val action = MainMovieFragmentDirections.actionMainMovieFragmentToSearchMovieFragment("")
             findNavController().navigate(action)
         }
